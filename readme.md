@@ -2,47 +2,47 @@
 Readme
 ===========================
 ===========================
-#pom.xml
+# pom.xml
 
 ***
 
-#/src/main/java/com/demo/mobileproject/
+# /src/main/java/com/demo/mobileproject/
 ***
-## *config
+## config
 ***
-## *controller
+## controller
 ***
-## *domain
+## domain
 ***
-## *repository
+## repository
 ***
-## *service
+## service
 ***
 ### MobileProjectApplication.java
 ====================================
-#/src/main/resources/
+# /src/main/resources/
 ***
 ***
-## *i18
+## i18
 ***
-### **errormsg.properties
+### errormsg.properties
 ***
-### **users.properties
+### users.properties
 ***
-## *static
+## static
 ***
-## **css
+## css
 ***
-## **image
+## image
 ***
-## **js
+## js
 ***
-## *templates
+## templates
 ***
-## **admin
+## admin
 ***
-###application.properties
+### application.properties
 ***
-###data.sql
+### data.sql
 ***
 ***
