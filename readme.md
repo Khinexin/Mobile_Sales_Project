@@ -19,8 +19,8 @@ Readme
 ***
 ---
 #### MobileProjectApplication.java
-===========================
-## /src/main/resources/
+---
+### /src/main/resources/
 ***
 ***
 ### i18
