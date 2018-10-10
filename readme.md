@@ -1,48 +1,48 @@
 <!-- Current directory: / Khinexin/Mobile_Sales_Project/ -->
 Readme
 ===========================
-# pom.xml
+#### pom.xml
 
 ***
 
-# /src/main/java/com/demo/mobileproject/
+## /src/main/java/com/demo/mobileproject/
 ***
-## config
+### config
 ***
 ## controller
 ***
-## domain
+### domain
 ***
-## repository
+### repository
 ***
-## service
+### service
 ***
 ---
-### MobileProjectApplication.java
+#### MobileProjectApplication.java
 ===========================
-# /src/main/resources/
+## /src/main/resources/
 ***
 ***
-## i18
+### i18
 ***
-### errormsg.properties
+#### errormsg.properties
 ***
-### users.properties
+#### users.properties
 ***
-## static
+### static
 ***
-## css
+### css
 ***
-## image
+### image
 ***
 ## js
 ***
-## templates
+### templates
 ***
-## admin
+### admin
 ***
-### application.properties
+#### application.properties
 ***
-### data.sql
+#### data.sql
 ***
-***
+---
