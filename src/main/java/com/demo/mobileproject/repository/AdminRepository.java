@@ -1,7 +1,6 @@
 package com.demo.mobileproject.repository;
 
-
-import com.demo.demostudentmanagement.domain.Level;
+import com.demo.mobileproject.domain.Admin;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
