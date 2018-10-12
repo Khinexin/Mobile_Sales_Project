@@ -1,10 +1,9 @@
 package com.demo.mobileproject.repository;
 
-import com.demo.mobileproject.domain.Admin;
+import com.demo.mobileproject.domain.Mobile_tbl;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AdminRepository extends JpaRepository<Admin, Integer> {
-
+public interface Mobile_tbl_Repository extends JpaRepository<Mobile_tbl,Integer> {
 }
