@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" th:action="@{mobile}" th:object="${mobile_tbl}" method="post">
+
+    <div class="form-group">
+        <label for="mobile">Mobile OS</label>
+        <input type="text" th:field="*{mobile_OS}"
+               class="form-control" name="" id="mobile" aria-describedby="helpId" placeholder="">
+    </div>
+    <div class="form-group">
+        <label for="dimension">Dimension</label>
+        <input type="text" th:field="*{dimension}"
+               class="form-control" name="" id="dimension" aria-describedby="helpId" placeholder="">
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text" th:field="*{price}"
+               class="form-control" name="" id="price" aria-describedby="helpId" placeholder="">
+    </div>
+    <div class="form-group">
+        <label for="color">Color</label>
+        <input type="text" th:field="*{color}"
+               class="form-control" name="" id="color" aria-describedby="helpId" placeholder="">
+    </div>
+    <div class="form-group">
+        <label for="discription">Other Discription</label>
+        <input type="text" th:field="*{otherDescription}"
+               class="form-control" name="" id="discription" aria-describedby="helpId" placeholder="">
+    </div>
+    <div class="form-group">
+        <label for="status">Instock Status</label>
+        <input type="text" th:field="*{inStock_status}"
+               class="form-control" name="" id="status" aria-describedby="helpId" placeholder="">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>

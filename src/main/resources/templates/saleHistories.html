@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table" border="2">
+    <thead>
+    <tr>
+        <th>Payment Method</th>
+        <th>Item Name</th>
+        <th>Price Per Item</th>
+        <th>Quantity</th>
+        <th>Discount</th>
+        <th>Total Price</th>
+        <th>Bought Customer</th>
+        <th>Sold Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="sale : ${saleHistory}">
+        <td th:text="${sale.payment_method}"></td>
+        <td th:text="${sale.item_name}"></td>
+        <td th:text="${sale.price_per_item}"></td>
+        <td th:text="${sale.quantity}"></td>
+        <td th:text="${sale.discount}"></td>
+        <td th:text="${sale.total_price}"></td>
+        <td th:text="${sale.bought_customer}"></td>
+        <td th:text="${sale.sold_date}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

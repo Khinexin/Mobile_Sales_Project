@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table" border="2">
+    <thead>
+    <tr>
+        <th>Expended Date</th>
+        <th>Authorized Person Name</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Remark</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="exp : ${expends}">
+        <td th:text="${exp.expended_date}"></td>
+        <td th:text="${exp.authorized_person_name}"></td>
+        <td th:text="${exp.description}"></td>
+        <td th:text="${exp.amount}"></td>
+        <td th:text="${exp.remark}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

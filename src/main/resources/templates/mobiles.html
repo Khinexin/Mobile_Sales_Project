@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table" border="2">
+    <thead>
+    <tr>
+        <th>Mobile OS</th>
+        <th>Dimension</th>
+        <th>Price</th>
+        <th>Color</th>
+        <th>Other Description</th>
+        <th>Instock Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="mob : ${mobile}">
+        <td th:text="${mob.mobile_OS}"></td>
+        <td th:text="${mob.dimension}"></td>
+        <td th:text="${mob.price}"></td>
+        <td th:text="${mob.color}"></td>
+        <td th:text="${mob.otherDescription}"></td>
+        <td th:text="${mob.inStock_status}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

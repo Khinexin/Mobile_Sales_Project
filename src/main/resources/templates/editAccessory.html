@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" th:object="${editAccessory}" th:action="@{/update}" method="post">
+
+    <input type="hidden" th:field="*{id}"/>
+
+    <div class="form-group">
+        <label for="bname">Brand Name</label>
+        <select type="text" th:field="*{brand_name}"
+                class="form-control" name="" id="bname" aria-describedby="helpId" placeholder="">
+            <option value="Iphone">Iphone</option>
+            <option value="Samsung">Samsung</option>
+            <option value="Huawei">Huawei</option>
+            <option value="Mi">Mi</option>
+            <option value="Oppo">Oppo</option>
+            <option value="Vivo">Vivo</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="mtype">Mobile Type</label>
+        <input type="text" th:field="*{mobile_type}"
+               class="form-control" name="" id="mtype" aria-describedby="helpId" placeholder="">
+    </div>
+    <div class="form-group">
+        <label for="ppitem">Price Per Item </label>
+        <input type="number" th:field="*{price_per_item}"
+               class="form-control" name="" id="ppitem" aria-describedby="helpId" placeholder="">
+    </div>
+    <div class="form-group">
+        <label for="tiq">Total Instock Quantity</label>
+        <input type="number" th:field="*{total_instock_quantity}"
+               class="form-control" name="" id="tiq" aria-describedby="helpId" placeholder="">
+    </div>
+    <div class="form-group">
+        <label for="status">Instock Status</label>
+        <input type="text" th:field="*{inStock_Status}"
+               class="form-control" name="" id="status" aria-describedby="helpId" placeholder="">
+    </div>
+    <div class="form-group">
+        <label for="atype">Accessory Type</label>
+        <select type="text" th:field="*{accessory_type}"
+                class="form-control" name="" id="atype" aria-describedby="helpId" placeholder="">
+            <option th:each="acc:${accType}" th:value="${acc.id}" th:text="${acc.type_name}"></option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    <button><a class="btn btn-primary" th:href="@{/accessorys}">Cancel</a></button>
+
+
+
+</form>
+</body>
+</html>
