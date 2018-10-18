@@ -8,6 +8,6 @@ public interface Accessory_tbl_Service {
     Accessory_tbl createAccessoryTbl(Accessory_tbl accessory_tbl);
     List<Accessory_tbl> findAllAccessoryTbls();
     Accessory_tbl findByIdAccessoryTbl(int id);
-    void updateAccessoryTbl(int id);
+    Accessory_tbl updateAccessoryTbl(Accessory_tbl accessory_tbl);
     void deleteAccessoryTbl(int id);
 }

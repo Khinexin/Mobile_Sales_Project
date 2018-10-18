@@ -16,6 +16,14 @@ public class Accessory_tbl implements Serializable {
     @ManyToOne
     private Accessory_type accessory_type;
 
+    public Accessory_type getAccessory_type() {
+        return accessory_type;
+    }
+
+    public void setAccessory_type(Accessory_type accessory_type) {
+        this.accessory_type = accessory_type;
+    }
+
     public Integer getId() {
         return id;
     }

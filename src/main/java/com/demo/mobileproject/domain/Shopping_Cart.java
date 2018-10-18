@@ -1,5 +1,7 @@
 package com.demo.mobileproject.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -14,6 +16,7 @@ public class Shopping_Cart implements Serializable {
     private String name;
     private double price;
     private int quantity;
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
     private LocalDate confirm_purchase_date;
 
     @ManyToOne

@@ -1,5 +1,7 @@
 package com.demo.mobileproject.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +21,7 @@ public class SaleHistory implements Serializable {
     private double discount;
     private double total_price;
     private String bought_customer;
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
     private LocalDate sold_date;
 
     public Integer getId() {

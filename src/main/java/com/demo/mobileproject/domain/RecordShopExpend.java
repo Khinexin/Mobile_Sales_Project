@@ -1,5 +1,7 @@
 package com.demo.mobileproject.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +14,7 @@ public class RecordShopExpend implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
     private LocalDate expended_date;
     private String authorized_person_name;
     private String description;

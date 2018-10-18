@@ -26,8 +26,8 @@ public class Accessory_Tbl_ServiceImpl implements Accessory_tbl_Service {
     }
 
     @Override
-    public void updateAccessoryTbl(int id) {
-        accessory_tbl_repository.saveAndFlush(findByIdAccessoryTbl(id));
+    public Accessory_tbl updateAccessoryTbl(Accessory_tbl accessory_tbl) {
+        return accessory_tbl_repository.saveAndFlush(accessory_tbl);
     }
 
     @Override

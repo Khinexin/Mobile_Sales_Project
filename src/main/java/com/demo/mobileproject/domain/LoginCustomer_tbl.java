@@ -10,6 +10,7 @@ public class LoginCustomer_tbl implements Serializable {
     private String name;
     private String password;
     private String email;
+
     @ManyToOne
     private CustomerPaymentMethod customerPaymentMethod;
 
