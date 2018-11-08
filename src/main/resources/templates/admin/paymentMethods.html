@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/admin/layout/adminlayout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="context">
+    <table class="table customers">
+        <thead>
+        <tr>
+            <th>Payment Type</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pay : ${paymentMethod}">
+            <td th:text="${pay.payment_type}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

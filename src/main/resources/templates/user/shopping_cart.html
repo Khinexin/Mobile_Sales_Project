@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>ShoppingCart</title>
+    <!--<link rel="stylesheet" href="../../../static/css/qunit.css" th:href="@{/static/css/qunit.css}" type="text/css" media="screen">-->
+
+    <script src="http://swarm.simplecartjs.com/js/inject.js"></script>
+
+</head>
+<body>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-7">
+            <a href="#" class="btn btn-light" th:href="@{/}">Continue Shopping</a>
+            <a href="#" class="btn btn-light" th:href="@{/cart/removall}">Clear Card</a>
+            <a href="#" class="btn btn-light" th:href="@{/cart/logincustomer}">Login</a>
+            <a href="#" class="btn btn-light" th:href="@{/cart/checkout}">Check Out</a>
+        </div>
+    </div>
+</div>
+<br/>
+
+
+<table>
+    <tr th:each="c:${cartMobiles} ">
+        <td th:text="${c.mobile_OS}"></td>
+        <td th:text="${c.price}"></td>
+        <td><input type="number" th:text="${c.quantity}"/></td>
+    </tr>
+    <tr th:each="a:${cartAccessories}">
+        <td th:text="${a.mobile_type}"></td>
+        <td th:text="${a.price_per_item}"></td>
+        <td><input type="number" th:text="${a.total_instock_quantity}"/></td>
+    </tr>
+</table>
+
+<br/>
+Final Total: <span id="simpleCart_grandTotal" class="simpleCart_grandTotal" th:text="${total}"></span> <br/>
+
+<a href="#" class="btn btn-light" th:href="@{/cart/checkout}">checkout</a>
+
+</body>
+</html>

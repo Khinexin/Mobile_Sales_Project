@@ -4,14 +4,15 @@ import javax.persistence.*;
 import java.io.Serializable;
 @Entity
 public class Accessory_tbl implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String brand_name;
     private String mobile_type;
     private double price_per_item;
-    private String total_instock_quantity;
-    private String inStock_Status;
+    private int total_instock_quantity;
+    private boolean inStock_Status;
 
     @ManyToOne
     private Accessory_type accessory_type;
@@ -56,19 +57,19 @@ public class Accessory_tbl implements Serializable {
         this.price_per_item = price_per_item;
     }
 
-    public String getTotal_instock_quantity() {
+    public int getTotal_instock_quantity() {
         return total_instock_quantity;
     }
 
-    public void setTotal_instock_quantity(String total_instock_quantity) {
+    public void setTotal_instock_quantity(int total_instock_quantity) {
         this.total_instock_quantity = total_instock_quantity;
     }
 
-    public String getInStock_Status() {
+    public boolean isInStock_Status() {
         return inStock_Status;
     }
 
-    public void setInStock_Status(String inStock_Status) {
+    public void setInStock_Status(boolean inStock_Status) {
         this.inStock_Status = inStock_Status;
     }
 }

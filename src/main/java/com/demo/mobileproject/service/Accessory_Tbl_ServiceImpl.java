@@ -34,4 +34,9 @@ public class Accessory_Tbl_ServiceImpl implements Accessory_tbl_Service {
     public void deleteAccessoryTbl(int id) {
         accessory_tbl_repository.delete(findByIdAccessoryTbl(id));
     }
+
+    @Override
+    public List<Accessory_tbl> findAccessoryByInstockQuantity() {
+        return accessory_tbl_repository.findAccessory_tblByTotal_instock_quantity();
+    }
 }

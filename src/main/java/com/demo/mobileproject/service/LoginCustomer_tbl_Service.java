@@ -10,4 +10,6 @@ public interface LoginCustomer_tbl_Service {
     LoginCustomer_tbl findByIdLoginCustomerTbl(int id);
     void updateLoginCustomer_tbl(int  id);
     void deleteLoginCustomer_tbl(int id);
+
+    LoginCustomer_tbl loginByEmailAndPassword(String email, String password);
 }

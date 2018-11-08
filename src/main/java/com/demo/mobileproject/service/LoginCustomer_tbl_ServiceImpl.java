@@ -35,4 +35,9 @@ public class LoginCustomer_tbl_ServiceImpl implements LoginCustomer_tbl_Service 
     public void deleteLoginCustomer_tbl(int id) {
         loginCustomer_tbl_repository.delete(findByIdLoginCustomerTbl(id));
     }
+
+    @Override
+    public LoginCustomer_tbl loginByEmailAndPassword(String email, String password) {
+        return loginCustomer_tbl_repository.LoginCustomer_tblByEmailAAndPassword(email, password);
+    }
 }

@@ -10,4 +10,6 @@ public interface Accessory_tbl_Service {
     Accessory_tbl findByIdAccessoryTbl(int id);
     Accessory_tbl updateAccessoryTbl(Accessory_tbl accessory_tbl);
     void deleteAccessoryTbl(int id);
+
+    List<Accessory_tbl> findAccessoryByInstockQuantity();
 }

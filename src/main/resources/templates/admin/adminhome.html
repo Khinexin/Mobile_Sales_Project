@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/admin/layout/adminlayout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div layout:fragment="context">
+    <h6>Forms</h6>
+    <ul>
+        <li><a href="#" th:href="@{/admin/accessoryType}">AccessoryType Form</a></li>
+        <li><a href="#" th:href="@{/admin/accessory}">Accessory Form</a></li>
+        <li><a href="#" th:href="@{/admin/mobile}">Mobile Form</a></li>
+        <li><a href="#" th:href="@{/admin/authorize}">Authorize Form</a></li>
+        <!--<li><a href="#" th:href="@{/admin/paymentmethod}">PyamentMethod Form</a></li>-->
+        <!--<li><a href="#" th:href="@{/admin/paymentvisa}">Visa Form</a></li>-->
+        <li><a href="#" th:href="@{/admin/logincustomer}">Login Customers Form</a></li>
+        <li><a href="#" th:href="@{/admin/shopexpend}">Shop expense Form</a></li>
+        <li><a href="#" th:href="@{/admin/salehistory}">Sales History Form</a></li>
+        <!--<li><a href="#" th:href="@{/admin/shoppingcart}">Shopping Cart Form</a></li>-->
+    </ul>
+    <h6>Lists</h6>
+    <ul>
+        <li><a href="#" th:href="@{/admin/accessoryTypes}">AccessoryType List</a></li>
+        <li><a href="#" th:href="@{/admin/accessorys}">Accessory List</a></li>
+        <li><a href="#" th:href="@{/admin/mobiles}">Mobile List</a></li>
+        <li><a href="#" th:href="@{/admin/authorization}">Authorize List</a></li>
+        <!--<li><a href="#" th:href="@{/admin/paymentMethods}">PaymentMethod List</a></li>-->
+        <!--<li><a href="#" th:href="@{/admin/paymentvisas}">Visa List</a></li>-->
+        <li><a href="#" th:href="@{/admin/logincustomers}">Login Customer List</a></li>
+        <li><a href="#" th:href="@{/admin/expends}">Expense List</a></li>
+        <li><a href="#" th:href="@{/admin/saleHistories}">Sales History List</a></li>
+        <li><a href="#" th:href="@{/admin/carts}">Cart Check out List</a></li>
+    </ul>
+</div>
+</body>
+</html>

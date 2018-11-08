@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/admin/layout/adminlayout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div layout:fragment="context">
+
+    <form action="#" th:action="@{paymentvisa}" th:object="${customerPaymentVisa}" method="post">
+        <div class="tmInput">
+            <label for="cname">Card Number</label>
+            <input type="number" th:field="*{card_number}"
+                   class="form-control" name="" id="cname" aria-describedby="helpId" placeholder="">
+
+        </div>
+        <div class="tmInput">
+            <label for="month">Month</label>
+            <input type="number" th:field="*{month}"
+                   class="form-control" name="" id="month" aria-describedby="helpId" placeholder="">
+
+        </div>
+        <div class="tmInput">
+            <label for="year">Year</label>
+            <input type="number" th:field="*{year}"
+                   class="form-control" name="" id="year" aria-describedby="helpId" placeholder="">
+
+        </div>
+        <div class="tmInput">
+            <label for="scode">Security Code</label>
+            <input type="number" th:field="*{security_code}"
+                   class="form-control" name="" id="scode" aria-describedby="helpId" placeholder="">
+
+        </div>
+        <div class="tmInput">
+            <label for="cardName">Name On Card</label>
+            <input type="text" th:field="*{name_on_card}"
+                   class="form-control" name="" id="cardName" aria-describedby="helpId" placeholder="">
+
+        </div>
+        <div class="tmInput">
+            <label for="zcode">Zip Code or Postal Code</label>
+            <input type="number" th:field="*{zip_code_or_postal_code}"
+                   class="form-control" name="" id="zcode" aria-describedby="helpId" placeholder="">
+
+        </div>
+
+        <br/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+</body>
+</html>

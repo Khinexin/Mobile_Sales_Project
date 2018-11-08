@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/admin/layout/adminlayout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div layout:fragment="context">
+    <form action="#" th:action="@{mobile}" th:object="${mobile_tbl}" method="post">
+        <div class="tmInput">
+            <label for="mobile">Mobile OS</label>
+            <input type="text" th:field="*{mobile_OS}"
+                   class="form-control" name="" id="mobile" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="tmInput">
+            <label for="dimension">Dimension</label>
+            <input type="text" th:field="*{dimension}"
+                   class="form-control" name="" id="dimension" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="tmInput">
+            <label for="price">Price</label>
+            <input type="text" th:field="*{price}"
+                   class="form-control" name="" id="price" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="tmInput">
+            <label for="color">Color</label>
+            <input type="text" th:field="*{color}"
+                   class="form-control" name="" id="color" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="tmInput">
+            <label for="discription">Other Discription</label>
+            <input type="text" th:field="*{otherDescription}"
+                   class="form-control" name="" id="discription" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="tmInput">
+            <label for="status">Instock Status</label>
+            <input type="text" th:field="*{inStock_status}"
+                   class="form-control" name="" id="status" aria-describedby="helpId" placeholder="">
+        </div>
+        <br/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</body>
+</html>

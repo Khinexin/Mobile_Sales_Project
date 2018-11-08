@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"
+            th:src="@{https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js}"></script>
+</head>
+<body>
+
+
+<table>
+    <tr th:each="acc:${cartAccessory}">
+        <td th:text="${acc.brand_name}"></td>
+        <td th:text="${acc.price_per_item}"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Total:</td>
+        <td th:text="${total}"></td>
+    </tr>
+</table>
+
+<br/>
+<br/>
+<h3>Confirm this purchasing <a></a></h3>
+
+
+</body>
+</html>

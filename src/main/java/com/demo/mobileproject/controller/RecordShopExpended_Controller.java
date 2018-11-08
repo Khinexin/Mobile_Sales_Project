@@ -7,24 +7,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("admin")
 public class RecordShopExpended_Controller {
     @Autowired
     private RecordShopExpend_Service recordShopExpend_service;
     @GetMapping("/shopexpend")
     public String createRecordShopExpense(Model model){
         model.addAttribute("recordShopExpend",new RecordShopExpend());
-        return "expendForm";
+        return "admin/expendForm";
     }
     @PostMapping("/shopexpend")
     public String processRecordShopExpense(RecordShopExpend recordShopExpend){
      recordShopExpend_service.createRecordShopExpend(recordShopExpend);
-     return "redirect:/expends";
+        return "redirect:/admin/expends";
     }
     @GetMapping("/expends")
     public String showAllRecordShopExpense(Model model){
         model.addAttribute("expends",recordShopExpend_service.findAllRecordShopExpends());
-        return "expends";
+        return "admin/expends";
     }
 }

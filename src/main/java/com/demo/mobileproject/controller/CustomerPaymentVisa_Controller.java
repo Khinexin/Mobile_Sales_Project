@@ -7,24 +7,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("admin")
 public class CustomerPaymentVisa_Controller {
     @Autowired
     private CustomerPaymentVisa_Service customerPaymentVisa_service;
     @GetMapping("/paymentvisa")
     public String createCustomerPaymentVisa(Model model){
         model.addAttribute("customerPaymentVisa",new CustomerPaymentVisa());
-        return "paymentvisaForm";
+        return "admin/paymentvisaForm";
     }
     @PostMapping("/paymentvisa")
     public String processCustomerPaymentVisa(CustomerPaymentVisa customerPaymentVisa){
         customerPaymentVisa_service.createCustomerPaymentVisa(customerPaymentVisa);
-        return "redirect:/paymentvisas";
+        return "redirect:/admin/paymentvisas";
     }
     @GetMapping("/paymentvisas")
     public String showAllCustomerPaymentVisa(Model model){
         model.addAttribute("paymentvisa",customerPaymentVisa_service.findAllCustomerPaymentVisas());
-        return "paymentvisas";
+        return "admin/paymentvisas";
     }
 }

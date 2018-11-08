@@ -8,64 +8,134 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <meta name="description" content=""/>
         <meta name="author" content=""/>
-        <link rel="icon" href="favicon.ico"/>
-
+        <!--<link rel="icon" href="favicon.ico"/>-->
         <title>Admin Layout</title>
 
-        <!-- Bootstrap core CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-              integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-              crossorigin="anonymous"/>
-        <link rel="stylesheet" href="../../../static/css/bootstrap.min.css" th:href="@{/static/css/bootstrap.min.css}"/>
-        
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"-->
+        <!--integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"-->
+        <!--crossorigin="anonymous"/>-->
 
+        <link rel="stylesheet" href="../../../static/css/bootstrap.min.css" th:href="@{/static/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" href="../../../static/css/mystylecss.css" th:href="@{/static/css/mystylecss.css}">
+        <link rel="stylesheet" href="../../../static/booking/css/booking.css"
+              th:href="@{/static/booking/css/booking.css}">
 
     </head>
 
     <body>
-        <header class="popover-header">
-            <div class="row">
-                <h1>Welcome Admin</h1>
-            </div>
-        </header>
 
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div id="main">
+            <header class="popover-header">
+                <div class="row">
+                    <div class="col-md-8">
+                        Welcome Admin
+                        <span sec:authentication="name"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{/logout}" method="post"
+                              class="form-inline">
+                            <a href="javascript:{}"
+                               onclick="document.getElementById('frmlogout').submit(); return false;">Logout
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </header>
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;
+                <small>nav-bar</small>
+            </span>
+
+
+            <!--this is fixed side bar-->
+            <div id="mySidenav" class="sidenav">
+
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+                <button class="accordion">From</button>
+                <div class="panel">
             <ul>
-                <li class="list-inline-item">
-                    <a class="navbar-brand" href="#">Application</a>
+                <li>
+                    <a style="font-size: 16px" href="#" th:href="@{/admin/accessoryType}">AccessoryType Form</a>
                 </li>
-                <li class="list-inline-item">
-                    <a class="nav-link" href="#">Admin</a>
+                <li>
+                    <a style="font-size: 16px" href="#" th:href="@{/admin/accessory}">Accessory Form</a>
                 </li>
-                <li class="list-inline-item">
-                    <a class="nav-link" href="#">Abcd</a>
+                <li>
+                    <a style="font-size: 16px" href="#" th:href="@{/admin/mobile}">Mobile Form</a>
                 </li>
-                <li class="list-inline-item">
-                    <a class="nav-link" href="#">Efg</a>
+                <li>
+                    <a style="font-size: 16px" href="#" th:href="@{/admin/authorize}">Authorize Form</a>
                 </li>
+                <!--<li><a style="font-size: 16px" href="#" th:href="@{/admin/paymentmethod}">PyamentMethod Form</a></li>-->
+                <!--<li><a style="font-size: 16px" href="#" th:href="@{/admin/paymentvisa}">Visa Form</a></li>-->
+                <li>
+                    <a style="font-size: 16px" href="#" th:href="@{/admin/logincustomer}">Login Customers Form</a>
+                </li>
+                <li>
+                    <a style="font-size: 16px" href="#" th:href="@{/admin/shopexpend}">Shop expense Form</a>
+                </li>
+                <li>
+                    <a style="font-size: 16px" href="#" th:href="@{/admin/salehistory}">Sales History Form</a>
+                </li>
+                <!--<li><a style="font-size: 16px" href="#" th:href="@{/admin/shoppingcart}">Shopping Cart Form</a></li>-->
             </ul>
-            <div class="navbar-text navbar-right">
-                Welcome <span sec:authentication="name">Guest</span>
-                <form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{/logout}" method="post" class="form-inline">|
-                    <a href="javascript:{}" onclick="document.getElementById('frmlogout').submit(); return false;">Logout</a>
-                </form>
+                </div>
+                <button class="accordion">Lists</button>
+                <div class="panel ">
+                    <ul>
+                        <li>
+                            <a style="font-size: 16px" href="#" th:href="@{/admin/accessoryTypes}">AccessoryType List
+                            </a>
+                        </li>
+                        <li>
+                            <a style="font-size: 16px" href="#" th:href="@{/admin/accessorys}">Accessory List</a>
+                        </li>
+                        <li>
+                            <a style="font-size: 16px" href="#" th:href="@{/admin/mobiles}">Mobile List</a>
+                        </li>
+                        <li>
+                            <a style="font-size: 16px" href="#" th:href="@{/admin/authorization}">Authorize List</a>
+                        </li>
+                        <li>
+                            <a style="font-size: 16px" href="#" th:href="@{/admin/paymentMethods}">PaymentMethod List
+                            </a>
+                        </li>
+                        <li>
+                            <a style="font-size: 16px" href="#" th:href="@{/admin/paymentvisas}">Visa List</a>
+                        </li>
+                        <li>
+                            <a style="font-size: 16px" href="#" th:href="@{/admin/logincustomers}">Login Customers
+                                List
+                            </a>
+                        </li>
+                        <li>
+                            <a style="font-size: 16px" href="#" th:href="@{/admin/expends}">Expense List</a>
+                        </li>
+                        <li>
+                            <a style="font-size: 16px" href="#" th:href="@{/admin/saleHistories}">Sales History List</a>
+                        </li>
+                        <li>
+                            <a style="font-size: 16px" href="#" th:href="@{/admin/carts}">Shopping Cart List</a>
+                        </li>
+
+                    </ul>
+                </div>
             </div>
-        </nav>
 
-        <div class="container">
-            
-            <div layout:fragment="context">
+            <br/>
+            <div class="main">
+                <div class="container">
+                    <div layout:fragment="context"></div>
+                </div>
 
+                <br/>
+                <br/>
+
+                <footer data-role="footer">
+                    <small>copyright &copy; by jdc students</small>
+                </footer>
             </div>
-
         </div>
-
-        <footer class="bg-grey blockquote-footer">
-
-            <small>copyright &copy; by jdc students</small>
-
-        </footer>
-
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
@@ -83,5 +153,36 @@
         <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
         <!-- Holder.js for placeholder images -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
+
+        <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
+                });
+            }
+        </script>
+
+        <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+                document.getElementById("main").style.marginLeft = "0";
+            }
+        </script>
+
+
     </body>
 </html>

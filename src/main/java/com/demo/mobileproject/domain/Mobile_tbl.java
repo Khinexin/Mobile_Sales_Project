@@ -14,7 +14,8 @@ public class Mobile_tbl implements Serializable {
     private double price;
     private String color;
     private String otherDescription;
-    private String inStock_status;
+    private int quantity;
+    private boolean inStock_status;
 
     public Integer getId() {
         return id;
@@ -64,11 +65,19 @@ public class Mobile_tbl implements Serializable {
         this.otherDescription = otherDescription;
     }
 
-    public String getInStock_status() {
+    public boolean isInStock_status() {
         return inStock_status;
     }
 
-    public void setInStock_status(String inStock_status) {
+    public void setInStock_status(boolean inStock_status) {
         this.inStock_status = inStock_status;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

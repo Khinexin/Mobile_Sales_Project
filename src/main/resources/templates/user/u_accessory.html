@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../static/css/mystylecss.css" th:href="@{/static/css/mystylecss.css}">
+
+</head>
+<body>
+
+<p>
+    <span th:text="${'Card:'}"></span>
+    <a th:href="@{/cart/}">View Cart</a>
+</p>
+
+<table class="table customers" border="2">
+    <thead>
+    <tr>
+
+        <th>Brand Name</th>
+        <th>Mobile Type</th>
+        <th>Price per item</th>
+
+        <th>Add to cart</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="acce :${accessories}">
+
+        <td th:text="${acce.brand_name}"></td>
+        <td th:text="${acce.mobile_type}"></td>
+        <td th:text="${acce.price_per_item}"></td>
+
+        <td>
+            <a th:href="@{'cart/accessory/'+${acce.id}}" type="button">Add</a>
+        </td>
+
+    </tr>
+    </tbody>
+
+</table>
+</body>
+</html>

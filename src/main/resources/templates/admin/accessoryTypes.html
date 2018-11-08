@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/admin/layout/adminlayout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="context">
+    <table class="table customers" border="2">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Type Name</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="acc : ${accessoryType}">
+            <td th:text="${acc.id}"></td>
+            <td th:text="${acc.type_name}"></td>
+            <td><a class="btn btn-primary" onclick="return confirm('Are you sure to delete this item')"
+                   th:href="@{/admin/accessoryTypes/delete/}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/admin/layout/adminlayout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div layout:fragment="context">
+
+    <form action="#" th:action="@{/cart/signin_customer}" th:object="${customer_login}" method="post">
+
+        <div class="tmInput">
+            <label for="email">Email</label>
+            <input type="text" th:field="*{email}"
+                   class="form-control" name="name" id="email" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="tmInput">
+            <label for="password">Password</label>
+            <input type="text" th:field="*{password}"
+                   class="form-control" name="name" id="password" aria-describedby="helpId" placeholder="">
+        </div>
+
+        <br/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

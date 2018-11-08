@@ -7,24 +7,38 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class LoginCustomer_Controller {
     @Autowired
     private LoginCustomer_tbl_Service loginCustomer_tbl_service;
-    @GetMapping("/logincustomer")
+
+    @GetMapping("/cart/signin_customer")
+    public String loginCustomer(Model model, String email, String password) {
+        LoginCustomer_tbl loginCustomer_tbl = loginCustomer_tbl_service.loginByEmailAndPassword(email, password);
+        model.addAttribute("customer_login", loginCustomer_tbl);
+        if (loginCustomer_tbl.getEmail() != email && loginCustomer_tbl.getPassword() != password) {
+            return "";
+        }
+        return "user/loginCustomerForm";
+    }
+
+    @GetMapping("/cart/signupcustomer")
     public String createLoginCustomer(Model model){
         model.addAttribute("loginCustomer_tbl",new LoginCustomer_tbl());
-        return "loginCustomerForm";
+        return "user/signupCustomerForm";
     }
-    @PostMapping("/logincustomer")
+
+    @PostMapping("/signupcustomer")
     public String processLoginCustomer(LoginCustomer_tbl loginCustomer_tbl){
         loginCustomer_tbl_service.createLoginCustomerTbl(loginCustomer_tbl);
-        return "redirect:/logincustomers";
+        return "redirect:/user/shopping_cart";
     }
-    @GetMapping("/logincustomers")
+
+    @GetMapping("/admin/customers")
     public String showAllLoginCustomer(Model model){
         model.addAttribute("logincustomer",loginCustomer_tbl_service.findAllLoginCustomerTbls());
-        return "logincustomers";
+        return "admin/customers";
     }
 }

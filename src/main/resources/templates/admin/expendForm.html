@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/admin/layout/adminlayout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div layout:fragment="context">
+
+    <form action="#" th:action="@{shopexpend}" th:object="${recordShopExpend}" method="post">
+        <div class="tmInput">
+            <label for="date">Expended Date</label>
+            <input type="date" th:field="*{expended_date}"
+                   class="form-control" name="" id="date" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="tmInput">
+            <label for="sname">Authorized Person Name</label>
+            <input type="text" th:field="*{authorized_person_name}"
+                   class="form-control" name="" id="sname" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="tmInput">
+            <label for="desc">Description</label>
+            <input type="text" th:field="*{description}"
+                   class="form-control" name="" id="desc" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="tmInput">
+            <label for="amount">Amount</label>
+            <input type="number" th:field="*{amount}"
+                   class="form-control" name="" id="amount" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="tmInput">
+            <label for="remark">Remark</label>
+            <input type="text" th:field="*{remark}"
+                   class="form-control" name="" id="remark" aria-describedby="helpId" placeholder="">
+        </div>
+
+        <br/>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+
+</body>
+</html>

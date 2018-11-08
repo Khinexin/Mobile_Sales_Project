@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/admin/layout/adminlayout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div layout:fragment="context">
+
+    <form action="#" th:action="@{accessoryType}" th:object="${accessory_type}" method="post">
+        <div class="tmInput">
+            <label for="tname">Type Name</label>
+            <input type="text" th:field="*{type_name}"
+                   class="form-control" name="tname" id="tname" aria-describedby="helpId" placeholder="">
+            <small id="helpId" class="form-text text-muted">Help text</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+
+</body>
+</html>

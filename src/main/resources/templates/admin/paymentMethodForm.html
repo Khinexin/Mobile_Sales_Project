@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/admin/layout/adminlayout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="context">
+
+    <form action="#" th:action="@{paymentmethod}" th:object="${customerPaymentMethod}" method="post">
+        <div class="tmInput">
+            <label for="ptype">Payment Type</label>
+            <input type="text" th:field="*{payment_type}"
+                   class="form-control" name="" id="ptype" aria-describedby="helpId" placeholder="">
+        </div>
+        <br/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+
+</body>
+</html>

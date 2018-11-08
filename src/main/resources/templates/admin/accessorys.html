@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/admin/layout/adminlayout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="context">
+    <table class="table customers" border="2">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Brand Name</th>
+            <th>Mobile Type</th>
+            <th>Price per item</th>
+            <th>Total instock quantity</th>
+            <th>Instock status</th>
+            <th>Type</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="acce :${accessory}">
+            <td th:text="${acce.id}"></td>
+            <td th:text="${acce.brand_name}"></td>
+            <td th:text="${acce.mobile_type}"></td>
+            <td th:text="${acce.price_per_item}"></td>
+            <td th:text="${acce.total_instock_quantity}"></td>
+            <td th:text="${acce.inStock_Status}"></td>
+            <td th:text="${acce.accessory_type.type_name}"></td>
+
+            <td><a onclick="return confirm('Are you sure to delete this item')"
+                   th:href="@{'/admin/accessory/delete/'+${acce.id}}" type="button">Delete</a></td>
+            <td><a th:href="@{'/admin/accessory/update/'+${acce.id}}" type="button">Update</a></td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/admin/layout/adminlayout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div layout:fragment="context">
+
+    <form action="#" th:object="${accessory_tbl}" th:action="@{/admin/accessory}" method="post">
+        <div class="tmInput">
+            <label for="bname">Brand Name</label>
+            <select class="tmSelect" type="text" th:field="*{brand_name}"
+                    name="" id="bname" aria-describedby="helpId">
+
+                <option value="Iphone">Iphone</option>
+                <option value="Samsung">Samsung</option>
+                <option value="Huawei">Huawei</option>
+                <option value="Mi">Mi</option>
+                <option value="Oppo">Oppo</option>
+                <option value="Vivo">Vivo</option>
+
+            </select>
+        </div>
+        <div class="tmInput">
+            <label for="mtype">Mobile Type</label>
+            <input type="text" th:field="*{mobile_type}"
+                   class="form-control" name="" id="mtype" aria-describedby="helpId" placeholder="mobile type">
+            <!---- this is for error message ---->
+            <!--<span th:class="error-message"></span>-->
+        </div>
+        <div class="tmInput">
+            <label for="ppitem">Price Per Item </label>
+            <input type="number" th:field="*{price_per_item}"
+                   class="form-control" name="" id="ppitem" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="tmInput">
+            <label for="tiq">Total Instock Quantity</label>
+            <input type="number" th:field="*{total_instock_quantity}"
+                   class="form-control" name="" id="tiq" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="tmInput">
+            <label for="instockstatus">Instock Status</label>
+            <select type="text" th:field="*{inStock_Status}"
+                    class="form-control" name="" id="instockstatus" aria-describedby="helpId">
+                <option value="true">yes</option>
+                <option value="false">no</option>
+            </select>
+        </div>
+
+        <div class="tmInput">
+            <label for="atype">Accessory Type</label>
+            <select type="text" th:field="*{accessory_type}"
+                    class="form-control" name="" id="atype" aria-describedby="helpId">
+                <option th:each="acc:${accessory_types}" th:value="${acc.id}" th:text="${acc.type_name}"></option>
+            </select>
+        </div>
+
+        <br/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/admin/layout/adminlayout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div layout:fragment="context">
+    <form action="#" th:action="@{salehistory}" th:object="${saleHistory}" method="post">
+        <div class="tmInput">
+            <label for="pmethod">Payment Method</label>
+            <input type="text" th:field="*{payment_method}"
+                   class="form-control" name="" id="pmethod" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="tmInput">
+            <label for="iname">Item Name</label>
+            <input type="text" th:field="*{item_name}"
+                   class="form-control" name="" id="iname" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="tmInput">
+            <label for="ppitem">Price Per Item</label>
+            <input type="number" th:field="*{price_per_item}"
+                   class="form-control" name="" id="ppitem" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="tmInput">
+            <label for="quantity">Quantity</label>
+            <input type="number" th:field="*{quantity}"
+                   class="form-control" name="" id="quantity" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="tmInput">
+            <label for="discount">Discount</label>
+            <input type="number" th:field="*{discount}"
+                   class="form-control" name="" id="discount" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="tmInput">
+            <label for="tprice">Total Price</label>
+            <input type="number" th:field="*{total_price}"
+                   class="form-control" name="" id="tprice" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="tmInput">
+            <label for="bcustomer">Bought Customer</label>
+            <input type="text" th:field="*{bought_customer}"
+                   class="form-control" name="" id="bcustomer" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="tmInput">
+            <label for="sdate">Sold Date</label>
+            <input type="date" th:field="*{sold_date}"
+                   class="form-control" name="" id="sdate" aria-describedby="helpId" placeholder="">
+        </div>
+        <br/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+</div>
+</body>
+</html>

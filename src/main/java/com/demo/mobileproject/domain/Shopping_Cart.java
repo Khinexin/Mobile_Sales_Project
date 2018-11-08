@@ -1,78 +1,102 @@
 package com.demo.mobileproject.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
-public class Shopping_Cart implements Serializable {
+//@Entity
+@Component
+public class Shopping_Cart {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private int customer_id;
-    private String name;
-    private double price;
-    private int quantity;
-    @DateTimeFormat(pattern ="yyyy-MM-dd")
-    private LocalDate confirm_purchase_date;
+    //customer // address// payment // getter //setter
 
-    @ManyToOne
-    private Accessory_tbl accessory_tbl;
+    private Integer cartId;
 
-    @ManyToOne
-    private Mobile_tbl mobile_tbl;
+    private List<Accessory_tbl> accessory_tblList = new ArrayList<>();
+    private List<Mobile_tbl> mobile_tblList = new ArrayList<>();
 
-    @ManyToOne
-    private LoginCustomer_tbl loginCustomer_tbl;
+    private int accessoryquantity;
+    private int mobilequantity;
 
-    public Integer getId() {
-        return id;
+    //add accessory to cart
+    public boolean addAccessoryToCart(Accessory_tbl accessory_tbl) {
+        return accessory_tblList.add(accessory_tbl);
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public boolean addMobileToCart(Mobile_tbl mobileTbl) {
+        return mobile_tblList.add(mobileTbl);
     }
 
-    public int getCustomer_id() {
-        return customer_id;
+
+    public void removeAll() {
+        accessory_tblList.clear();
+        mobile_tblList.clear();
     }
 
-    public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
+    //remove item Accessory
+    public boolean removeAccessoryItem(Accessory_tbl accessory_tbl) {
+        return accessory_tblList.remove(accessory_tbl);
     }
 
-    public String getName() {
-        return name;
+    public boolean removeMobileItem(Mobile_tbl mobileTbl) {
+        return mobile_tblList.remove(mobileTbl);
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void updateAccessoryItemQuantity(int quantity, Accessory_tbl accessoryTbl) {
+        accessoryTbl.setTotal_instock_quantity(quantity);
     }
 
-    public double getPrice() {
-        return price;
+    public void updateMobileItemQuantity(Mobile_tbl mobileTbl, int quantity) {
+        mobileTbl.setQuantity(quantity);
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public List<Accessory_tbl> getAccessory_tblList() {
+        return accessory_tblList;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public void setAccessory_tblList(List<Accessory_tbl> accessory_tblList) {
+        this.accessory_tblList = accessory_tblList;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public List<Mobile_tbl> getMobile_tblList() {
+        return mobile_tblList;
     }
 
-    public LocalDate getConfirm_purchase_date() {
-        return confirm_purchase_date;
+    public void setMobile_tblList(List<Mobile_tbl> mobile_tblList) {
+        this.mobile_tblList = mobile_tblList;
     }
 
-    public void setConfirm_purchase_date(LocalDate confirm_purchase_date) {
-        this.confirm_purchase_date = confirm_purchase_date;
+    public int getAccessoryquantity() {
+        return accessoryquantity;
     }
+
+    public void setAccessoryquantity(int accessoryquantity) {
+        this.accessoryquantity = accessoryquantity;
+    }
+
+    public int getMobilequantity() {
+        return mobilequantity;
+    }
+
+    public void setMobilequantity(int mobilequantity) {
+        this.mobilequantity = mobilequantity;
+    }
+
+    public Integer getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(Integer cartId) {
+        this.cartId = cartId;
+    }
+
+    //    public double getSubtotal() {
+//        return (mobile_tblList..getPrice() * mobilequantity) * (accessory_tbl.getPrice_per_item() * accessoryquantity);
+//    }
+
 }
