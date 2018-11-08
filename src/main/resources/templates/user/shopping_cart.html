@@ -24,19 +24,30 @@
 </div>
 <br/>
 
+<form method="post" action="@{/cart/update">
 
-<table>
-    <tr th:each="c:${cartMobiles} ">
-        <td th:text="${c.mobile_OS}"></td>
-        <td th:text="${c.price}"></td>
-        <td><input type="number" th:text="${c.quantity}"/></td>
-    </tr>
-    <tr th:each="a:${cartAccessories}">
-        <td th:text="${a.mobile_type}"></td>
-        <td th:text="${a.price_per_item}"></td>
-        <td><input type="number" th:text="${a.total_instock_quantity}"/></td>
-    </tr>
-</table>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity<input type="submit" value="update"/></th>
+        </tr>
+        <tr th:each="c:${cartMobiles} ">
+            <td th:text="${c.mobile_OS}"></td>
+            <td th:text="${c.price}"></td>
+            <td><input type="number" name="quantity" value="${c.quantity}" th:href="@{'/cart/update/'+${c.id}}"/></td>
+        </tr>
+        <tr th:each="a:${cartAccessories}">
+            <td th:text="${a.mobile_type}"></td>
+            <td th:text="${a.price_per_item}"></td>
+            <td><input type="number" name="quantity" value="${a.total_instock_quantity}"
+                       th:href="@{'/cart/update/'+${a.id}}"/></td>
+        </tr>
+    </table>
+
+
+</form>
 
 <br/>
 Final Total: <span id="simpleCart_grandTotal" class="simpleCart_grandTotal" th:text="${total}"></span> <br/>

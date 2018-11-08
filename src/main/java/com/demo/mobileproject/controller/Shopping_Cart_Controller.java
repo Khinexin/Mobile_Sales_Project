@@ -84,6 +84,11 @@ public class Shopping_Cart_Controller {
         return "user/checkouts";
     }
 
+    @GetMapping("/cart/update/{id}")
+    public String updateShoppingCartQuantity(@PathVariable("id") int id) {
+
+        return "";
+    }
 
     ///////////////////  buttons  ///////////////////
 
