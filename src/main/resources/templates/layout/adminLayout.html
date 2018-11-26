@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <!--<link rel="icon" href="favicon.ico"/>-->
+        <title>Admin Layout</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+              integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+              crossorigin="anonymous"/>
+
+        <link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" href="css/mystylecss.css" th:href="@{/css/mystylecss.css}">
+        <link rel="stylesheet" href="booking/css/booking.css"
+              th:href="@{/static/booking/css/booking.css}">
+
+    </head>
+
+    <body>
+
+        <div userId="main">
+            <header class="popover-header">
+                <div class="row">
+                    <div class="col-md-8">
+                        Welcome Admin
+                        <span sec:authentication="name"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <form sec:authorize="isAuthenticated()" userId="frmlogout" th:action="@{/logout}" method="post"
+                              class="form-inline">
+                            <a href="javascript:{}"
+                               onclick="document.getElementById('frmlogout').submit(); return false;">Logout
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </header>
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;
+                <small>nav-bar</small>
+            </span>
+
+
+            <!--this is fixed side bar-->
+            <div userId="mySidenav" class="sidenav">
+
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+                <button class="accordion">From</button>
+                <div class="panel">
+                    <ul>
+                        <li>
+                            <a style="font-size: 16px" href="#" th:href="@{/admin/create/product}">Create Product</a>
+                        </li>
+                        <li>
+                            <a style="font-size: 16px" href="#">Create User</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <button class="accordion">Lists</button>
+                <div class="panel ">
+                    <ul>
+                        <li>
+                            <a style="font-size: 16px" href="#" th:href="@{/admin/products}">Produce List</a>
+                        </li>
+                        <li>
+                            <a style="font-size: 16px" href="#">User List</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <br/>
+            <div class="main">
+                <div class="container">
+                    <div layout:fragment="context"></div>
+                </div>
+
+                <br/>
+                <br/>
+
+                <footer data-roleName="footer">
+                    <small>copyright &copy; by jdc students</small>
+                </footer>
+            </div>
+        </div>
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+                integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+                integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+                crossorigin="anonymous"></script>
+
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
+        <!-- Holder.js for placeholder images -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
+
+        <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
+                });
+            }
+        </script>
+
+        <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+                document.getElementById("main").style.marginLeft = "0";
+            }
+        </script>
+
+
+    </body>
+</html>
