@@ -1,96 +1,363 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <meta name="description" content=""/>
-        <meta name="author" content=""/>
-        <!--<link rel="icon" href="favicon.ico"/>-->
-        <title>Admin Layout</title>
 
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title></title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="../../static/vendor/bootstrap/css/bootstrap.min.css"
+              th:href="@{/static/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+        <!-- MetisMenu CSS -->
+        <link href="../../static/vendor/metisMenu/metisMenu.min.css"
+              th:href="@{/static/vendor/metisMenu/metisMenu.min.css}" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="../../static/dist/css/sb-admin-2.css" th:href="@{/static/dist/css/sb-admin-2.css}" rel="stylesheet">
+
+        <!-- Morris Charts CSS -->
+        <link href="../../static/vendor/morrisjs/morris.css" th:href="@{/static/vendor/morrisjs/morris.css}"
+              rel="stylesheet">
+
+        <!-- DataTables CSS -->
+        <link href="../../static/vendor/datatables-plugins/dataTables.bootstrap.css"
+              th:href="@{/static/vendor/datatables-plugins/dataTables.bootstrap.css}" rel="stylesheet">
+
+        <!-- DataTables Responsive CSS -->
+        <link href="../../static/vendor/datatables-responsive/dataTables.responsive.css"
+              th:href="@{/static/vendor/datatables-responsive/dataTables.responsive.css}" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="../../static/vendor/font-awesome/css/font-awesome.min.css"
+              th:href="@{/static/vendor/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!--bootstrap starter stylesheet-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
               integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-              crossorigin="anonymous"/>
+              crossorigin="anonymous">
 
-        <link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
-        <link rel="stylesheet" href="css/mystylecss.css" th:href="@{/css/mystylecss.css}">
-        <link rel="stylesheet" href="booking/css/booking.css"
-              th:href="@{/static/booking/css/booking.css}">
 
     </head>
 
     <body>
 
-        <div userId="main">
-            <header class="popover-header">
-                <div class="row">
-                    <div class="col-md-8">
-                        Welcome Admin
-                        <span sec:authentication="name"></span>
+
+        <div id="wrapper">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+                </div>
+                <!-- /.navbar-header -->
+
+                <ul class="nav navbar-top-links navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-messages">
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <strong>John Smith</strong>
+                                        <span class="pull-right text-muted">
+                                            <em>Yesterday</em>
+                                        </span>
+                                    </div>
+                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <strong>John Smith</strong>
+                                        <span class="pull-right text-muted">
+                                            <em>Yesterday</em>
+                                        </span>
+                                    </div>
+                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <strong>John Smith</strong>
+                                        <span class="pull-right text-muted">
+                                            <em>Yesterday</em>
+                                        </span>
+                                    </div>
+                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a class="text-center" href="#">
+                                    <strong>Read All Messages</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-messages -->
+                    </li>
+                    <!-- /.dropdown -->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-tasks">
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <p>
+                                            <strong>Task 1</strong>
+                                            <span class="pull-right text-muted">40% Complete</span>
+                                        </p>
+                                        <div class="progress progress-striped active">
+                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                                <span class="sr-only">40% Complete (success)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <p>
+                                            <strong>Task 2</strong>
+                                            <span class="pull-right text-muted">20% Complete</span>
+                                        </p>
+                                        <div class="progress progress-striped active">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                                <span class="sr-only">20% Complete</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <p>
+                                            <strong>Task 3</strong>
+                                            <span class="pull-right text-muted">60% Complete</span>
+                                        </p>
+                                        <div class="progress progress-striped active">
+                                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                                <span class="sr-only">60% Complete (warning)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <p>
+                                            <strong>Task 4</strong>
+                                            <span class="pull-right text-muted">80% Complete</span>
+                                        </p>
+                                        <div class="progress progress-striped active">
+                                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                                <span class="sr-only">80% Complete (danger)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a class="text-center" href="#">
+                                    <strong>See All Tasks</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-tasks -->
+                    </li>
+                    <!-- /.dropdown -->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-alerts">
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <i class="fa fa-comment fa-fw"></i> New Comment
+                                        <span class="pull-right text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                        <span class="pull-right text-muted small">12 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                        <span class="pull-right text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <i class="fa fa-tasks fa-fw"></i> New Task
+                                        <span class="pull-right text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                        <span class="pull-right text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a class="text-center" href="#">
+                                    <strong>See All Alerts</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-alerts -->
+                    </li>
+                    <!-- /.dropdown -->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-user -->
+                    </li>
+                    <!-- /.dropdown -->
+                </ul>
+                <!-- /.navbar-top-links -->
+
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+                            <li class="sidebar-search">
+                                <div class="input-group custom-search-form">
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                <!-- /input-group -->
+                            </li>
+                            <li>
+                                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i>Admin Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="morris.html">Morris.js Charts</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+                            <li>
+                                <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+                            </li>
+                            <li>
+                                <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="col-md-4">
-                        <form sec:authorize="isAuthenticated()" userId="frmlogout" th:action="@{/logout}" method="post"
-                              class="form-inline">
-                            <a href="javascript:{}"
-                               onclick="document.getElementById('frmlogout').submit(); return false;">Logout
-                            </a>
-                        </form>
-                    </div>
+                    <!-- /.sidebar-collapse -->
                 </div>
-            </header>
-            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;
-                <small>nav-bar</small>
-            </span>
+                <!-- /.navbar-static-side -->
+            </nav>
 
+            <div id="page-wrapper">
 
-            <!--this is fixed side bar-->
-            <div userId="mySidenav" class="sidenav">
+                <div layout:fragment="context"></div>
 
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
-                <button class="accordion">From</button>
-                <div class="panel">
-                    <ul>
-                        <li>
-                            <a style="font-size: 16px" href="#" th:href="@{/admin/create/product}">Create Product</a>
-                        </li>
-                        <li>
-                            <a style="font-size: 16px" href="#">Create User</a>
-                        </li>
-
-                    </ul>
-                </div>
-                <button class="accordion">Lists</button>
-                <div class="panel ">
-                    <ul>
-                        <li>
-                            <a style="font-size: 16px" href="#" th:href="@{/admin/products}">Produce List</a>
-                        </li>
-                        <li>
-                            <a style="font-size: 16px" href="#">User List</a>
-                        </li>
-
-                    </ul>
-                </div>
             </div>
+            <!-- /#page-wrapper -->
 
-            <br/>
-            <div class="main">
-                <div class="container">
-                    <div layout:fragment="context"></div>
-                </div>
-
-                <br/>
-                <br/>
-
-                <footer data-roleName="footer">
-                    <small>copyright &copy; by jdc students</small>
-                </footer>
-            </div>
         </div>
+        <!-- /#wrapper -->
+
+
+
+<!--scripts-->
+        <!-- jQuery -->
+        <script src="../../static/vendor/jquery/jquery.min.js" th:src="@{/static/vendor/jquery/jquery.min.js}"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../../static/vendor/bootstrap/js/bootstrap.min.js"
+                th:src="@{/static/vendor/bootstrap/js/bootstrap.min.js}"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="../../static/vendor/metisMenu/metisMenu.min.js"
+                th:src="@{/static/vendor/metisMenu/metisMenu.min.js}"></script>
+
+        <!-- Morris Charts JavaScript -->
+        <script src="../../static/vendor/raphael/raphael.min.js"
+                th:src="@{/static/vendor/raphael/raphael.min.js}"></script>
+        <script src="../../static/vendor/morrisjs/morris.min.js"
+                th:src="@{/static/vendor/morrisjs/morris.min.js}"></script>
+        <script src="../../static/data/morris-data.js" th:src="@{/static/data/morris-data.js}"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="../../static/dist/js/sb-admin-2.js" th:src="@{/static/dist/js/sb-admin-2.js}"></script>
+
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
@@ -104,40 +371,24 @@
                 integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
                 crossorigin="anonymous"></script>
 
+        <!-- DataTables JavaScript -->
+        <script src="../../static/vendor/datatables/js/jquery.dataTables.min.js" th:src="@{/static/vendor/datatables/js/jquery.dataTables.min.js}"></script>
+        <script src="../../static/vendor/datatables-plugins/dataTables.bootstrap.min.js" th:src="@{/static/vendor/datatables-plugins/dataTables.bootstrap.min.js}"></script>
+        <script src="../../static/vendor/datatables-responsive/dataTables.responsive.js" th:src="@{/static/vendor/datatables-responsive/dataTables.responsive.js}"></script>
+
+
+
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
         <!-- Holder.js for placeholder images -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
 
         <script>
-            var acc = document.getElementsByClassName("accordion");
-            var i;
-
-            for (i = 0; i < acc.length; i++) {
-                acc[i].addEventListener("click", function () {
-                    this.classList.toggle("active");
-                    var panel = this.nextElementSibling;
-                    if (panel.style.maxHeight) {
-                        panel.style.maxHeight = null;
-                    } else {
-                        panel.style.maxHeight = panel.scrollHeight + "px";
-                    }
+            $(document).ready(function() {
+                $('#dataTables-example').DataTable({
+                    responsive: true
                 });
-            }
+            });
         </script>
-
-        <script>
-            function openNav() {
-                document.getElementById("mySidenav").style.width = "250px";
-                document.getElementById("main").style.marginLeft = "250px";
-            }
-
-            function closeNav() {
-                document.getElementById("mySidenav").style.width = "0";
-                document.getElementById("main").style.marginLeft = "0";
-            }
-        </script>
-
-
     </body>
 </html>
