@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layout/adminLayout">
+<head>
+    <meta charset="UTF-8">
+    <title>Product list</title>
+</head>
+<body>
+<div layout:fragment="context">
+<br/>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Mobile & Accessory Form
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-10">
+
+                            <form action="#" th:object="${mobileAccessory}" th:action="@{/admin/create/product}" method="post">
+
+                                <input type="hidden" th:field="*{id}"/>
+
+                                <div class="form-group">
+                                    <label for="atype">Choose category</label>
+                                    <select type="text" th:field="*{category}"
+                                            class="form-control" name="" id="atype" aria-describedby="helpId">
+                                        <option th:each="c:${category}" th:value="${c.catId}" th:text="${c.catName}"></option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bname">Name</label>
+                                    <input class="form-control" type="text" th:field="*{itemName}"
+                                           name="" id="bname" aria-describedby="helpId"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mtype">Description</label>
+                                    <input type="text" th:field="*{itemDescription}"
+                                           class="form-control" name="" id="mtype" aria-describedby="helpId" placeholder="mobile type">
+                                </div>
+                                <div class="form-group">
+                                    <label for="ppitem">Manufacturer</label>
+                                    <input type="text" th:field="*{manufacturer}"
+                                           class="form-control" name="" id="ppitem" aria-describedby="helpId" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tiq">Quantity</label>
+                                    <input type="number" th:field="*{unitStock}"
+                                           class="form-control" name="" id="tiq" aria-describedby="helpId" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="price">Price</label>
+                                    <input type="text" th:field="*{price}"
+                                           class="form-control" name="" id="price" aria-describedby="helpId" placeholder="">
+                                </div>
+                                <br/>
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

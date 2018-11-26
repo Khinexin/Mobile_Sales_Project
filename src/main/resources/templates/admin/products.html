@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layout/adminLayout">
+<head>
+    <meta charset="UTF-8">
+    <title>Product list</title>
+</head>
+<body>
+<div layout:fragment="context">
+    <br/>
+
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Product Tables
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="table-responsive table-bordered">
+                        <table class="table table-hover table-striped ">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Item name</th>
+                                <th>Category Id</th>
+                                <th>Manufacturer</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Unit Stock</th>
+                                <th>-</th>
+                                <th>Delete</th>
+                                <th>Update</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="p :${productList}">
+                                <td th:text="${p.id}"></td>
+                                <td th:text="${p.itemName}"></td>
+                                <td th:text="${p.category.catName}"></td>
+                                <td th:text="${p.manufacturer}"></td>
+                                <td th:text="${p.itemDescription}"></td>
+                                <td th:text="${p.price}"></td>
+                                <td th:text="${p.unitStock}"></td>
+                                <td>-</td>
+                                <td><a th:href="@{'/admin/edit/product/'+${p.id}}" type="button" class="btn btn-primary">Edit</a></td>
+                                <td><a onclick="return confirm('Are you sure to delete this item')"
+                                       th:href="@{'/admin/delete/product/'+${p.id}}" type="button" class="btn btn-primary">Delete</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!-- /.table-responsive -->
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+                <div class="panel-footer">
+                    <a th:href="@{/admin/category/1/productList}">All Mobiles</a> |
+                    <a th:href="@{/admin/category/2/productList}">All Accessory</a> |
+                    <a th:href="@{/admin/category/3/productList}">All Tablets</a>
+                </div>
+                <!-- /.panel-footer -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Product list</title>
+</head>
+<body>
+    <br/>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Product
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img th:src="@{product.multipartFile}"/>
+                        </div>
+                        <div class="col-md-8">
+                            <ul>
+                                <li><p th:text="${product.itemName}"></p></li>
+                                <li><p th:text="${product.itemDescription}"></p></li>
+                                <li><p th:text="${product.manufacturer}"></p></li>
+                                <li><p th:text="${product.price}"></p></li>
+                                <li><a th:href="@{'/cart/add/'+${product.id}}" type="button" class="btn btn-default">Add To Cart</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+
+</body>
+</html>

@@ -38,4 +38,9 @@ public class MobileAccessoryServiceImpl implements MobileAccessoryService {
     public void deleteOneCMobileAccessory(int id) {
         mobileAccessoryRepository.deleteById(id);
     }
+
+    @Override
+    public List<MobileAccessory> findAllMobileAccessoryByCategoryId(int catId) {
+        return mobileAccessoryRepository.findAllMobileAccessoryByCategoryId(catId);
+    }
 }

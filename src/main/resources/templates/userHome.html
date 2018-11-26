@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Product list</title>
+</head>
+<body>
+    <br/>
+    <div class="row">
+        <div class="col-md-6"><a th:text="'Cart:'+${size}"></a> </div>
+        <div class="col-md-6"><a th:href="@{/cart}" type="button" class="btn btn-default">Check Cart</a></div>
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <h3>
+            <a th:href="@{/category/1/productList}">Mobiles</a> |
+            <a th:href="@{/category/2/productList}">Accessory</a> |
+            <a th:href="@{/category/3/productList}">Tablets</a>
+        </h3>
+    </div>
+    <!-- /.row -->
+</body>
+</html>

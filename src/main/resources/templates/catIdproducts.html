@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Product list</title>
+</head>
+<body>
+    <br/>
+    <div class="row">
+        <div class="col-md-6"><a th:text="'Cart:'+${size}"></a> </div>
+        <div class="col-md-6"><a th:href="@{/cart}" type="button" class="btn btn-default">Check Cart</a></div>
+    </div>
+    <br/>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Product Tables
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="table-responsive table-bordered">
+                        <table class="table table-hover table-striped ">
+                            <thead>
+                            <tr>
+                                <th>Item name</th>
+                                <th>Category Id</th>
+                                <th>Price</th>
+                                <th>See Details</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="p :${productsByCatId}">
+                                <td th:text="${p.itemName}"></td>
+                                <td th:text="${p.category.catName}"></td>
+                                <td th:text="${p.price}"></td>
+                                <td><a type="button" class="btn btn-primary" th:href="@{'/category/product/'+${p.id}}">See Details</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!-- /.table-responsive -->
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+
+</body>
+</html>
