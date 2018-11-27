@@ -2,7 +2,12 @@ package com.demo.mobileproject.domain.login;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Data
 @Entity
@@ -14,7 +19,7 @@ public class AppUser {
     @Id
     @GeneratedValue
     @Column(name = "User_Id", nullable = false)
-    private Long userId;
+    private Integer userId;
 
     @Column(name = "User_Name", length = 36, nullable = false)
     private String userName;

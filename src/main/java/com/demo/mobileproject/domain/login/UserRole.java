@@ -1,8 +1,18 @@
 package com.demo.mobileproject.domain.login;
 
+import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
+@Data
 @Entity
 @Table(name = "User_Role", //
         uniqueConstraints = { //
@@ -12,7 +22,7 @@ public class UserRole {
     @Id
     @GeneratedValue
     @Column(name = "Id", nullable = false)
-    private Long id;
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "User_Id", nullable = false)
@@ -23,5 +33,5 @@ public class UserRole {
     private AppRole appRole;
 
 
-}
 
+}

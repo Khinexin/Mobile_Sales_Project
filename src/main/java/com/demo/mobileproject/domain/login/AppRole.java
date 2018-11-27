@@ -2,7 +2,12 @@ package com.demo.mobileproject.domain.login;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Data
 @Entity
@@ -14,11 +19,10 @@ public class AppRole {
     @Id
     @GeneratedValue
     @Column(name = "Role_Id", nullable = false)
-    private Long roleId;
+    private Integer roleId;
 
     @Column(name = "Role_Name", length = 30, nullable = false)
     private String roleName;
-
 
 
 }
