@@ -6,6 +6,12 @@
     <title>Product list</title>
 </head>
 <body>
+
+<br/>
+    <h3><a th:href="@{/home}">Back to Home Page</a></h3>| &nbsp;
+    <a th:href="@{/userInfo}">My Info</a>| &nbsp;
+    <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a>
+
     <br/>
     <div class="row">
         <div class="col-md-6"><a th:text="'Cart:'+${size}"></a> </div>
