@@ -10,10 +10,12 @@ public class EncryptedPasswordUtils {
         return encoder.encode(password);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         String password = "12345";
         String encrytedPassword = encrytePassword(password);
         System.out.println("Encryted Password: " + encrytedPassword);
 
     }
+
+
 }
