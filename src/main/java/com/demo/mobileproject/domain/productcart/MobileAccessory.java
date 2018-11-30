@@ -1,11 +1,16 @@
 package com.demo.mobileproject.domain.productcart;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 
-@Data
+@Data @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class MobileAccessory  {
     @Id

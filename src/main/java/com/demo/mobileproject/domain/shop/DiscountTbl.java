@@ -1,6 +1,9 @@
 package com.demo.mobileproject.domain.shop;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +13,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-@Data
+@Data @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class DiscountTbl {
     @Id
