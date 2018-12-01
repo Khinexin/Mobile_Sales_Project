@@ -11,7 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class ShippingAddress {
+public class DeliveryAddress {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class ShippingAddress {
     private String zipcode;
     private String country;
 
-    @OneToOne(mappedBy = "shippingAddress")
-    private Customer customer;
+//    @OneToOne(mappedBy = "deliveryAddress")
+//    private Customer customer;
 
 }

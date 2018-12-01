@@ -1,9 +1,13 @@
-package com.demo.mobileproject.domain.login;
+package com.demo.mobileproject.service.Impl;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.demo.mobileproject.domain.login.AppRole;
+import com.demo.mobileproject.domain.login.AppUser;
+import com.demo.mobileproject.service.AppRoleService;
+import com.demo.mobileproject.service.AppUserService;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,20 +16,19 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private AppUserDAO appUserDAO;
+    private AppUserService appUserService;
 
     @Autowired
-    private AppRoleDAO appRoleDAO;
+    private AppRoleService appRoleService;
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        AppUser appUser = this.appUserDAO.findUserAccount(userName);
+        AppUser appUser = this.appUserService.findAppUserByName(userName);
 
         if (appUser == null) {
             System.out.println("User not found! " + userName);
@@ -35,8 +38,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         System.out.println("Found User: " + appUser);
 
         // [ROLE_USER, ROLE_ADMIN,..]
-        List<String> roleNames =  this.appRoleDAO.getRoleNames(appUser.getUserId());
-
+        List<String> roleNames =  this.appRoleService.findAppRoleNameByUserId(appUser.getUserId());
         List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
         if (roleNames != null) {
             for (String role : roleNames) {

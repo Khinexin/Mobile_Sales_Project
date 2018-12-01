@@ -25,7 +25,6 @@ import javax.persistence.UniqueConstraint;
 public class UserRole {
 
     @Id
-    @GeneratedValue
     @Column(name = "Id", nullable = false)
     private Integer id;
 

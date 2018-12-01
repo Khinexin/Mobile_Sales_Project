@@ -23,8 +23,8 @@ public class BIllingAddress {
     private String zipcode;
     private String country;
 
-    @OneToOne(mappedBy = "bIllingAddress")
-    private Customer customer;
+//    @OneToOne(mappedBy = "bIllingAddress")
+//    private Customer customer;
 
 
 }

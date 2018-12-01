@@ -1,20 +1,26 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layout/adminLayout">
 <head>
-
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
 
-<h2>Admin Page</h2>
-<h3>Welcome :
-    <span th:utext="${#request.userPrincipal.name}"></span>
-</h3>
-<b>This is protected page!</b>
+<div layout:fragment="context">
 
-<br/><br/>
+    <h2>Admin Page</h2>
+    <h3>Welcome :
+        <span th:utext="${#request.userPrincipal.name}"></span>
+    </h3>
+    <b>This is protected page!</b>
 
-<div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+    <br/><br/>
 
+    <div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+
+</div>
 </body>
 
 </html>

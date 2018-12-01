@@ -21,7 +21,7 @@ public class CustomerOrder {
     @OneToOne
     private Customer customer;
     @OneToOne
-    private ShippingAddress shippingAddress;
+    private DeliveryAddress deliveryAddress;
     @OneToOne
     private BIllingAddress bIllingAddress;
 

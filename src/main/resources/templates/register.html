@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register page</title>
+</head>
+<body>
+
+<form th:action="@{/register}" th:object="${customer}" method="post">
+
+    <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" th:field="*{firstName}"
+               class="form-control" name="firstname" id="fname" aria-describedby="helpId" placeholder="Enter your first name">
+    </div>
+
+    <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" th:field="*{lastName}"
+               class="form-control" name="lastname" id="lname" aria-describedby="helpId" placeholder="Enter your last name">
+    </div>
+
+    <div class="form-group">
+        <label for="mobile">Phone no:</label>
+        <input type="text" th:field="*{customerPhone}"
+               class="form-control" name=phone"" id="mobile" aria-describedby="helpId" placeholder="Enter your phone number">
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email: </label>
+        <input type="text" th:field="*{emailAddress}"
+               class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="Enter your email address">
+    </div>
+
+    <br/>
+
+    <button type="submit" class="btn btn-default" th:href="@{/register/nextUser}">Next</button>
+
+</form>
+
+</body>
+</html>

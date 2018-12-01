@@ -1,8 +1,9 @@
-package com.demo.mobileproject.domain.login;
+package com.demo.mobileproject.repository;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import com.demo.mobileproject.domain.login.AppRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -33,5 +34,5 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface AppRoleDAO extends JpaRepository<AppRole, Integer> {
     @Query("SELECT ur.appRole.roleName FROM UserRole ur WHERE ur.appUser.userId = :userId ")
-    List<String> getRoleNames(@Param("userId") Integer userId);
+    List<String> getRoleNamesByUserId(@Param("userId") Integer userId);
 }

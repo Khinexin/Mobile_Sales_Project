@@ -22,7 +22,6 @@ import javax.persistence.UniqueConstraint;
 public class AppUser {
 
     @Id
-    @GeneratedValue
     @Column(name = "User_Id", nullable = false)
     private Integer userId;
 

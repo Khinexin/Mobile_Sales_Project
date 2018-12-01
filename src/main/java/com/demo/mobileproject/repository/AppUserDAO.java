@@ -1,8 +1,9 @@
-package com.demo.mobileproject.domain.login;
+package com.demo.mobileproject.repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
+import com.demo.mobileproject.domain.login.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.JpaRepository;

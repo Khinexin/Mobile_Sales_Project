@@ -21,8 +21,9 @@ public class ShoppingCart {
 
     private double price;
 
-    @OneToOne
-    private Customer customer;
+//    @OneToOne
+//    private Customer customer;
+
     @OneToMany(mappedBy = "shoppingCart")
     private List<CartItems> cartItems;
 
