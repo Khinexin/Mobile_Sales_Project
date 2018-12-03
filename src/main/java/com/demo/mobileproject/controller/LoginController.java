@@ -7,7 +7,7 @@ import com.demo.mobileproject.domain.login.WebUtils;
 import com.demo.mobileproject.service.AppRoleService;
 import com.demo.mobileproject.service.AppUserService;
 import com.demo.mobileproject.service.CustomerService;
-import com.demo.mobileproject.service.UserRoleService;
+import com.demo.mobileproject.service.CustomUserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -30,7 +30,7 @@ public class LoginController {
     @Autowired private CustomerService customerService;
     @Autowired private AppUserService appUserService;
     @Autowired private AppRoleService appRoleService;
-    @Autowired private UserRoleService userRoleService;
+    @Autowired private CustomUserRoleService customUserRoleService;
     @Autowired private BCryptPasswordEncoder passwordEncoder;
 
     private int customerIdForNext;
@@ -130,7 +130,7 @@ public class LoginController {
         customer.setAppUser(appUserService.createAppUser(appUser));
 
         // this is for user   role
-        userRoleService.addNewUserAndRole(
+        customUserRoleService.addNewUserAndRole(
                 UserRole.builder()
                         .id(appUser.getUserId())
                         .appRole(appRoleService.findAppRoleById(2))
