@@ -34,7 +34,6 @@ public class AppUser {
     @Column(name = "Enabled", length = 1, nullable = false)
     private boolean enabled;
 
-
     //for two factor authentication
 
     @Column(name = "is_tfa_enable", length = 1, nullable = false)
