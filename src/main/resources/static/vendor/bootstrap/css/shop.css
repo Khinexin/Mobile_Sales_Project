@@ -1,0 +1,124 @@
+.shoe-cart {
+    font-size: 1em;
+    color: #fff;
+    margin: 0;
+    text-decoration: none;
+    text-transform: capitalize;
+    border: none;
+    background: none;
+    outline: none;
+    -webkit-transition: .5s all;
+    -moz-transition: .5s all;
+    transition: .5s all;
+    padding:5px 7px;
+} 
+.shoe-cart:hover,.back a:hover {
+	-webkit-box-shadow: 0 0 9px 2px rgba(224, 224, 224, 0.5);
+	-moz-box-shadow: 0 0 9px 2px rgba(224, 224, 224, 0.5);
+	-o-box-shadow: 0 0 9px 2px rgba(224, 224, 224, 0.5);
+	-ms-box-shadow: 0 0 9px 2px rgba(224, 224, 224, 0.5);
+    box-shadow: 0 0 9px 2px rgba(224, 224, 224, 0.5);
+}
+
+button.shoe-cart {
+    font-size: 1.2em;
+    color: #fff;
+    border:none;
+    text-align: center;
+    border-left:none!important;
+    background: none;
+	background: #171717;
+    width: 34px;
+    height: 34px;
+}
+button.shoe-cart:hover {
+	    background: #fb383b;
+}
+.shoe.single-item {
+    float: right;
+}
+.shoe.single-item.single_page_b {
+    float: left;
+    margin-bottom: 2em;
+    width: 100%;
+}
+/*-- /Responsive --*/
+@media(max-width:1280px){
+	.item-info-product h4 a {
+		font-size: 13px;
+	}
+	.shoe.single-item {
+		float: right;
+		width: 15%;
+	}
+	.inner-men-cart-pro .link-product-add-cart {
+		width: 70%;
+		top: 0px;
+		left: 16%;
+		margin: 0 auto;
+		font-size: 0.9em;
+		height: 37px;
+	}
+	.product-new-top {
+		right: 0;
+		top: 0;
+		width: 65px;
+		font-size: 13px;
+		height: 29px;
+		line-height: 2.3;
+	}
+	.img-deals {
+		padding-left: 0;
+	}
+	#staplesbmincart {
+		left: 52%;
+		top: 16.9%;
+		width: 420px;
+	}
+}
+
+@media(max-width:991px){
+	.single-right-left.simpleCart_shelfItem {
+		margin-top: 2em;
+	}
+	.single-right-left {
+		width: 80%;
+	}
+	.responsive_tabs {
+		margin-top: 3em;
+	}
+
+}
+@media(max-width:800px){
+	.single_page h6 {
+		font-size: 1.2em;
+		margin: 1em 0;
+	}
+	.bootstrap-tab-text-grid-right p {
+       margin: 1em 0 0;
+	}
+	.product-shoe-info {
+		padding: 15px;
+		width: 47%;
+		margin: 0.5em;
+		float: left;
+	}
+	#staplesbmincart {
+		left: 52%;
+		top: 16.9%;
+		width: 343px;
+	}
+}
+@media(max-width:600px){
+	.colr {
+		width: 47.333%;
+		float: left;
+	}
+	.new_arrivals h3 {
+        font-size: 1.2em;
+	}
+	 .imagezoom-cursor ,.imagezoom-view{
+		display: none;
+	}
+}
+/*-- //Responsive --*/
