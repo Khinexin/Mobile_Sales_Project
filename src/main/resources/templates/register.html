@@ -21,15 +21,23 @@
     </div>
 
     <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text" th:field="*{country}"
+               class="form-control"  id="country" aria-describedby="helpId" placeholder="Enter your Country code here! Example : 0095 or +95">
+    </div>
+
+    <div class="form-group">
         <label for="mobile">Phone no:</label>
         <input type="text" th:field="*{customerPhone}"
-               class="form-control" name=phone"" id="mobile" aria-describedby="helpId" placeholder="Enter your phone number">
+               class="form-control" name=phone"" id="mobile" aria-describedby="helpId" placeholder="9xxxxxxxxx">
     </div>
 
     <div class="form-group">
         <label for="email">Email: </label>
         <input type="text" th:field="*{emailAddress}"
                class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="Enter your email address">
+        <span th:if="${#fields.hasErrors('emailAddress')}" th:errors="*{emailAddress}" class="validation-message" style="color: red;" />
+
     </div>
 
     <br/>

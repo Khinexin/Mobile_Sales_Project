@@ -307,9 +307,21 @@
                             </li>
                             <li>
                                 <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+                                <ul>
+                                    <li><a th:href="@{/admin/category/list}">Category List</a></li>
+                                    <li><a th:href="@{/admin/products}">Mobile Accessory List</a></li>
+                                    <!--<li><a th:href="@{/admin/category/list}">Category List</a></li>-->
+
+                                </ul>
                             </li>
                             <li>
                                 <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                                <ul>
+                                    <li><a th:href="@{/admin/add/category}">Add Category</a></li>
+                                    <li><a th:href="@{/admin/add/product}">Add Mobile Or Accessroy</a></li>
+                                    <!--<li><a th:href="@{/admin/add/category}">Add Category</a></li>-->
+
+                                </ul>
                             </li>
                         </ul>
                     </div>
