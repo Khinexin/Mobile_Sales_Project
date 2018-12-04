@@ -13,4 +13,11 @@ public interface MobileAccessoryRepository extends JpaRepository<MobileAccessory
 
     @Query("SELECT m FROM MobileAccessory m WHERE m.category.catId=:catId")
     List<MobileAccessory> findAllMobileAccessoryByCategoryId(@Param("catId") int catId);
+
+    @Query("SELECT m FROM MobileAccessory m ORDER BY m.id DESC,4")
+    List<MobileAccessory> findProductByLatestInputed();
+
+
+//    @Query("")
+//    List<MobileAccessory> findProductByTopSalesItem();
 }

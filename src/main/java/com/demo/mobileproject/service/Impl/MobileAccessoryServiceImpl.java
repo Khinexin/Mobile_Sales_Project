@@ -43,4 +43,14 @@ public class MobileAccessoryServiceImpl implements MobileAccessoryService {
     public List<MobileAccessory> findAllMobileAccessoryByCategoryId(int catId) {
         return mobileAccessoryRepository.findAllMobileAccessoryByCategoryId(catId);
     }
+
+    @Override
+    public List<MobileAccessory> findLatest4ListProducts() {
+        return mobileAccessoryRepository.findProductByLatestInputed();
+    }
+
+    @Override
+    public List<MobileAccessory> findTopSalesItem4Products() {
+        return null;
+    }
 }

@@ -23,19 +23,21 @@ public class Customer {
     private String firstName;
     @NotEmpty(message = "*Please provide your last name")
     private String lastName;
+
+    private String country;
     private String customerPhone;
     private String emailAddress;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private AppUser appUser;
 
-//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    private ShoppingCart shoppingCart;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private ShoppingCart shoppingCart;
 
-//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    private DeliveryAddress deliveryAddress;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private DeliveryAddress deliveryAddress;
 
-//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    private BIllingAddress bIllingAddress;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private BIllingAddress bIllingAddress;
 
 }

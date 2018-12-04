@@ -12,6 +12,9 @@ public interface MobileAccessoryService {
     List<MobileAccessory> findAllMobileAccessory();
     List<MobileAccessory> findAllMobileAccessoryByCategoryId(int catId);
 
+    List<MobileAccessory> findLatest4ListProducts();
+    List<MobileAccessory> findTopSalesItem4Products();
+
     void updateOneMobileAccessory(MobileAccessory mobileAccessory);
     void deleteOneCMobileAccessory(int id);
 

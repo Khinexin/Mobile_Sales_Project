@@ -4,9 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data @Builder
 @AllArgsConstructor
@@ -25,6 +29,9 @@ public class MobileAccessory  {
     private String itemDescription;
     private double price;
     private int unitStock;
+
+//    @DateTimeFormat(pattern = "yyyy/mm/dd")
+//    private Date dateArrival;
 
     @Transient
     private MultipartFile multipartFile;

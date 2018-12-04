@@ -35,4 +35,17 @@ public class AppUser {
     private boolean enabled;
 
 
+    //for two factor authentication
+
+    @Column(name = "is_tfa_enable", length = 1, nullable = false)
+    private String is_tfa_enable;
+    @Column(name = "tfa_default_type", length = 45, nullable = true)
+    private String tfa_default_type;
+    @Column(name = "tfa_expire_time", length = 45, nullable = true)
+    private String tfa_expire_time;
+    @Column(name = "tfa_code", length = 10, nullable = true)
+    private String tfa_code;
+
+
+
 }
