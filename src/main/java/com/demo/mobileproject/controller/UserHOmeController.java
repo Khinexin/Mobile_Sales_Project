@@ -35,11 +35,16 @@ public class UserHOmeController {
         return "userHome";
     }
 
+
+    @GetMapping(value = { "/welcome" })
+    public String welcomePage(Model model) {
+        model.addAttribute("title", "Welcome");
+        model.addAttribute("message", "This is welcome page!");
+        return "welcomePage";
+    }
+
     @GetMapping("/")
-    public String startHomePage(Model model){
-//        model.addAttribute("size",cartItemService.findAllCartItemst().size());
-//        model.addAttribute("latestItems", mobileAccessoryService.findLatest4ListProducts());
-//        model.addAttribute("topsalesItems", mobileAccessoryService.findTopSalesItem4Products());
+    public String initialPageForUser(Model model){
         return "index";
     }
 

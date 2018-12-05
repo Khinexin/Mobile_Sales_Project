@@ -13,6 +13,6 @@ public class AdminHomeController {
     }
     @GetMapping("/admin/home")
     public String checkAdminHomePage(){
-        return "admin/index";
+        return "aindex";
     }
 }
