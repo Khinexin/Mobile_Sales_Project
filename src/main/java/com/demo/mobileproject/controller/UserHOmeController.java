@@ -35,7 +35,6 @@ public class UserHOmeController {
         return "userHome";
     }
 
-
     @GetMapping(value = { "/welcome" })
     public String welcomePage(Model model) {
         model.addAttribute("title", "Welcome");

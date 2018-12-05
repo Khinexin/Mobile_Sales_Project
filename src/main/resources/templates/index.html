@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="utf-8">
@@ -13,24 +13,23 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
 	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
-
+	<link href="vendor/bootstrap/css/bootstrap.min.css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
 	<!-- Slick -->
-	<link type="text/css" rel="stylesheet" href="vendor/bootstrap/css/slick.css" />
-	<link type="text/css" rel="stylesheet" href="vendor/bootstrap/css/slick-theme.css" />
+	<link type="text/css" rel="stylesheet" href="vendor/bootstrap/css/slick.css" th:href="@{/vendor/bootstrap/css/slick.css}"/>
+	<link type="text/css" rel="stylesheet" href="vendor/bootstrap/css/slick-theme.css" th:href="@{/vendor/bootstrap/css/slick-theme.css}" />
 
 	<!-- nouislider -->
-	<link type="text/css" rel="stylesheet" href="vendor/bootstrap/css/nouislider.min.css" />
+	<link type="text/css" rel="stylesheet" href="vendor/bootstrap/css/nouislider.min.css" th:href="@{/vendor/bootstrap/css/nouislider.min.css}" />
 
 	<!-- Font Awesome Icon -->
-	<link rel="stylesheet" href="vendor/bootstrap/css/font-awesome.min.css">
+	<link rel="stylesheet" href="vendor/bootstrap/css/font-awesome.min.css" th:href="@{/vendor/bootstrap/css/font-awesome.min.css}">
 
 	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="vendor/bootstrap/css/style.css" />
+	<link type="text/css" rel="stylesheet" href="vendor/bootstrap/css/style.css" th:href="@{/vendor/bootstrap/css/style.css}" />
 
 	<!--Shopping Cart-->
-	<link rel="stylesheet" href="vendor/bootstrap/css/font-awesome.css">
-	<link rel="stylesheet" href="vendor/bootstrap/css/shop.css">
+	<link rel="stylesheet" href="vendor/bootstrap/css/font-awesome.css" th:href="@{/vendor/bootstrap/css/font-awesome.css}">
+	<link rel="stylesheet" href="vendor/bootstrap/css/shop.css" th:href="@{/vendor/bootstrap/css/shop.css}">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
