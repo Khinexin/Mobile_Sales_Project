@@ -1,6 +1,7 @@
 package com.demo.mobileproject.domain.login;
 
 
+import java.security.Principal;
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -29,5 +30,6 @@ public class WebUtils {
         }
         return sb.toString();
     }
+
 
 }

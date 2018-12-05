@@ -30,4 +30,15 @@ public class CategoryController {
         model.addAttribute("categoryList", categoryService.findAllCategory());
         return "admin/categoryList";
     }
+
+    //bro hha and ns
+    // please write for following
+    // retrieve one
+    //      mapping ("/admin/category/{id})
+    //      return "admin/oneCategory"
+    // delete one
+    //      mapping ("/admin/category/delete/{id})
+
+
+
 }

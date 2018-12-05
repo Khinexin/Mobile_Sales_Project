@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -24,12 +25,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer findCustomerByPhone(String mobile) {
+    public Optional<Customer> findCustomerByPhone(String mobile) {
         return customerRepository.findCustomerByPhone(mobile);
     }
 
     @Override
-    public Customer findCustomerByEmail(String email) {
+    public Optional<Customer> findCustomerByEmail(String email) {
         return customerRepository.findCustomerByEmail(email);
     }
 
@@ -46,5 +47,10 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void deleteCustomerById(int id) {
         customerRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Customer> findAnyCustomerResetToken(String resetToken) {
+        return customerRepository.findAnyResetTokenCustomer(resetToken);
     }
 }

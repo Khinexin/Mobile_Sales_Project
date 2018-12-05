@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.Optional;
 
 @Controller
 public class LoginController {
@@ -94,8 +95,8 @@ public class LoginController {
     }
     @PostMapping("/register")
     public String processingCustomer(@Valid Customer customer, Model model, BindingResult bindingResult){
-        Customer customerEmailAlreadyExit = customerService.findCustomerByEmail(customer.getEmailAddress());
-        if (customerEmailAlreadyExit != null) {
+        Optional<Customer> customerEmailAlreadyExit = customerService.findCustomerByEmail(customer.getEmailAddress());
+        if (customerEmailAlreadyExit.isPresent()) {
             bindingResult
                     .rejectValue("email", "error.customer",
                             "There is already a user registered with the email provided");

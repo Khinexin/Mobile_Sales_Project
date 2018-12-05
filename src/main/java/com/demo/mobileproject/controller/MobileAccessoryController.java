@@ -66,4 +66,15 @@ public class MobileAccessoryController {
         model.addAttribute("productsByCatId", mobileAccessoryService.findAllMobileAccessoryByCategoryId(catId));
         return "admin/catIdproducts";
     }
+
+
+
+
+    //bro hha and ns
+    // please write for following
+    // upateby one
+    //      mapping ("/admin/product/update/{id})
+
+
+
 }

@@ -40,6 +40,5 @@ public class Customer {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private BIllingAddress bIllingAddress;
 
-    private String resetToken;
 
 }
