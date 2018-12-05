@@ -69,4 +69,9 @@ public class CartItemController {
         cartItemService.deleteAllCartItems();
         return "redirect:/home";
     }
+
+    @GetMapping("/checkout")
+    public String checkoutController(){
+        return "checkout";
+    }
 }

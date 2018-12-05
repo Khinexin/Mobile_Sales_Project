@@ -29,7 +29,7 @@
 
 	<!--Shopping Cart-->
 	<link rel="stylesheet" href="vendor/bootstrap/css/font-awesome.css" th:href="@{/vendor/bootstrap/css/font-awesome.css}">
-	<link rel="stylesheet" href="vendor/bootstrap/css/shop.css" th:href="@{/vendor/bootstrap/css/shop.css}">
+	<link rel="stylesheet" href="vendor/bootstrap/css/shop.css" th:href="/vendor/bootstrap/css/shop.css">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -266,18 +266,18 @@
 										</div>
 										<div class="add-to-cart">
 											<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart
-												
+
 													<form action="#" method="post">
 														<input type="hidden" name="cmd" value="_cart">
 														<input type="hidden" name="add" value="1">
 														<input type="hidden" name="shoe_item" value="Chikku Loafers">
 														<input type="hidden" name="amount" value="405.00">
 														<button type="submit" class="shoe-cart pshoe-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
-	
+
 														<a href="#" data-toggle="modal" data-target="#myModal1"></a>
 													</form>
-	
-											
+
+
 											</button>
 										</div>
 									</div>

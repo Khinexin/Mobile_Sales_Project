@@ -26,6 +26,7 @@ public class UserHOmeController {
     @GetMapping("/category/product/{productId}")
     public String getOneProduct(@PathVariable("productId") int productId, Model model) {
         model.addAttribute("product",mobileAccessoryService.findOneByIdMobileAccessory(productId) );
+        model.addAttribute("size",cartItemService.findAllCartItemst().size());
         return "oneProduct";
     }
 
@@ -35,12 +36,6 @@ public class UserHOmeController {
         return "userHome";
     }
 
-    @GetMapping(value = { "/welcome" })
-    public String welcomePage(Model model) {
-        model.addAttribute("title", "Welcome");
-        model.addAttribute("message", "This is welcome page!");
-        return "welcomePage";
-    }
 
     @GetMapping("/")
     public String initialPageForUser(Model model){

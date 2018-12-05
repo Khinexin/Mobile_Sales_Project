@@ -8,6 +8,6 @@ public class MobileProjectApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(MobileProjectApplication.class, args);
-        System.out.println("Hello! please start with \t http://localhost:8080/home");
+        System.out.println("Hello!");
     }
 }
