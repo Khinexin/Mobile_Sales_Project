@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AdminHomeController {
 
+    //test admin layout
     @GetMapping("/admin/layout")
     public String checkAdminLayout(){
         return "layout/adminLayout";

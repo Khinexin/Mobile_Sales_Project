@@ -37,8 +37,8 @@ public class UserHOmeController {
 
     @GetMapping("/")
     public String startHomePage(Model model){
-        model.addAttribute("size",cartItemService.findAllCartItemst().size());
-        model.addAttribute("latestItems", mobileAccessoryService.findLatest4ListProducts());
+//        model.addAttribute("size",cartItemService.findAllCartItemst().size());
+//        model.addAttribute("latestItems", mobileAccessoryService.findLatest4ListProducts());
 //        model.addAttribute("topsalesItems", mobileAccessoryService.findTopSalesItem4Products());
         return "index";
     }
