@@ -49,8 +49,4 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepository.deleteById(id);
     }
 
-    @Override
-    public Optional<Customer> findAnyCustomerResetToken(String resetToken) {
-        return customerRepository.findAnyResetTokenCustomer(resetToken);
-    }
 }

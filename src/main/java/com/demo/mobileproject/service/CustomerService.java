@@ -12,8 +12,6 @@ public interface CustomerService {
     Optional<Customer> findCustomerByPhone(String mobile);
     Optional<Customer> findCustomerByEmail(String email);
 
-    Optional<Customer> findAnyCustomerResetToken(String resetToken);
-
     List<Customer> findAllCustomerList();
 
     void updateCustomerInformation(Customer customer);

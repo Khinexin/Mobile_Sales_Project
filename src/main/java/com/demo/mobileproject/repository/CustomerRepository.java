@@ -17,6 +17,4 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     @Query("SELECT c FROM Customer c WHERE c.customerPhone=:mobile")
     Optional<Customer> findCustomerByPhone(@Param("mobile") String mobile);
 
-    @Query("SELECT c FROM Customer c WHERE c.resetToken=:resetToken")
-    Optional<Customer> findAnyResetTokenCustomer(@Param("resetToken") String token);
 }
