@@ -41,14 +41,7 @@ VALUES
 INSERT INTO app_role (ROLE_ID, ROLE_NAME)
 VALUES (1, 'ROLE_ADMIN'),(2, 'ROLE_USER'),(3, 'ROLE_EMP');
 -- --
--- -- Used by Spring Remember Me API.
-CREATE TABLE Persistent_Logins (
-    username varchar(64) not null,
-    series varchar(64) not null,
-    token varchar(64) not null,
-    last_used timestamp not null,
-    PRIMARY KEY (series));
---
+
 
 INSERT INTO `app_user` VALUES (1,'','$2a$10$pwt8QzTnnSJOLVjDYgmJ/eN3fFTCkfBz9WdDtSjQ/2mH.rq/A9Yie','Y',NULL,NULL,NULL,'htunhtunaungadmin');
 INSERT INTO `customer` VALUES (1,'+95','9790137903','ambutamilno1@gmail.com','Htun Htun','Aung Admin' ,1,0,0,0);

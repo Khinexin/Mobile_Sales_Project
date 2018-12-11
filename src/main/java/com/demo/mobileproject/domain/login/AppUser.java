@@ -21,6 +21,7 @@ import javax.persistence.UniqueConstraint;
                 @UniqueConstraint(name = "APP_USER_UK", columnNames = "User_Name") })
 public class AppUser {
 
+
     @Id
     @Column(name = "User_Id", nullable = false)
     private Integer userId;

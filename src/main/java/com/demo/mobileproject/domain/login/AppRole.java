@@ -21,6 +21,10 @@ import javax.persistence.UniqueConstraint;
                 @UniqueConstraint(name = "APP_ROLE_UK", columnNames = "Role_Name") })
 public class AppRole {
 
+    public static final String ROLE_ADMIN = "ROLE_ADMIN";
+    public static final String ROLE_USER = "ROLE_USER";
+    public static final String ROLE_EMP = "ROLE_EMP";
+
     @Id
     @Column(name = "Role_Id", nullable = false)
     private Integer roleId;
