@@ -484,12 +484,13 @@ textarea.input {
 
 .header-search form .input-select {
   margin-right: -4px;
-  border-radius: 40px 0px 0px 40px;
+
 }
 
 .header-search form .input {
   width: calc(100% - 260px);
   margin-right: -4px;
+  border-radius: 40px 0px 0px 40px;
 }
 
 .header-search form .search-btn {
@@ -499,6 +500,7 @@ textarea.input {
   color: #FFF;
   font-weight: 700;
   border: none;
+  border-radius: 0px 40px 40px 0px;
 }
 
 /*----------------------------*\
@@ -632,9 +634,17 @@ textarea.input {
 ===========================================================*/
 
 #navigation {
-  background: #FFF;
+  width :100%;
+  position: fixed;
+  /*background: #333;*/
+  background: white;
   border-bottom: 2px solid #E4E7ED;
   border-top: 3px solid #E4E7ED;
+  z-index: 500;
+  -webkit-box-shadow: 0px 0px 8px 0px #000000;
+  -moz-box-shadow: 0px 0px 8px 0px #000000;
+  box-shadow: 0px 0px 8px 0px #000000;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .nav-link{ margin-right: 1em !important;cursor: pointer;}
@@ -674,6 +684,8 @@ color: #D10024;
 .main-nav>li+li {
   margin-left: 30px
 }
+
+
 
 .main-nav>li>a {
   padding: 20px 0px;
@@ -755,6 +767,7 @@ color: #D10024;
     color: #FFF;
   }
 }
+
 
 /*=========================================================
 	04 -> CATEGORY SHOP
@@ -907,6 +920,7 @@ color: #D10024;
 \*----------------------------*/
 
 .product {
+  z-index: 20;
   position: relative;
   margin: 15px 0px;
   -webkit-box-shadow: 0px 0px 0px 0px #E4E7ED, 0px 0px 0px 1px #E4E7ED;
@@ -1272,6 +1286,7 @@ color: #D10024;
   text-transform: uppercase;
   font-size: 18px;
   margin: 15px 0px 30px;
+
 }
 
 /*-- checkbox Filter --*/
@@ -1974,6 +1989,7 @@ color: #D10024;
   border-top: 2px solid #E4E7ED;
   border-bottom: 3px solid #D10024;
   margin-top: 30px;
+  z-index: 20;
 }
 
 .newsletter {
@@ -2040,10 +2056,19 @@ color: #D10024;
   height: 40px;
   text-align: center;
   line-height: 40px;
-  border: 1px solid #E4E7ED;
+  /*border: 1px solid #E4E7ED;*/
   background-color: #FFF;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
+
+  border : 1px solid #cfcfcf;
+  font-size: 18px;
+  vertical-align: middle;
+  margin: 0 1px 8px;
+  border-radius: 17px;
+  -webkit-border-radius: 17px;
+  -moz-border-radius: 17px;
+
 }
 
 .newsletter .newsletter-follow li a:hover, .newsletter .newsletter-follow li a:focus {
@@ -2065,6 +2090,7 @@ color: #D10024;
 
 .footer {
   margin: 30px 0px;
+  text-align: center;
 }
 
 .footer .footer-title {
@@ -2072,6 +2098,7 @@ color: #D10024;
   text-transform: uppercase;
   font-size: 18px;
   margin: 0px 0px 30px;
+  padding: 10px;
 }
 
 .footer-links li+li {
@@ -2080,6 +2107,7 @@ color: #D10024;
 
 .footer-links li a {
   color: #B9BABC;
+  padding: 10px;
 }
 
 .footer-links li i {
@@ -2097,6 +2125,7 @@ color: #D10024;
   margin-top: 30px;
   display: block;
   font-size: 12px;
+  text-align:center;
 }
 
 .footer-payments li {
@@ -2137,7 +2166,8 @@ color: #D10024;
 	}
 }
 #footer {
-  background: #15161D;
+  width: 100%;
+  background: #333;
   color: #B9BABC;
 }
 
@@ -2154,6 +2184,15 @@ color: #D10024;
   text-transform: uppercase;
   font-size: 18px;
   margin: 0px 0px 30px;
+  padding: 5px 5px 5px 5px;
+}
+
+.footer .footer-titlesecond {
+  color: whitesmoke;
+  text-transform: uppercase;
+  font-size: 18px;
+  margin: 0px 0px 30px;
+  padding: 5px 5px 5px 5px;
 }
 
 .footer-links li+li {
@@ -2322,4 +2361,9 @@ color: #D10024;
     float: none;
     margin-top: 10px;
   }
+}
+
+.onlypaddingtopbottom{
+  padding-top: 20px;
+  padding-bottom: 20px;
 }

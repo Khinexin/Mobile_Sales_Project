@@ -73,6 +73,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests().antMatchers("/admin","**/admin/**").access("hasRole('ROLE_ADMIN')");
 
+        http.authorizeRequests().antMatchers("/manager", "/manager**").access("hasRole('ROLE_EMP')");
+
         http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
 
         http.authorizeRequests().and()
@@ -85,7 +87,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .passwordParameter("password")
                 .and()
                     .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
-
 
 
         http.authorizeRequests()

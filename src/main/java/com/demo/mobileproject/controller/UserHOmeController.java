@@ -42,4 +42,10 @@ public class UserHOmeController {
         return "index";
     }
 
+
+    @GetMapping("/subscribeUs")
+    public String userSubscribeTest(){
+        return "blank";
+    }
+
 }
