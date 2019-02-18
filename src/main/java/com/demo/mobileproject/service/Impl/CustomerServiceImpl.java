@@ -25,16 +25,6 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Optional<Customer> findCustomerByPhone(String mobile) {
-        return customerRepository.findCustomerByPhone(mobile);
-    }
-
-    @Override
-    public Optional<Customer> findCustomerByEmail(String email) {
-        return customerRepository.findCustomerByEmail(email);
-    }
-
-    @Override
     public List<Customer> findAllCustomerList() {
         return customerRepository.findAll();
     }
@@ -49,4 +39,8 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepository.deleteById(id);
     }
 
+    @Override
+    public Customer findCustomerByUserId(Integer id) {
+        return customerRepository.findCustomerByUserId(id);
+    }
 }

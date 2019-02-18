@@ -9,8 +9,7 @@ public interface CustomerService {
 
     Customer createCustomer(Customer customer);
     Customer findCustomerById(int id);
-    Optional<Customer> findCustomerByPhone(String mobile);
-    Optional<Customer> findCustomerByEmail(String email);
+    Customer findCustomerByUserId(Integer id);
 
     List<Customer> findAllCustomerList();
 

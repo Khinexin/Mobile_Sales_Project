@@ -32,33 +32,27 @@
     <![endif]-->
 
     <style>
-
         .contentafternav {
             padding: 16px;
         }
-
         .sticky {
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 500;
         }
-
         .sticky + .contentafternav {
             padding-top: 60px;
         }
 
+        .social-box{
+            padding:8px 0px 8px 0px;
+        }
     </style>
 
 </head>
 <body>
 
-
-    <a style="text-align: end" class="btn btn-default" href="#" role="button" th:href="@{/register}">Sign Up new account</a>
-
-    <div>
-        <button ng-click="home.logout()" class="btn btn-primary">Logout</button>
-    </div>
 
     <div class="container">
         <!-- /login?error=true -->
@@ -73,111 +67,105 @@
 
     <div class="container ">
 
+        <hr/>
         <div class="row">
-
-            <div class="col-md-3"></div>
-
-            <div class="col-md-6 login-panel">
-
-                <div class="row panel">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
+                        <h3 class="panel-title">Login <button type="button" class="close pull-right" aria-hidden="true" href="#">×</button></h3>
                     </div>
-                </div>
+                    <div class="panel-body">
 
-                <div class="row panel panel-default">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-4" >
-                        <div class="row">
-                            <div class="panel-body">
+                        <!--<input class="btn btn-block btn-social btn-facebook" type="submit" value="Login via facebook">-->
 
-                                <form role="form" name='f' th:action="@{/j_spring_security_check}" method='POST'>
-                                    <fieldset>
-                                        <div class="form-group">
-                                            <label>Username:</label>
-                                            <input class="form-control" placeholder="Name" name="username" type="text"
-                                                   autofocus>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Password:</label>
-                                            <input class="form-control" placeholder="Password" name="password"
-                                                   type="password" value="">
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input name="remember" type="checkbox" value="Remember Me">Remember Me?
-                                            </label>
-                                        </div>
-                                        <input style="margin-left: 40%; margin-right: 40%" name="submit" type="submit"
-                                               value="submit" class="btn btn-primary"></input>
-                                    </fieldset>
-                                </form>
 
+                            <div class="row social-box">
+                                <div class="col-md-12">
+                                    <a href="/login/facebook" th:href="@{/login/facebook}" style="color:white"
+                                       id="facebook-button" class="btn btn-block btn-social btn-facebook">
+                                        <i class="fa fa-facebook"></i> Login with Facebook
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="row social-box">
+                                <div class="col-md-12">
+                                    <a href="/login/google" th:href="@{/login/google}" style="color: white"
+                                       id="google-button" class="btn btn-block btn-social btn-google">
+                                        <i class="fa fa-google-plus"></i> Login with Google
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="row social-box">
+                                <div class="col-md-12">
+                                    <a href="/login/github" th:href="@{/login/github}" style="color: white"
+                                       id="github-button" class="btn btn-block btn-social btn-github">
+                                        <i class="fa fa-github"></i> Login with GitHub
+                                    </a>
+                                </div>
+                            </div>
+
+
+
+                        <hr/>
+                        <center><h4>OR</h4></center>
+                        <hr/>
+
+                        <form accept-charset="UTF-8" role="form">
+                            <fieldset>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="yourmail@example.com" name="email" type="text">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="remember" type="checkbox" value="Remember Me"> Remember Me
+                                    </label>
+                                </div>
+                                <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+                                <br/>
+                                <div class="row">
+                                    <center>
+                                        <p> new member? sign up <a href="#"><b>here</b></a> </p>
+                                    </center>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <hr/>
+
 
                     </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="panel-body">
-                                <form>
-                                    <fieldset>
-                                        <p>Login with social account</p>
-                                    </fieldset>
-                                    <br/>
-                                    <fieldset>
-                                        <div>
-                                            <a href="/connect/facebook" th:href="@{/connect/facebook}" style="color:white"
-                                               id="facebook-button" class="btn btn-block btn-social btn-facebook">
-                                                <i class="fa fa-facebook"></i> Facebook
-                                            </a>
-                                        </div>
-                                    </fieldset>
-                                    <br/>
-                                    <fieldset>
-                                        <div>
-                                            <a href="/connect/google" th:href="@{/connect/google}" style="color: white"
-                                               id="google-button" class="btn btn-block btn-social btn-google">
-                                                <i class="fa fa-google-plus"></i> Google
-                                            </a>
-                                        </div>
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-1"></div>
                 </div>
             </div>
-
-            <div class="col-md-3"></div>
-
         </div>
+
     </div>
     <br/>
-    <footer>
-        <div class="container">
-            <br>
-            <h4>Hello members! Hint for your logins.</h4>
-            <ul>
-                <li>Admin Account
-                    <ul>
-                        <li>name : yournameadmin</li>
-                        <li>pass : yourname</li>
-                    </ul>
-                </li>
-                <li>User Account
-                    <ul>
-                        <li>name : yournameuser</li>
-                        <li>pass : yourname</li>
-                    </ul>
-                </li>
-                <br/>
-                <li><p style="color: orangered"> no cap & all samll & no space </p></li>
-            </ul>
-        </div>
-    </footer>
+    <!--<footer>-->
+        <!--<div class="container">-->
+            <!--<br>-->
+            <!--<h4>Hello members! Hint for your logins.</h4>-->
+            <!--<ul>-->
+                <!--<li>Admin Account-->
+                    <!--<ul>-->
+                        <!--<li>name : yournameadmin</li>-->
+                        <!--<li>pass : yourname</li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+                <!--<li>User Account-->
+                    <!--<ul>-->
+                        <!--<li>name : yournameuser</li>-->
+                        <!--<li>pass : yourname</li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+                <!--<br/>-->
+                <!--<li><p style="color: orangered"> no cap & all samll & no space </p></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</footer>-->
 
 
 
@@ -283,6 +271,40 @@
             } else {
                 navbar.classList.remove("sticky");
             }
+        }
+    </script>
+
+    <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js" th:src="@{/webjars/js-cookie/js.cookie.js}"></script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+            beforeSend : function(xhr, settings) {
+                if (settings.type == 'POST' || settings.type == 'PUT'
+                    || settings.type == 'DELETE') {
+                    if (!(/^http:.*/.test(settings.url) || /^https:.*/
+                        .test(settings.url))) {
+                        // Only send the token to relative URLs i.e. locally.
+                        xhr.setRequestHeader("X-XSRF-TOKEN", Cookies
+                            .get('XSRF-TOKEN'));
+                    }
+                }
+            }
+        });
+        $.get("/user", function(data) {
+            $("#user").html(data.name);
+            if (data.name == undefined) {
+                logout();
+            }else{
+                $(".unauthenticated").hide();
+                $(".authenticated").show();
+            }
+        });
+        var logout = function() {
+            $.post("/logout", function() {
+                $("#user").html('');
+                $(".unauthenticated").show();
+                $(".authenticated").hide();
+            })
+            return true;
         }
     </script>
 

@@ -4,6 +4,7 @@ package com.demo.mobileproject.config;
 import javax.servlet.Filter;
 import javax.sql.DataSource;
 
+import com.demo.mobileproject.domain.login.PersistentLogins;
 import com.demo.mobileproject.service.Impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -79,7 +80,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests().and()
                 .formLogin()
-                    .loginProcessingUrl("/j_spring_security_check")
+//                    .loginProcessingUrl("/j_spring_security_check")
+                    .loginProcessingUrl("perform_login")
                     .loginPage("/login")
                     .defaultSuccessUrl("/userInfo")
                     .failureUrl("/login?error=true")
@@ -89,8 +91,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
 
 
-        http.authorizeRequests()
-                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");
+        http.authorizeRequests().and()
+                .logout().logoutUrl("/logout")
+                    .deleteCookies("JSESSIONID")
+                    .logoutSuccessUrl("/");
 
         http.authorizeRequests().and()
                 .rememberMe().tokenRepository(this.persistentTokenRepository())
@@ -105,13 +109,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         db.setDataSource(dataSource);
         return db;
     }
-//Or Another way
-//    // Token stored in Memory (Of Web Server).
-//    @Bean
-//    public PersistentTokenRepository persistentTokenRepository() {
-//        InMemoryTokenRepositoryImpl memory = new InMemoryTokenRepositoryImpl();
-//        return memory;
-//    }
 
 
     private Filter ssoFilter() {

@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form th:action="@{/register}" th:object="${customer}" method="post">
+<form th:action="@{/register}" th:object="${appUser}" method="post">
 
     <div class="form-group">
         <label for="fname">First Name</label>
@@ -37,7 +37,18 @@
         <input type="text" th:field="*{emailAddress}"
                class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="Enter your email address">
         <span th:if="${#fields.hasErrors('emailAddress')}" th:errors="*{emailAddress}" class="validation-message" style="color: red;" />
+    </div>
 
+    <div class="form-group">
+        <label for="name">Login username :</label>
+        <input type="text" th:field="*{userName}"
+               class="form-control" name=phone"" id="name" aria-describedby="helpId" placeholder="9xxxxxxxxx">
+    </div>
+
+    <div class="form-group">
+        <label for="pw">Login Password:</label>
+        <input type="password" th:field="*{encrytedPassword}"
+               class="form-control" name=phone"" id="pw" aria-describedby="helpId" placeholder="9xxxxxxxxx">
     </div>
 
     <br/>

@@ -17,16 +17,8 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 public class Customer {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
     private Integer customerId;
-    @NotEmpty(message = "*Please provide your first name")
-    private String firstName;
-    @NotEmpty(message = "*Please provide your last name")
-    private String lastName;
-
-    private String country;
-    private String customerPhone;
-    private String emailAddress;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private AppUser appUser;

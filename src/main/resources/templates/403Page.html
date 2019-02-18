@@ -5,14 +5,13 @@
 </head>
 
 <body>
-<a th:href="@{/}">Home</a>| &nbsp;
-<a th:href="@{/userInfo}">User Info</a>| &nbsp;
-<a th:href="@{/admin}">Admin</a>| &nbsp;
-<a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a>
 
 <h3 th:if="${message != null}" th:utext="${message}" style="color: red;"></h3>
-
 <div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+<img src="../static/img/deniedpanda.png" th:src="@{/img/deniedpanda.png}" height="400" width="500"/>
+
+<div><a th:href="@{/}">Back</a></div>
+
 
 </body>
 
