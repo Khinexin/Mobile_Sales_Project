@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class AdminController {
-
-    @GetMapping("/welcome")
-    public String welcome(Model model){
-        model.addAttribute("tagline","Hello Spring MVC!");
-        return "welcome";
-    }
+//
+//    @GetMapping("/welcome")
+//    public String welcome(Model model){
+//        model.addAttribute("tagline","Hello Spring MVC!");
+//        return "welcome";
+//    }
 
 
 }
