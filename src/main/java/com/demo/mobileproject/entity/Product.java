@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,6 +40,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotEmpty(message = "{error.prodBrand.empty}")
     private String brand;
 
     private String series;

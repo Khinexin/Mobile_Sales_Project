@@ -25,10 +25,14 @@ public class CategoryController {
     @Autowired
     CategoryService categoryService;
 
+    private boolean isCreate;
+
+
     // create
     @GetMapping("/createCategory")
     public String createCategory(ModelMap model) {
-        model.addAttribute("isCreate", true);
+        isCreate = true;
+        model.addAttribute("isCreate", isCreate);
         model.addAttribute("category", Category.builder().id(-1).build());
         return "admin/create_category";
     }
@@ -38,10 +42,10 @@ public class CategoryController {
         if (bindingResult.hasErrors()) {
             return "admin/create_category";
         }
-        if (category.getId() > 0) {
-            categoryService.updateCategory(category);
-        } else {
+        if (isCreate == true) {
             categoryService.createCategory(category);
+        } else if (category.getId() > 0 || isCreate == false) {
+            categoryService.updateCategory(category);
         }
         return "redirect:/admin/categorylist";
     }
@@ -54,7 +58,8 @@ public class CategoryController {
         } catch (ResourceNotFoundException e) {
             e.printStackTrace();
         }
-        model.addAttribute("isCreate", false);
+        isCreate = false;
+        model.addAttribute("isCreate", isCreate);
         return "admin/create_category";
     }
 
