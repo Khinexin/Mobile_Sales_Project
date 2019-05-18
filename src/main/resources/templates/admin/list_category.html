@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="admin/layout/adminlayout">
+<head>
+    <meta charset="ISO-8859-1">
+    <title th:text="${isCreate}==true ? 'Create Category' : 'Edit Category'"></title>
+</head>
+<body>
+
+<section layout:fragment="custom-content">
+    <form>
+
+        <table>
+            <tr>
+                <th th:text="#{label.category.id}"></th>
+                <th th:text="#{label.category.name}"></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr th:each="cat:${categoryList}">
+                <td th:text="${cat.id}"></td>
+                <td th:text="${cat.name}"></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+
+    </form>
+</section>
+
+</body>
+</html>
