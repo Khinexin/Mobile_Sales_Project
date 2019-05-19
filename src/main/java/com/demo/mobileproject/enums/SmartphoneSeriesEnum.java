@@ -36,6 +36,8 @@ public enum SmartphoneSeriesEnum {
     Samsung_view2("Samsung View 2"),
     Samsung_Galaxy_S10_5G("Samsung Galaxy S10 5G"),
     Samsung_Galaxy_S10Plus("Samsung Galaxy S10+");
+
+
     private String name;
 
 }
