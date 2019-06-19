@@ -3,31 +3,50 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="admin/layout/adminlayout">
 <head>
-    <meta charset="ISO-8859-1">
-    <title th:text="${isCreate}==true ? 'Create Category' : 'Edit Category'"></title>
+    <meta charset="ISO-8859-1"/>
+    <title>Category List</title>
 </head>
 <body>
 
-<section layout:fragment="custom-content">
+<div layout:fragment="custom-content">
     <form>
+        <div class="row">
+            <a name="create" id="" class="btn btn-primary" href="#"
+            role="button" th:href="@{/admin/createCategory}" >Add Category</a>
+        </div>
+        <div class="row">
+            <table>
+                <tr>
+                    <!--<th>Id</th>-->
+                    <th>Category Name</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr th:each="cat:${categoryList}">
+                    <!--<td th:text="${cat.id}"></td>-->
+                    <td th:text="${cat.name}"></td>
+                    <td>
+                        <span th:if="${cat.name == accessory or cat.name == laptop or cat.name == smartphone or cat.name == tablet or cat.name == spares}">
+                        </span>
 
-        <table>
-            <tr>
-                <th th:text="#{label.category.id}"></th>
-                <th th:text="#{label.category.name}"></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr th:each="cat:${categoryList}">
-                <td th:text="${cat.id}"></td>
-                <td th:text="${cat.name}"></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
+                        <span th:unless="${cat.name == accessory or cat.name == laptop or cat.name == smartphone or cat.name == tablet or cat.name == spares}">
+                            <a th:href="@{'/admin/editCategory/'+${cat.id}}" >edit</a>
+                        </span>
+                    </td>
+                    <td>
+                        <span th:if="${cat.name == accessory or cat.name == laptop or cat.name == smartphone or cat.name == tablet or cat.name == spares}">
+                        </span>
 
+                        <span th:unless="${cat.name == accessory or cat.name == laptop or cat.name == smartphone or cat.name == tablet or cat.name == spares}">
+                            <a th:href="@{'/admin/deleteCategory/'+${cat.id}}" >delete</a>
+                        </span>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
     </form>
-</section>
+</div>
 
 </body>
 </html>

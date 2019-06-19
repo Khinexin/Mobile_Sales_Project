@@ -1,195 +1,144 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-	<head>
-		<meta charset="ISO-8859-1">
-		<title>Admin Layout Page</title>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <!--th:with="lang=${#locale.language}" th:lang="${lang}">-->
+  <head>
+    <!--<meta charset="utf-8">-->
+      <meta charset="ISO-8859-1"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="icon" href="favicon.ico">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet"
-			  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <title>Starter Template for Bootstrap</title>
 
-		<style>
-			body {
-				font-family: "Lato", sans-serif;
-			}
+      <!-- Bootstrap core CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
-			.sidenav {
-				height: 100%;
-				width: 160px;
-				position: fixed;
-				z-index: 1;
-				top: 0;
-				left: 0;
-				background-color: #111;
-				overflow-x: hidden;
-				padding-top: 20px;
-			}
+      <!-- Custom styles for this template -->
+      <style>body {padding-top: 5rem;}</style>
 
-			.sidenav a, .dropdown-btn {
-				padding: 6px 8px 6px 16px;
-				text-decoration: none;
-				font-size: 20px;
-				color: #818181;
-				display: block;
-				border: none;
-				background: none;
-				width: 100%;
-				text-align: left;
-				cursor: pointer;
-				outline: none;
-			}
+  </head>
 
-			.sidenav a:hover {
-				color: #f1f1f1;
-			}
+  <body>
 
-			.mainbody {
-				margin-left: 160px; /* Same as the width of the sidenav */
-				font-size: 28px; /* Increased text to enable scrolling */
-				padding: 0px 10px;
-			}
-
-			.active {
-				background-color: green;
-				color: white;
-			}
-
-			.dropdown-container {
-				display: none;
-				background-color: #262626;
-				padding-left: 8px;
-			}
-
-			.fa-caret-down {
-				float: right;
-				padding-right: 8px;
-			}
-
-			@media screen and (max-height: 450px) {
-				.sidenav {
-					padding-top: 15px;
-				}
-
-				.sidenav a {
-					font-size: 18px;
-				}
-			}
-		</style>
-	</head>
-	<body>
-
-		<header></header>
-
-		<div class="sidenav">
-
-			<button class="dropdown-btn">
-				<h4>Hello! John</h4>
-			</button>
-			<div class="dropdown-btn">
-
-				<a href="#">logout</a>
-			</div>
-
-			<button class="dropdown-btn">Lists
-				<i class="fa fa-caret-down"></i>
-			</button>
-			<div class="dropdown-container">
-				<a href="#">Link 1</a>
-				<a href="#">Link 2</a>
-				<a href="#">Link 3</a>
-			</div>
-
-			<button class="dropdown-btn">Forms
-				<i class="fa fa-caret-down"></i>
-			</button>
-			<div class="dropdown-container">
-				<a href="#">Link 1</a>
-				<a href="#">Link 2</a>
-				<a href="#">Link 3</a>
-			</div>
-
-			<a href="#contact">Search</a>
-
-			<a href="#about">About</a>
-			<a href="#services">Services</a>
-			<a href="#clients">Clients</a>
-			<a href="#contact">Contact</a>
-
-		</div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">Welcome ... admin</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
 
 
-		<div class="mainbody">
-			<section layout:fragment="custom-content">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-					et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-					aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-					culpa qui officia deserunt mollit anim id est laborum.
-				</p>
-			</section>
-		</div>
+
+      <div id="wrapper">
+
+          <!-- Sidebar -->
+          <ul class="sidebar navbar-nav">
+              <li class="nav-item active">
+                  <a class="nav-link" href="index.html">
+                      <i class="fas fa-fw fa-tachometer-alt"></i>
+                      <span>Dashboard</span>
+                  </a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-fw fa-folder"></i>
+                      <span>Pages</span>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+
+                      <h6 class="dropdown-header">Related List pages:</h6>
+                      <a class="dropdown-item" href="#">Category List</a>
+                      <a class="dropdown-item" href="#">Product List</a>
+                      <a class="dropdown-item" href="#">Customer List</a>
+                      <a class="dropdown-item" href="#">Shop Expense List</a>
+
+                      <!--<div class="dropdown-divider"></div>-->
+                      <!--<h6 class="dropdown-header">Related Manage Pages:</h6>-->
+                      <!--<a class="dropdown-item" href="#">Add Category</a>-->
+                      <!--<a class="dropdown-item" href="#">Add Product</a>-->
+                      <!--<a class="dropdown-item" href="#">Add Shop Expense</a>-->
+
+                      <div class="dropdown-divider"></div>
+                      <h6 class="dropdown-header">Login Screens:</h6>
+                      <a class="dropdown-item" href="#">Customer Login Page</a>
+                      <a class="dropdown-item" href="#">Register Page</a>
+                      <a class="dropdown-item" href="#">Forgot Password Page</a>
+
+                      <div class="dropdown-divider"></div>
+                      <h6 class="dropdown-header">Other Pages:</h6>
+                      <a class="dropdown-item" href="#">404 Page</a>
+                      <a class="dropdown-item" href="#">Blank Page</a>
+                      <a class="dropdown-item" href="#">Contact_us Page</a>
+
+                  </div>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="charts.html">
+                      <i class="fas fa-fw fa-chart-area"></i>
+                      <span>Charts</span></a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="tables.html">
+                      <i class="fas fa-fw fa-table"></i>
+                      <span>Tables</span></a>
+              </li>
+          </ul>
+
+          <div id="content-wrapper">
+
+              <div class="container-fluid">
+
+                  <div layout:fragment="custom-content">
+                  </div>
+
+              </div>
+
+              <!-- Sticky Footer -->
+              <footer class="sticky-footer">
+                  <div class="container my-auto">
+                      <!--<div class="row">-->
+                      <!--<span th:text="#{language.change}"></span>:-->
+                      <!--<select class="dropdown-menu" aria-labelledby="dropdown01" id="locale">-->
+                      <!--<option><a class="dropdown-item" href="javascript: history.go(-1)" th:value="en" th:href="@{'?lang=us'}" th:text="#{lang.eng}"></a></option>-->
+                      <!--<option><a class="dropdown-item" href="javascript: history.go(-1)" th:value="fr" th:href="@{'?lang=fr'}" th:text="#{lang.fr}"></a></option>-->
+                      <!--<option><a class="dropdown-item" href="javascript: history.go(-1)" th:value="mm" th:href="@{'?lang=mm'}" th:text="#{lang.mm}"></a></option>-->
+                      <!--<option><a class="dropdown-item" href="javascript: history.go(-1)" th:value="cn" th:href="@{'?lang=cn'}" th:text="#{lang.zh}"></a></option>-->
+                      <!--<option><a class="dropdown-item" href="javascript: history.go(-1)" th:value="jp" th:href="@{'?lang=jp'}" th:text="#{lang.jp}"></a></option>-->
+                      <!--</select>-->
+                      <!--</div>-->
+                      <div class="copyright text-center my-auto">
+                          <span>Copyright © Our-Website 2019 </span>
+                          <a href="#" style=" color: #c33b32; font-weight:bold;">JDC Students Batch?? (^_^)
+                          </a>
+                      </div>
+                  </div>
+              </footer>
+
+          </div>
+          <!-- /.content-wrapper -->
+
+      </div>
+      <!-- /#wrapper -->
+
+      <!-- Scroll to Top Button-->
+      <a class="scroll-to-top rounded" href="#page-top">
+          <i class="fas fa-angle-up"></i>
+      </a>
 
 
-		<footer>
-			<div class="col-md-12">
-				<div class="row">
-					<div class="col-md-4">
-						<span th:text="#{language.change}"></span>:
-						<select id="locales">
-							<option value=""></option>
-							<option value="en">
-								<a href="?lang=US" th:text="#{lang.en}"></a>
-							</option>
-							<option value="en">
-								<a href="?lang=fr" th:text="#{lang.fr}"></a>
-							</option>
-							<option value="de">
-								<a href="?lang=CN" th:text="#{lang.zh}"></a>
-							</option>
-						</select>
-					</div>
-					<div class="col-md-6">
-						© Copyright 2019&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;All Rights Reserved&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Powered
-						by
-						<a href="http://www.startinpoint.com/" target="_blank"
-						   style=" color: #c33b32; font-weight:bold;">JDC Students Batch?? (^_^)
-						</a>
-					</div>
-				</div>
-			</div>
-		</footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
-
-		<!-- this is for side navigation bar -->
-		<script>
-			/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-			var dropdown = document.getElementsByClassName("dropdown-btn");
-			var i;
-
-			for (i = 0; i < dropdown.length; i++) {
-				dropdown[i].addEventListener("click", function () {
-					this.classList.toggle("active");
-					var dropdownContent = this.nextElementSibling;
-					if (dropdownContent.style.display === "block") {
-						dropdownContent.style.display = "none";
-					} else {
-						dropdownContent.style.display = "block";
-					}
-				});
-			}
-		</script>
-
-		<!-- this is for locale -->
-		<script type="text/javascript">
-			$(document).ready(function () {
-				$("#locales").change(function () {
-					var selectedOption = $('#locales').val();
-					if (selectedOption != '') {
-						window.location.replace('?lang=' + selectedOption);
-					}
-				});
-			});
-		</script>
-	</body>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Holder.js for placeholder images -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
+  </body>
 </html>

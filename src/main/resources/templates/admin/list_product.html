@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="admin/layout/adminlayout">
 <head>
     <meta charset="ISO-8859-1">
-    <title>Insert title here</title>
+    <title>Product List</title>
 </head>
 <body>
+
+<div layout:fragment="custom-content">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <!--<th>Id</th>-->
+            <th>Brand</th>
+            <th>AlsoCalled</th>
+            <th>Series</th>
+            <th>CategoryId</th>
+            <!--<th>Image1</th>
+            <th>Image2</th>
+            <th>Image3</th>-->
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="prod : ${products}">
+            <!--<td th:text="${prod.id}"></td>-->
+            <td th:text="${prod.category.id}"></td>
+
+            <td th:text="${prod.brand}"></td>
+            <td th:text="${prod.alsoCalled}"></td>
+            <td th:text="${prod.series}"></td>
+
+            <!--<td th:text="${prod.image1}"></td>
+            <td th:text="${prod.image2}"></td>
+            <td th:text="${prod.image3}"></td>-->
+            <td><a th:href="@{'/admin/editProduct/'+${prod.id}}" >Edit</a></td>
+            <td><a th:href="@{'/admin/deleteProduct/'+${prod.id}}" >Delete</a></td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
 
 </body>
 </html>
