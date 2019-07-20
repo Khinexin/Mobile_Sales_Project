@@ -105,8 +105,12 @@ public class InititalizeDbService {
 
                     smartphoneDeatails.setNetworkTechnology((String) tempRECORD[5]);
 
-//                    smartphoneDeatails.setBodyDimensions((String) tempRECORD[6]);
-//                    smartphoneDeatails.setBodyWeight((String) tempRECORD[7]);
+                    smartphoneDeatails.setBodyDimensions((String) tempRECORD[6]);
+                    smartphoneDeatails.setBodyWeight((String) tempRECORD[7]);
+
+                    smartphoneDeatails.setMiscPrice((String) tempRECORD[8]);
+                    smartphoneDeatails.setImageLocation((String)tempRECORD[9]);
+
 //                    smartphoneDeatails.setBodyBuild((String) tempRECORD[8]);
 //                    smartphoneDeatails.setBodySIM((String)tempRECORD[9]);
 //                    smartphoneDeatails.setBodyOther((String)tempRECORD[10]);
