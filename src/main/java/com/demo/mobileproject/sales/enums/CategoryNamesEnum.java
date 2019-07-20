@@ -6,7 +6,7 @@ import lombok.ToString;
 
 @Getter
 @AllArgsConstructor @ToString
-public enum CategoryNames {
+public enum CategoryNamesEnum {
 
     SMARTPHONE(1,"Smartphone"),
     TABLET(2,"Tablet"),

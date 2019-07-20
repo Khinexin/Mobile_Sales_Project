@@ -13,9 +13,9 @@ public interface CategoryService {
 
     List<Category> findAllCategory();
 
-    Category findByIdCategory(int id) throws ResourceNotFoundException;
+    Category findByIdCategory(String name) throws ResourceNotFoundException;
 
-    void deleteCategoryById(int id);
+    void deleteCategoryById(String name);
 
     long countCategoryTable();
 

@@ -3,8 +3,14 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="admin/layout/adminlayout">
 <head>
-    <meta charset="ISO-8859-1"/>
-    <title th:text="${category.id < 0 ? 'Create Category' : 'Edit Category'}"></title>
+   <!-- <meta charset="ISO-8859-1"/>-->
+    <title th:text="${category.id == -1 ? 'Create Category' : 'Edit Category'}"></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -14,15 +20,18 @@
 
         <input th:field="*{id}" type="hidden"/>
 
-        <label>Category Name</label>
-        <input type="text" th:field="*{name}"/>
+        <div class="form-group">
+            <label>Category Name</label>
+            <input type="text" th:field="*{name}"/>
+        </div>
 
-        <button><a type="submit" th:text="${category.id < 0 ? 'Create' : 'Update'}"/></button>
+        <button><a type="submit" th:text="${category.id == -1 ? 'Create' : 'Update'}"/></button>
         <a name="cancel" class="btn btn-primary" href="#"  role="button">Cancel</a>
 
     </form>
 
 </div>
+
 
 </body>
 </html>

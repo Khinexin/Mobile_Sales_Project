@@ -4,43 +4,59 @@
       layout:decorate="admin/layout/adminlayout">
 <head>
     <meta charset="ISO-8859-1"/>
-    <title th:text="${product.id < 0 ? 'Create Product' : 'Edit Product'}"></title>
+    <title th:text="${product.id == -1 ? 'Create Product' : 'Edit Product'}"></title>
 </head>
 <body>
 
 <div layout:fragment="custom-content">
 
-    <form th:object="${product}" th:action="@{/admin/saveProduct}" method="post">
+    <form th:object="${product}" th:action="@{/admin/saveProduct}" method="post" enctype="multipart/form-data">
 
         <input th:field="*{id}" type="hidden"/>
 
-        <label>Brand Name</label>
-        <select type="text" th:field="*{productColumns}">
-            <option th:each="cat: ${categorys}" th:text="${cat.name}" th:value="${cat.id}"></option>
-        </select>
+        <div class="form-group">
+            <label for="pcolumn">Brand Name</label>
+            <input name="pcolumn" id="pcolumn" type="text" readonly="readonly" th:field="*{productColumns}"/>
+        </div>
 
-        <label>Brand Name</label>
-        <input type="text" th:field="*{brand}"/>
+        <div class="form-group">
+            <label for="brand">Brand Name</label>
+            <input name="brand" id="brand" type="text" th:field="*{brand}"/>
+        </div>
 
-        <label>Brand Name</label>
-        <input type="text" th:field="*{series}"/>
+        <div class="form-group">
+            <label for="series">Series</label>
+            <input name="series" id="series" type="text" th:field="*{series}"/>
+        </div>
 
-        <label>Brand Name</label>
-        <input type="text" th:field="*{alsoCalled}"/>
+        <div class="form-group">
+            <label for="alsocall">Another name</label>
+            <input name="alsocall" id="alsocall" type="text" th:field="*{alsoCalled}"/>
+        </div>
 
-        <label>Brand Name</label>
-        <input type="text" th:field="*{image1}"/>
+        <div class="form-group">
+            <label for="imgFile1">Front Image</label>
+            <input name="imgFile1" id="imgFile1" type="file" name="imageFile1" />
+        </div>
 
-        <label>Brand Name</label>
-        <input type="text" th:field="*{image2}"/>
+        <div class="form-group">
+            <label for="imgFile2">Front Image</label>
+            <input name="imgFile2" id="imgFile2" type="file" name="imageFile1" />
+        </div>
 
-        <label>Brand Name</label>
-        <input type="text" th:field="*{image3}"/>
+        <div class="form-group">
+            <label for="imgFile3">Front Image</label>
+            <input name="imgFile3" id="imgFile3" type="file" name="imageFile1" />
+        </div>
 
-        <button><a type="submit" th:text="${product.id < 0 ? 'Create' : 'Update'}"/></button>
+        <button><a type="submit" th:text="${product.id == -1 ? 'Create' : 'Update'}"/></button>
         <a name="cancel" class="btn btn-primary" href="#"  role="button">Cancel</a>
 
     </form>
+
+<!--    <form>
+
+    </form>-->
 
 </div>
 

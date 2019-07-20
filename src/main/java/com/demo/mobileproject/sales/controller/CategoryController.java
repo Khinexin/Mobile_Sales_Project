@@ -3,7 +3,7 @@ package com.demo.mobileproject.sales.controller;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
-import com.demo.mobileproject.sales.enums.CategoryNames;
+import com.demo.mobileproject.sales.enums.CategoryNamesEnum;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +32,7 @@ public class CategoryController {
     // create
     @GetMapping("/createCategory")
     public String createCategory(ModelMap model) {
-        Category category = new Category(); category.setId(-1);
-        model.addAttribute("category", category);
+        model.addAttribute("category", new Category());
         return "admin/create_category";
     }
 
@@ -41,13 +40,13 @@ public class CategoryController {
     public String createProcessCategory(ModelMap model, @ModelAttribute("category") @Valid Category category, BindingResult bindingResult) {
         if(!bindingResult.hasErrors()){
             try{
-                if (category.getId() == -1) {
+//                if (category.getId() == -1) {
                     categoryService.createCategory(category);
                     LOG.info("New Category has created");
-                } else{
-                    categoryService.updateCategory(category);
-                    LOG.info("Updated Category where Id = "+category.getId());
-                }
+//                } else{
+//                    categoryService.updateCategory(category);
+//                    LOG.info("Updated Category where Id = "+category.getId());
+//                }
             }catch (ConstraintViolationException e){
                 model.addAttribute("nameUniqueErr", "This name already exit!");
                 LOG.error("ConstraintViolationException : Error occur while saving Category!"+"\n"+e.getMessage());
@@ -56,7 +55,6 @@ public class CategoryController {
             }
             return "redirect:/admin/categorylist";
         } else{
-            LOG.error(":: binding result has error while saving category :: "+category.getId());
             return "admin/create_category";
         }
 
@@ -64,7 +62,7 @@ public class CategoryController {
 
     //update
     @GetMapping("/editCategory/{catId}")
-    public String editCategoryById(@PathVariable("catId") int id, ModelMap model) {
+    public String editCategoryById(@PathVariable("catId") String id, ModelMap model) {
         try {
             model.addAttribute("category", categoryService.findByIdCategory(id));
         } catch (ResourceNotFoundException e) {
@@ -78,18 +76,18 @@ public class CategoryController {
     public String findAllCategoryList(Model model) {
         model.addAttribute("categoryList", categoryService.findAllCategory());
 
-        model.addAttribute("accessory", CategoryNames.ACCESSORY.getName());
-        model.addAttribute("laptop", CategoryNames.LAPTOP.getName());
-        model.addAttribute("smartphone", CategoryNames.SMARTPHONE.getName());
-        model.addAttribute("tablet", CategoryNames.TABLET.getName());
-        model.addAttribute("spares", CategoryNames.SPARES.getName());
+        model.addAttribute("accessory", CategoryNamesEnum.ACCESSORY.getName());
+        model.addAttribute("laptop", CategoryNamesEnum.LAPTOP.getName());
+        model.addAttribute("smartphone", CategoryNamesEnum.SMARTPHONE.getName());
+        model.addAttribute("tablet", CategoryNamesEnum.TABLET.getName());
+        model.addAttribute("spares", CategoryNamesEnum.SPARES.getName());
 
         return "admin/list_category";
     }
 
     //delete
     @GetMapping("/deleteCategory/{catId}")
-    public String deleteCategoryById(@PathVariable("catId") int id) {
+    public String deleteCategoryById(@PathVariable("catId") String id) {
         categoryService.deleteCategoryById(id);
         return "redirect:/admin/categorylist";
     }

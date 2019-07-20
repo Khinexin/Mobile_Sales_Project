@@ -1,18 +1,14 @@
 package com.demo.mobileproject.sales.entity;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-import lombok.*;
+import javax.persistence.*;
 
 @Entity
-@Data @NoArgsConstructor
-public class ProductColumn {
+@Data
+@NoArgsConstructor
+public class ProductInstock {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +20,7 @@ public class ProductColumn {
     private String size;
     private int quantity;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
     private Product product;
-
-
 }

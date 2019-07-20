@@ -2,131 +2,105 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-    <!--th:with="lang=${#locale.language}" th:lang="${lang}">-->
   <head>
-    <!--<meta charset="utf-8">-->
-      <meta charset="ISO-8859-1"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <link rel="icon" href="favicon.ico">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-      <title>Starter Template for Bootstrap</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-      <!-- Bootstrap core CSS -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <title>Starter Template for Bootstrap</title>
 
-      <!-- Custom styles for this template -->
-      <style>body {padding-top: 5rem;}</style>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
+    <!-- Custom styles for this template -->
+    <style>
+        body {
+            padding-top: 5rem;
+        }
+
+
+    </style>
   </head>
 
   <body>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="#">Welcome ... admin</a>
+      <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
     </nav>
 
+    <div class="container">
+
+        <div id="content-wrapper">
+
+            <div class="container-fluid">
+
+                <div layout:fragment="custom-content">
+                </div>
+
+            </div>
+
+            <!-- Sticky Footer -->
+            <footer class="sticky-footer">
+                <div class="container my-auto">
+                    <!--<div class="row">-->
+                    <!--<span th:text="#{language.change}"></span>:-->
+                    <!--<select class="dropdown-menu" aria-labelledby="dropdown01" id="locale">-->
+                    <!--<option><a class="dropdown-item" href="javascript: history.go(-1)" th:value="en" th:href="@{'?lang=us'}" th:text="#{lang.eng}"></a></option>-->
+                    <!--<option><a class="dropdown-item" href="javascript: history.go(-1)" th:value="fr" th:href="@{'?lang=fr'}" th:text="#{lang.fr}"></a></option>-->
+                    <!--<option><a class="dropdown-item" href="javascript: history.go(-1)" th:value="mm" th:href="@{'?lang=mm'}" th:text="#{lang.mm}"></a></option>-->
+                    <!--<option><a class="dropdown-item" href="javascript: history.go(-1)" th:value="cn" th:href="@{'?lang=cn'}" th:text="#{lang.zh}"></a></option>-->
+                    <!--<option><a class="dropdown-item" href="javascript: history.go(-1)" th:value="jp" th:href="@{'?lang=jp'}" th:text="#{lang.jp}"></a></option>-->
+                    <!--</select>-->
+                    <!--</div>-->
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright Â© Our-Website 2019 </span>
+                        <a href="#" style=" color: #c33b32; font-weight:bold;">JDC Students Batch?? (^_^)
+                        </a>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
 
 
-      <div id="wrapper">
 
-          <!-- Sidebar -->
-          <ul class="sidebar navbar-nav">
-              <li class="nav-item active">
-                  <a class="nav-link" href="index.html">
-                      <i class="fas fa-fw fa-tachometer-alt"></i>
-                      <span>Dashboard</span>
-                  </a>
-              </li>
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-fw fa-folder"></i>
-                      <span>Pages</span>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-
-                      <h6 class="dropdown-header">Related List pages:</h6>
-                      <a class="dropdown-item" href="#">Category List</a>
-                      <a class="dropdown-item" href="#">Product List</a>
-                      <a class="dropdown-item" href="#">Customer List</a>
-                      <a class="dropdown-item" href="#">Shop Expense List</a>
-
-                      <!--<div class="dropdown-divider"></div>-->
-                      <!--<h6 class="dropdown-header">Related Manage Pages:</h6>-->
-                      <!--<a class="dropdown-item" href="#">Add Category</a>-->
-                      <!--<a class="dropdown-item" href="#">Add Product</a>-->
-                      <!--<a class="dropdown-item" href="#">Add Shop Expense</a>-->
-
-                      <div class="dropdown-divider"></div>
-                      <h6 class="dropdown-header">Login Screens:</h6>
-                      <a class="dropdown-item" href="#">Customer Login Page</a>
-                      <a class="dropdown-item" href="#">Register Page</a>
-                      <a class="dropdown-item" href="#">Forgot Password Page</a>
-
-                      <div class="dropdown-divider"></div>
-                      <h6 class="dropdown-header">Other Pages:</h6>
-                      <a class="dropdown-item" href="#">404 Page</a>
-                      <a class="dropdown-item" href="#">Blank Page</a>
-                      <a class="dropdown-item" href="#">Contact_us Page</a>
-
-                  </div>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="charts.html">
-                      <i class="fas fa-fw fa-chart-area"></i>
-                      <span>Charts</span></a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="tables.html">
-                      <i class="fas fa-fw fa-table"></i>
-                      <span>Tables</span></a>
-              </li>
-          </ul>
-
-          <div id="content-wrapper">
-
-              <div class="container-fluid">
-
-                  <div layout:fragment="custom-content">
-                  </div>
-
-              </div>
-
-              <!-- Sticky Footer -->
-              <footer class="sticky-footer">
-                  <div class="container my-auto">
-                      <!--<div class="row">-->
-                      <!--<span th:text="#{language.change}"></span>:-->
-                      <!--<select class="dropdown-menu" aria-labelledby="dropdown01" id="locale">-->
-                      <!--<option><a class="dropdown-item" href="javascript: history.go(-1)" th:value="en" th:href="@{'?lang=us'}" th:text="#{lang.eng}"></a></option>-->
-                      <!--<option><a class="dropdown-item" href="javascript: history.go(-1)" th:value="fr" th:href="@{'?lang=fr'}" th:text="#{lang.fr}"></a></option>-->
-                      <!--<option><a class="dropdown-item" href="javascript: history.go(-1)" th:value="mm" th:href="@{'?lang=mm'}" th:text="#{lang.mm}"></a></option>-->
-                      <!--<option><a class="dropdown-item" href="javascript: history.go(-1)" th:value="cn" th:href="@{'?lang=cn'}" th:text="#{lang.zh}"></a></option>-->
-                      <!--<option><a class="dropdown-item" href="javascript: history.go(-1)" th:value="jp" th:href="@{'?lang=jp'}" th:text="#{lang.jp}"></a></option>-->
-                      <!--</select>-->
-                      <!--</div>-->
-                      <div class="copyright text-center my-auto">
-                          <span>Copyright © Our-Website 2019 </span>
-                          <a href="#" style=" color: #c33b32; font-weight:bold;">JDC Students Batch?? (^_^)
-                          </a>
-                      </div>
-                  </div>
-              </footer>
-
-          </div>
-          <!-- /.content-wrapper -->
-
-      </div>
-      <!-- /#wrapper -->
-
-      <!-- Scroll to Top Button-->
-      <a class="scroll-to-top rounded" href="#page-top">
-          <i class="fas fa-angle-up"></i>
-      </a>
+    </div><!-- /.container -->
 
 
     <!-- Bootstrap core JavaScript
