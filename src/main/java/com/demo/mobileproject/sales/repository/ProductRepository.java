@@ -11,12 +11,13 @@ import com.demo.mobileproject.sales.entity.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
+
+	//@Query(value ="select COUNT(*) from product_instock where product_id = :productId", nativeQuery = true)
 	
-	
-	@Query("SELECT p FROM Product p JOIN p.category c WHERE c.name  %:category%")
+	@Query("SELECT p FROM Product p WHERE p.category.name  %:category%")
 	List<Product> getProductByCategory(@Param("category") String category);
 	
-	@Query("SELECT p FROM Product p JOIN p.brand b WHERE b.name  %:brand%")
+	@Query("SELECT p FROM Product p WHERE p.brand.name  %:brand%")
 	List<Product> getProductByBrand(@Param("brand") String brand);
 	
 
