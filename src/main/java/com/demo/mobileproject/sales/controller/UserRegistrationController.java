@@ -1,4 +1,4 @@
-package com.demo.mobileproject.security.controller;
+package com.demo.mobileproject.sales.controller;
 
 import java.util.Arrays;
 
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.demo.mobileproject.security.dto.UserRegistrationDto;
+import com.demo.mobileproject.sales.dto.UserRegistrationDto;
 import com.demo.mobileproject.security.entity.AppRole;
 import com.demo.mobileproject.security.entity.AppUser;
 import com.demo.mobileproject.security.service.AppRoleService;

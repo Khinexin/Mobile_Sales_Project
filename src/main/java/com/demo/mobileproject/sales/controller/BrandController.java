@@ -43,10 +43,10 @@ public class BrandController {
 			try {
 				if (brand.getId() == -1) {
 					brandService.createBrand(brand);
-					LOG.info("New Brand has created");
+					LOG.info("New Brand has created\t");
 				} else {
 					brandService.updateBrand(brand);
-					LOG.info("Updated Brand where Id = " + brand.getId());
+					LOG.info("Updated Brand \t" + brand.getId());
 				}
 			} catch (ConstraintViolationException e) {
 				model.addAttribute("nameUniqueErr", "This name already exit!");

@@ -1,4 +1,4 @@
-package com.demo.mobileproject.security.dto;
+package com.demo.mobileproject.sales.dto;
 
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;

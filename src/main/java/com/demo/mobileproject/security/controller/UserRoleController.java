@@ -19,6 +19,12 @@ public class UserRoleController {
 	@Autowired
 	AppRoleService roleService;
 	
+	// test admin layout
+	@GetMapping("/layout")
+	public String testAdminLayout() {
+		return "admin/layout/adminlayout";
+	}
+	
 	@GetMapping("/createRole")
 	public String createRole(Model model) {
 		return "admin/create_role";

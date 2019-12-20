@@ -44,10 +44,10 @@ public class CategoryController {
 			try {
 				if (category.getId() == -1) {
 					categoryService.createCategory(category);
-					LOG.info("New Category has created");
+					LOG.info("New Category has created\t");
 				} else {
 					categoryService.updateCategory(category);
-					LOG.info("Updated Category where Id = " + category.getId());
+					LOG.info("Updated Category \t " + category.getId());
 				}
 			} catch (ConstraintViolationException e) {
 				bindingResult.addError(new FieldError("category", "name", category.getName(), false, null, null,
