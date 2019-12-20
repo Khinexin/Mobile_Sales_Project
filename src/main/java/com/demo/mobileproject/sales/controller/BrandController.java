@@ -24,65 +24,67 @@ import com.demo.mobileproject.sales.service.BrandService;
 @Controller
 @RequestMapping("/admin")
 public class BrandController {
-	
-	 private static final Logger LOG = LogManager.getLogger(BrandController.class);
 
-	    @Autowired BrandService brandService;
+	private static final Logger LOG = LogManager.getLogger(BrandController.class);
 
-	    // create
-	    @GetMapping("/createBrand")
-	    public String createBrand(ModelMap model) {
-	        model.addAttribute("brand", Brand.builder().id(-1).build());
-	        return "admin/create_brand";
-	    }
+	@Autowired
+	BrandService brandService;
 
-	    @PostMapping("/saveBrand")
-	    public String createProcessBrand(ModelMap model, @ModelAttribute("brand") @Valid Brand brand, BindingResult bindingResult) {
-	        if(!bindingResult.hasErrors()){
-	            try{
-	                if (brand.getId() == -1) {
-	                    brandService.createBrand(brand);
-	                    LOG.info("New Brand has created");
-	                } else{
-	                    brandService.updateBrand(brand);
-	                    LOG.info("Updated Brand where Id = "+brand.getId());
-	                }
-	            }catch (ConstraintViolationException e){
-	                model.addAttribute("nameUniqueErr", "This name already exit!");
-	                LOG.error("ConstraintViolationException : Error occur while saving Brand!"+"\n"+e.getMessage());
-	            }catch (Exception e){
-	                e.printStackTrace();
-	            }
-	            return "redirect:/admin/brandlist";
-	        } else{
-	            return "admin/create_brand";
-	        }
+	// create
+	@GetMapping("/createBrand")
+	public String createBrand(ModelMap model) {
+		model.addAttribute("brand", Brand.builder().id(-1).build());
+		return "admin/create_brand";
+	}
 
-	    }
+	@PostMapping("/saveBrand")
+	public String createProcessBrand(ModelMap model, @ModelAttribute("brand") @Valid Brand brand,
+			BindingResult bindingResult) {
+		if (!bindingResult.hasErrors()) {
+			try {
+				if (brand.getId() == -1) {
+					brandService.createBrand(brand);
+					LOG.info("New Brand has created");
+				} else {
+					brandService.updateBrand(brand);
+					LOG.info("Updated Brand where Id = " + brand.getId());
+				}
+			} catch (ConstraintViolationException e) {
+				model.addAttribute("nameUniqueErr", "This name already exit!");
+				LOG.error("ConstraintViolationException : Error occur while saving Brand!" + "\n" + e.getMessage());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return "redirect:/admin/brandlist";
+		} else {
+			return "admin/create_brand";
+		}
 
-	    //update
-	    @GetMapping("/editBrand/{catId}")
-	    public String editBrandById(@PathVariable("catId") int id, ModelMap model) {
-	        try {
-	            model.addAttribute("brand", brandService.findByIdBrand(id));
-	        } catch (ResourceNotFoundException e) {
-	            e.printStackTrace();
-	        }
-	        return "admin/create_brand";
-	    }
+	}
 
-	    //findall
-	    @GetMapping("/brandlist")
-	    public String findAllBrandList(Model model) {
-	        model.addAttribute("brandList", brandService.findAllBrand());
-	        return "admin/list_brand";
-	    }
+	// update
+	@GetMapping("/editBrand/{catId}")
+	public String editBrandById(@PathVariable("catId") int id, ModelMap model) {
+		try {
+			model.addAttribute("brand", brandService.findByIdBrand(id));
+		} catch (ResourceNotFoundException e) {
+			e.printStackTrace();
+		}
+		return "admin/create_brand";
+	}
 
-	    //delete
-	    @GetMapping("/deleteBrand/{catId}")
-	    public String deleteBrandById(@PathVariable("catId") int id) {
-	        brandService.deleteBrandById(id);
-	        return "redirect:/admin/brandlist";
-	    }
+	// findall
+	@GetMapping("/brandlist")
+	public String findAllBrandList(Model model) {
+		model.addAttribute("brandList", brandService.findAllBrand());
+		return "admin/list_brand";
+	}
+
+	// delete
+	@GetMapping("/deleteBrand/{catId}")
+	public String deleteBrandById(@PathVariable("catId") int id) {
+		brandService.deleteBrandById(id);
+		return "redirect:/admin/brandlist";
+	}
 
 }

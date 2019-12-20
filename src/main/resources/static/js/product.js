@@ -85,7 +85,7 @@ $(document)
 														+ i
 														+ ".price' name='excelManyDtoList["
 														+ i
-														+ "].price' type='text' placeholder='Price' value='"
+														+ "].price' type='number' min='0' step='0.01' placeholder='Price' value='"
 														+ tempList[i].price
 														+ "'> "
 														+ "</div>"
@@ -166,7 +166,7 @@ $(document)
 																	+ nextindex
 																	+ ".price' name='excelManyDtoList["
 																	+ nextindex
-																	+ "].price' type='text' placeholder='Price' value=''> "
+																	+ "].price' type='number' min='0' step='0.01' placeholder='Price' value=''> "
 																	+ "</div>"
 																	+ "<div class='form-group col-md-2'>"
 																	+ "<input required class='form-control' id='excelManyDtoList"

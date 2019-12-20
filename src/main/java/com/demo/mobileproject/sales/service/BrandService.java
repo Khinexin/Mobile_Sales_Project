@@ -7,17 +7,18 @@ import com.demo.mobileproject.sales.entity.Brand;
 
 public interface BrandService {
 
-    
-    Brand createBrand(Brand brand);
-    Brand updateBrand(Brand brand);
-    
-    Brand findByBrandName(String name);
-    Brand findByIdBrand(int id) throws ResourceNotFoundException;
-  
-    void  deleteBrandById(int id);
+	Brand createBrand(Brand brand);
 
-    long countBrand();
-    
-    List<Brand> findAllBrand();
+	Brand updateBrand(Brand brand);
+
+	Brand findByBrandName(String name);
+
+	Brand findByIdBrand(int id) throws ResourceNotFoundException;
+
+	void deleteBrandById(int id);
+
+	long countBrand();
+
+	List<Brand> findAllBrand();
 
 }

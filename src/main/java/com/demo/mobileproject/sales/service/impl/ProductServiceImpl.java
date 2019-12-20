@@ -14,11 +14,11 @@ import com.demo.mobileproject.sales.repository.ProductRepository;
 import com.demo.mobileproject.sales.service.ProductService;
 
 @Service
-public class ProductServiceImpl implements ProductService{
-	
+public class ProductServiceImpl implements ProductService {
+
 	@Autowired
 	ProductRepository ProductRepository;
-	
+
 	@Autowired
 	ProductInstockRepository productInstockRepository;
 
@@ -51,10 +51,16 @@ public class ProductServiceImpl implements ProductService{
 	public long countProduct() {
 		return ProductRepository.count();
 	}
- 
-	@Override @Transactional
+
+	@Override
+	@Transactional
 	public void deleteProductInstockByProductId(int productId) {
 		productInstockRepository.deleteProductInstockById(productId);
+	}
+
+	@Override
+	public long countProductInstockByProductId(int productId) {
+		return productInstockRepository.countProductInsotckByProductId(productId);
 	}
 
 //	private List<ProductInstock> searchListAndSetProductNull(int productId) {

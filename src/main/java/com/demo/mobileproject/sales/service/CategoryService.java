@@ -7,18 +7,18 @@ import java.util.List;
 
 public interface CategoryService {
 
-    Category createCategory(Category category);
+	Category createCategory(Category category);
 
-    void updateCategory(Category category);
+	void updateCategory(Category category);
 
-    List<Category> findAllCategory();
+	List<Category> findAllCategory();
 
-    Category findByIdCategory(int id) throws ResourceNotFoundException;
+	Category findByIdCategory(int id) throws ResourceNotFoundException;
 
-    void deleteCategoryById(int name);
+	void deleteCategoryById(int name);
 
-    long countCategoryTable();
-    
-    Category findByCategoryName(String name);
+	long countCategoryTable();
+
+	Category findByCategoryName(String name);
 
 }

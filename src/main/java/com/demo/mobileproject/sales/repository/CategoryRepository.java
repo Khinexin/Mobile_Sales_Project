@@ -9,8 +9,8 @@ import com.demo.mobileproject.sales.entity.Category;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
-	
+
 	@Query("select c from Category c where c.name =:name")
-	Category findCategoryByName(@Param("name")String name);
+	Category findCategoryByName(@Param("name") String name);
 
 }

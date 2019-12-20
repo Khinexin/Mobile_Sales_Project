@@ -4,16 +4,17 @@ import java.util.ArrayList;
 
 import lombok.*;
 
-@Data @NoArgsConstructor
+@Data
+@NoArgsConstructor
 public class ShoppingCartDTO {
 
-    private Integer id;
+	private Integer id;
 
-    private ArrayList<Integer> productIds;
-    private String productName;
+	private ArrayList<Integer> productIds;
+	private String productName;
 
-    private ArrayList<Integer> product_SubIds;
-    private String pricePerItem;
-    private int quantity;
+	private ArrayList<Integer> product_SubIds;
+	private String pricePerItem;
+	private int quantity;
 
 }

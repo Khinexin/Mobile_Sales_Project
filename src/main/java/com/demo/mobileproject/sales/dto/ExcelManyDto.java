@@ -10,13 +10,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class ExcelManyDto {
-	
+
 	private Integer id;
 
 	private String color;
 	private String memory;
-	private double price;
+	private String price;
 	private String size;
-	private int quantity;
+	private String quantity;
 
 }

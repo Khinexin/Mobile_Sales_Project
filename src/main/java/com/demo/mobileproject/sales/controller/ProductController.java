@@ -79,6 +79,8 @@ public class ProductController {
 			return "redirect:/admin/proudctList";
 
 		} else {
+			model.addAttribute("categorys", categoryService.findAllCategory());
+			model.addAttribute("brands", brandService.findAllBrand());
 			LOG.error("binding result has error while saving product :: " + productDto.getId());
 			return "admin/create_product";
 		}
@@ -90,7 +92,22 @@ public class ProductController {
 		List<ProductInstock> productInstockList = new ArrayList<ProductInstock>();
 
 		for (ExcelManyDto inDto : productDto.getExcelManyDtoList()) {
-			productInstockList.add(new ProductInstock(inDto, product));
+
+			if (!((inDto.getColor().isEmpty() || null == inDto.getColor())
+					&& (inDto.getMemory().isEmpty() || null == inDto.getMemory())
+					&& (inDto.getSize().isEmpty() || null == inDto.getSize())
+					&& (inDto.getPrice().isEmpty() || inDto.getPrice().equals("0.00") || inDto.getPrice().equals("0.0")
+							|| inDto.getPrice().equals("0") || null == inDto.getPrice())
+					&& (inDto.getQuantity().isEmpty() || inDto.getQuantity().equals("0")
+							|| null == inDto.getQuantity()))) {
+
+				System.out.println("in if .... many is not null");
+				productInstockList.add(new ProductInstock(inDto, product));
+			} else {
+				System.out.println("in if .... many is null");
+				productInstockList = null;
+			}
+
 		}
 
 		product.setBrand(brandService.findByBrandName(productDto.getBrand()));
@@ -108,9 +125,9 @@ public class ProductController {
 			productInstockList.add(new ProductInstock(inDto, product));
 		}
 
-		System.out.println("dto brand name "+productDto.getBrand());
-		System.out.println("dto category name "+productDto.getCategory());
-		
+		System.out.println("dto brand name " + productDto.getBrand());
+		System.out.println("dto category name " + productDto.getCategory());
+
 		product.setBrand(brandService.findByBrandName(productDto.getBrand()));
 		product.setCategory(categoryService.findByCategoryName(productDto.getCategory()));
 		product.setItenName(productDto.getItemName());
@@ -120,7 +137,13 @@ public class ProductController {
 
 	private Product clearInstockBeforeUpdate(ExcelOneDto productDto) {
 		Product product = productService.findProduct(productDto.getId());
-		productService.deleteProductInstockByProductId(product.getId());
+		
+		if(productService.countProductInstockByProductId(product.getId())>0) {
+			productService.deleteProductInstockByProductId(product.getId());
+		}else {
+			System.out.println("no productInstock ... initially.....");
+		}
+		
 		return product;
 	}
 
@@ -135,9 +158,9 @@ public class ProductController {
 			pInDto.setId(pIn.getId());
 			pInDto.setMemory(pIn.getMemeory());
 			pInDto.setColor(pIn.getColor());
-			pInDto.setQuantity(pIn.getQuantity());
+			pInDto.setQuantity(String.valueOf(pIn.getQuantity()));
 			pInDto.setSize(pIn.getSize());
-			pInDto.setPrice(pIn.getPrice());
+			pInDto.setPrice(String.valueOf(pIn.getPrice()));
 			manyDto.add(pInDto);
 		}
 

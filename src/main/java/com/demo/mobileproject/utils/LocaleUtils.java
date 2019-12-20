@@ -6,11 +6,11 @@ import java.util.Locale;
 
 public class LocaleUtils {
 
-    private LocaleUtils() {
-    }
+	private LocaleUtils() {
+	}
 
-    public static Locale getCurrentLocale() {
-        return LocaleContextHolder.getLocale();
-    }
+	public static Locale getCurrentLocale() {
+		return LocaleContextHolder.getLocale();
+	}
 
 }

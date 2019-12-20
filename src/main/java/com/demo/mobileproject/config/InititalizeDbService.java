@@ -135,20 +135,16 @@ public class InititalizeDbService {
 				String[] record4 = records.get(row + 3);
 
 				productInstockListTemp.add(ExcelManyDto.builder().id(Integer.parseInt(record1[5])).color(record1[6])
-						.memory(record1[7]).price(Double.parseDouble(record1[8])).size(record1[9])
-						.quantity(Integer.parseInt(record1[10])).build());
+						.memory(record1[7]).price(record1[8]).size(record1[9]).quantity(record1[10]).build());
 
 				productInstockListTemp.add(ExcelManyDto.builder().id(Integer.parseInt(record2[5])).color(record2[6])
-						.memory(record2[7]).price(Double.parseDouble(record2[8])).size(record2[9])
-						.quantity(Integer.parseInt(record2[10])).build());
+						.memory(record2[7]).price(record2[8]).size(record2[9]).quantity(record2[10]).build());
 
 				productInstockListTemp.add(ExcelManyDto.builder().id(Integer.parseInt(record3[5])).color(record3[6])
-						.memory(record3[7]).price(Double.parseDouble(record3[8])).size(record3[9])
-						.quantity(Integer.parseInt(record3[10])).build());
+						.memory(record3[7]).price(record3[8]).size(record3[9]).quantity(record3[10]).build());
 
 				productInstockListTemp.add(ExcelManyDto.builder().id(Integer.parseInt(record4[5])).color(record4[6])
-						.memory(record4[7]).price(Double.parseDouble(record4[8])).size(record4[9])
-						.quantity(Integer.parseInt(record4[10])).build());
+						.memory(record4[7]).price(record4[8]).size(record4[9]).quantity(record4[10]).build());
 
 				productListTemp.add(ExcelOneDto.builder().id(Integer.parseInt(record1[0])).category(record1[1])
 						.brand(record1[2]).itemName(record1[3]).otherName(record1[4])
@@ -167,13 +163,13 @@ public class InititalizeDbService {
 					category = categoryService
 							.createCategory(Category.builder().name(excelOneDto.getCategory()).build());
 				}
-				
+
 				Brand brand = brandService.findByBrandName(excelOneDto.getBrand());
 				if (null == brand) {
 					brand = brandService.createBrand(Brand.builder().name(excelOneDto.getBrand()).build());
 				}
 
-				List<ProductInstock> pInstockList = new ArrayList<>(); 
+				List<ProductInstock> pInstockList = new ArrayList<>();
 				for (ExcelManyDto excelManyDto : excelOneDto.getExcelManyDtoList()) {
 					pInstockList.add(new ProductInstock(excelManyDto, product));
 				}
@@ -183,12 +179,11 @@ public class InititalizeDbService {
 				product.setItenName(excelOneDto.getItemName());
 				product.setOtherName(excelOneDto.getOtherName());
 				product.setProductInstockList(pInstockList);
-				
 
 				productService.createProduct(product);
-				
+
 			}
-			
+
 			System.out.println(" finish creating product list.....");
 
 		} catch (IOException e) {

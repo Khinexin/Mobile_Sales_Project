@@ -27,19 +27,28 @@ public class ProductInstock {
 	private int quantity;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "product_id" , referencedColumnName =  "id" )
+	@JoinColumn(name = "product_id", referencedColumnName = "id")
 	private Product product;
 
 	public ProductInstock(ExcelManyDto excelManyDto, Product product) {
 		super();
 		this.color = excelManyDto.getColor();
 		this.memeory = excelManyDto.getMemory();
-		this.price = excelManyDto.getPrice();
 		this.size = excelManyDto.getSize();
-		this.quantity = excelManyDto.getQuantity();
-		this.product= product;
+		this.product = product;
+		
+		if (null == excelManyDto.getPrice() || excelManyDto.getPrice().isEmpty() || excelManyDto.getPrice().trim().equals("")) {
+			this.price = 0.00;
+		} else {
+			this.price = Double.parseDouble(excelManyDto.getPrice());
+		}
+		
+		if (null == excelManyDto.getQuantity() || excelManyDto.getQuantity().isEmpty() || excelManyDto.getQuantity().trim().equals("")) {
+			this.quantity = 0;
+		} else {
+			this.quantity = Integer.parseInt(excelManyDto.getQuantity());
+		}
+		
 	}
-	
-	
-	
+
 }

@@ -12,7 +12,7 @@ import java.util.Scanner;
 @SpringBootTest
 public class MobileProjectApplicationTest {
 
-    @Test
-    public void contextLoads() {
-    }
+	@Test
+	public void contextLoads() {
+	}
 }

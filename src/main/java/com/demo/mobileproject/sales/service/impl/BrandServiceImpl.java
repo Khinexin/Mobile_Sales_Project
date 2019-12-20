@@ -13,33 +13,33 @@ import org.springframework.stereotype.Service;
 @Service
 public class BrandServiceImpl implements BrandService {
 
-    @Autowired
-    BrandRepository brandRepository;
+	@Autowired
+	BrandRepository brandRepository;
 
-    @Override
-    public Brand findByBrandName(String name) {
-        return brandRepository.findBrandByName(name);
-    }
+	@Override
+	public Brand findByBrandName(String name) {
+		return brandRepository.findBrandByName(name);
+	}
 
-    @Override
-    public Brand createBrand(Brand brand) {
-        return brandRepository.save(brand);
-    }
+	@Override
+	public Brand createBrand(Brand brand) {
+		return brandRepository.save(brand);
+	}
 
-    @Override
-    public Brand updateBrand(Brand brand) {
-        return brandRepository.saveAndFlush(brand);
-    }
+	@Override
+	public Brand updateBrand(Brand brand) {
+		return brandRepository.saveAndFlush(brand);
+	}
 
-    @Override
-    public void deleteBrandById(int id) {
-        brandRepository.deleteById(id);
-    }
+	@Override
+	public void deleteBrandById(int id) {
+		brandRepository.deleteById(id);
+	}
 
-    @Override
-    public long countBrand() {
-        return brandRepository.count();
-    }
+	@Override
+	public long countBrand() {
+		return brandRepository.count();
+	}
 
 	@Override
 	public List<Brand> findAllBrand() {
@@ -47,9 +47,8 @@ public class BrandServiceImpl implements BrandService {
 	}
 
 	@Override
-	public Brand findByIdBrand(int id) throws ResourceNotFoundException{
-		return brandRepository.findById(id).orElseThrow(()->new ResourceNotFoundException());
+	public Brand findByIdBrand(int id) throws ResourceNotFoundException {
+		return brandRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException());
 	}
-    
-    
+
 }

@@ -11,18 +11,18 @@ import org.springframework.stereotype.Repository;
 import com.demo.mobileproject.sales.entity.ProductInstock;
 
 @Repository
-public interface ProductInstockRepository extends JpaRepository<ProductInstock, Integer>{
-	
+public interface ProductInstockRepository extends JpaRepository<ProductInstock, Integer> {
+
 	@Modifying
-	@Query(value = "delete from product_instock where product_id = :id",nativeQuery = true )
-	void deleteProductInstockById(@Param("id") int id);
-	
-	@Query("SELECT pin FROM ProductInstock pin join pin.product pr where pr.id=:productId")
-	List<ProductInstock> selectProductInsotckByProductId(@Param("productId") int id);
-    
+	@Query(value = "delete from product_instock where product_id = :id", nativeQuery = true)
+	void deleteProductInstockById(@Param("id") int productId);
 
+//	@Query("SELECT pin FROM ProductInstock pin join pin.product pr where pr.id=:productId")
+//	List<ProductInstock> selectProductInsotckByProductId(@Param("productId") int id);
 	
 	
+	
+	@Query(value ="select COUNT(*) from product_instock where product_id = :productId", nativeQuery = true)
+	long countProductInsotckByProductId(@Param("productId") int id);
+
 }
-
-
