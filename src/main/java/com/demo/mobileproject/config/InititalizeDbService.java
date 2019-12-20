@@ -1,12 +1,10 @@
 package com.demo.mobileproject.config;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +16,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.demo.mobileproject.sales.dto.ExcelManyDto;
@@ -31,6 +30,10 @@ import com.demo.mobileproject.sales.enums.CategoryNamesEnum;
 import com.demo.mobileproject.sales.service.BrandService;
 import com.demo.mobileproject.sales.service.CategoryService;
 import com.demo.mobileproject.sales.service.ProductService;
+import com.demo.mobileproject.security.entity.AppRole;
+import com.demo.mobileproject.security.entity.AppUser;
+import com.demo.mobileproject.security.service.AppRoleService;
+import com.demo.mobileproject.security.service.AppUserService;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 
@@ -45,20 +48,57 @@ public class InititalizeDbService {
 	private ProductService productService;
 	@Autowired
 	private BrandService brandService;
-
 	@Autowired
 	ResourceLoader resourceLoader;
+	@Autowired
+	private AppUserService userService;
+	@Autowired
+	private AppRoleService roleService;
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+
+	private static final String ROLE_ADMIN = "ROLE_ADMIN";
+	private static final String ROLE_USER = "ROLE_USER";
 
 	@PostConstruct
 	public void init() throws Exception {
 
-		LOGGER.debug(" ---====================--- ");
-		LOGGER.debug(" |   Data Initialized!   | ");
-		LOGGER.debug(" ---====================--- ");
+		prepareRoles();
+		prepareUserRole();
 
 		prepareCategory();
 		prepareBrand();
 		prepareProducts();
+
+	}
+
+	private void prepareUserRole() {
+		if (userService.countUser() == 0) {
+			AppRole admin = roleService.findRoleByName(ROLE_ADMIN);
+			AppRole user = roleService.findRoleByName(ROLE_USER);
+
+			AppUser user1 = new AppUser();
+			user1.setName("MrUser");
+			user1.setEmail("user@gmail.com");
+			user1.setPassword(passwordEncoder.encode("user"));
+			user1.setRoles(Arrays.asList(user));
+
+			AppUser admin1 = new AppUser();
+			admin1.setName("MrAdmin");
+			admin1.setEmail("admin@gmail.com");
+			admin1.setPassword(passwordEncoder.encode("admin"));
+			admin1.setRoles(Arrays.asList(user, admin));
+
+			userService.createUser(user1);
+			userService.createUser(admin1);
+		}
+	}
+
+	private void prepareRoles() {
+		if (roleService.countRole() == 0) {
+			roleService.createRole(new AppRole(ROLE_ADMIN));
+			roleService.createRole(new AppRole(ROLE_USER));
+		}
 
 	}
 

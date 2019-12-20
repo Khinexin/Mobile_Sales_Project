@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="admin/layout/adminlayout">
+<head>
+<meta charset="ISO-8859-1">
+<title>Role List</title>
+</head>
+<body>
+
+	<div layout:fragment="admin-content">
+
+		<h2>Role List</h2>
+
+		<table id="myTable" class="table table-striped ">
+			<thead>
+				<tr>
+					<th>Name</th>
+
+					<th>Edit/Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="r : ${roles}">
+
+					<td th:text="${r.name}"></td>
+
+					<td><!-- <a th:href="@{'/admin/editProduct/'+${pd.id}}"> <span
+							class="glyphicon glyphicon-edit"></span></a> &emsp; <a
+						th:href="@{'/admin/deleteProduct/'+${pd.id}}"> <span
+							class="glyphicon glyphicon-trash"></span></a> --></td>
+
+
+				</tr>
+			</tbody>
+		</table>
+
+
+		<script>
+			$(document).ready(function() {
+				$('#myTable').DataTable();
+			});
+		</script>
+	</div>
+
+</body>
+</html>

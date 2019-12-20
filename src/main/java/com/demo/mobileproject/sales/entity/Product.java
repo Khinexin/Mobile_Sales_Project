@@ -12,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.demo.mobileproject.sales.dto.ExcelOneDto;
-
 import lombok.*;
 
 @Entity

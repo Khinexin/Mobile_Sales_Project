@@ -1,12 +1,8 @@
 package com.demo.mobileproject.sales.controller;
 
-import java.util.Arrays;
-import java.util.List;
-
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
-import com.demo.mobileproject.sales.enums.CategoryNamesEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

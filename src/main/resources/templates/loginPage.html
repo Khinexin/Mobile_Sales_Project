@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en"
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
       xmlns:th="http://www.thymeleaf.org">
 <head>
 
@@ -57,8 +57,83 @@
 <body>
 
 
-<div class="container">
-    <!-- /login?error=true -->
+
+<div class="limiter">
+			<div class="container-login100">
+				<div class="wrap-login100">
+
+					<form class="login100-form validate-form" action="home"
+						th:action="@{/login}" method="post">
+						<span class="login100-form-title"> Member Login </span>
+
+						<div class="wrap-input100 validate-input"
+							data-validate="Valid email is required: ex@abc.xyz">
+							<input class="input100" type="text" name="username"
+								placeholder="Email"> <span class="focus-input100"></span>
+							<span class="symbol-input100"> <i class="fa fa-envelope"
+								aria-hidden="true"></i>
+							</span>
+						</div>
+
+						<div class="wrap-input100 validate-input"
+							data-validate="Password is required">
+							<input class="input100" type="password" name="password"
+								placeholder="Password"> <span class="focus-input100"></span>
+							<span class="symbol-input100"> <i class="fa fa-lock"
+								aria-hidden="true"></i>
+							</span>
+						</div>
+
+						<div class="container-login100-form-btn">
+							<button class="login100-form-btn" th:text="#{label.login}"
+								type="submit">Login</button>
+						</div>
+
+						<div class="container-login100-form-btn">
+						
+						<div class="row">
+							<div class="col-xs-12">
+								<div th:if="${param.error}"
+									class="alert alert-danger x">
+									<p>
+										<i class="icon fa fa-ban"></i> <span
+											th:text="#{error.login_failed}">Invalid Email and
+											Password.</span>
+									</p>
+								</div>
+								<div th:if="${param.logout}"
+									class="alert alert-info alert-dismissable">
+									<p>
+										<i class="icon fa fa-info"></i> <span
+											th:text="#{info.logout_success}">You have been logged
+											out.</span>
+									</p>
+								</div>
+								<div th:if="${msg!=null}"
+									class="alert alert-warning alert-dismissable">
+									<p>
+										<i class="icon fa fa-warning"></i> <span th:text="${msg}"></span>
+									</p>
+								</div>
+							</div>
+						</div>
+						
+						</div>
+
+
+						<div class="text-center p-t-136">
+							<a class="txt2" href="#" th:href="@{/registration}"> Create your Account <i
+								class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+							</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+<!-- <div class="container">
+    /login?error=true
     <div style="color:red;margin:10px 0px;" th:if="${#request.getParameter('error') == 'true'}">
         Login Failed!!!<br/>
         Reason :
@@ -81,7 +156,7 @@
                 </div>
                 <div class="panel-body">
 
-                    <!--<input class="btn btn-block btn-social btn-facebook" type="submit" value="Login via facebook">-->
+                    <input class="btn btn-block btn-social btn-facebook" type="submit" value="Login via facebook">
 
 
                     <div class="row social-box">
@@ -149,52 +224,7 @@
     </div>
 
 </div>
-<br/>
-<!--<footer>-->
-<!--<div class="container">-->
-<!--<br>-->
-<!--<h4>Hello members! Hint for your logins.</h4>-->
-<!--<ul>-->
-<!--<li>Admin Account-->
-<!--<ul>-->
-<!--<li>name : yournameadmin</li>-->
-<!--<li>pass : yourname</li>-->
-<!--</ul>-->
-<!--</li>-->
-<!--<li>User Account-->
-<!--<ul>-->
-<!--<li>name : yournameuser</li>-->
-<!--<li>pass : yourname</li>-->
-<!--</ul>-->
-<!--</li>-->
-<!--<br/>-->
-<!--<li><p style="color: orangered"> no cap & all samll & no space </p></li>-->
-<!--</ul>-->
-<!--</div>-->
-<!--</footer>-->
-
-
-<!--<script type="text/javascript">-->
-<!--angular.module("app", []).controller("home", function($http) {-->
-<!--var self = this;-->
-<!--$http.get("/user").success(function(data) {-->
-<!--self.user = data.userAuthentication.details.name;-->
-<!--self.authenticated = true;-->
-<!--}).error(function() {-->
-<!--self.user = "N/A";-->
-<!--self.authenticated = false;-->
-<!--});-->
-<!--self.logout = function() {-->
-<!--$http.post('/logout', {}).success(function() {-->
-<!--self.authenticated = false;-->
-<!--$location.path("/");-->
-<!--}).error(function(data) {-->
-<!--console.log("Logout failed")-->
-<!--self.authenticated = false;-->
-<!--});-->
-<!--};-->
-<!--});-->
-<!--</script>-->
+<br/> -->
 
 
 <script src="../static/vendor/js/jquery.min.js" th:src="@{/vendor/js/jquery.min.js}" type="text/javascript"></script>
@@ -216,97 +246,6 @@
 <script src="../static/vendor/js/move-top.js" th:src="@{/vendor/js/move-top.js}" type="text/javascript"></script>
 <script src="../static/vendor/js/easing.js" th:src="@{/vendor/js/easing.js}" type="text/javascript"></script>
 
-<!--<script type="text/javascript">-->
-<!--shoe.render();-->
-<!--shoe.cart.on('shoe_checkout', function (evt) {-->
-<!--var items, len, i;-->
-<!--if (this.subtotal() > 0) {-->
-<!--items = this.items();-->
-<!--for (i = 0, len = items.length; i < len; i++) {-->
-<!--}-->
-<!--}-->
-<!--});-->
-<!--</script>-->
-
-<script type="text/javascript">
-    //<![CDATA[
-    $(window).load(function () {
-        $("#slider-range").slider({
-            range: true,
-            min: 0,
-            max: 9000,
-            values: [50, 6000],
-            slide: function (event, ui) {
-                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-            }
-        });
-        $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
-    }); //]]>
-</script>
-
-<!--<script type="text/javascript">-->
-<!--jQuery(document).ready(function ($) {-->
-<!--$(".scroll").click(function (event) {-->
-<!--event.preventDefault();-->
-<!--$('html,body').animate({-->
-<!--scrollTop: $(this.hash).offset().top-->
-<!--}, 1000);-->
-<!--});-->
-<!--});-->
-<!--</script>-->
-
-
-<script>
-    window.onscroll = function () {
-        myFunction()
-    };
-
-    var navbar = document.getElementById("navigation");
-    var sticky = navbar.offsetTop;
-
-    function myFunction() {
-        if (window.pageYOffset >= sticky) {
-            navbar.classList.add("sticky")
-        } else {
-            navbar.classList.remove("sticky");
-        }
-    }
-</script>
-
-<script src="/webjars/js-cookie/js.cookie.js" th:src="@{/webjars/js-cookie/js.cookie.js}"
-        type="text/javascript"></script>
-<script type="text/javascript">
-    $.ajaxSetup({
-        beforeSend: function (xhr, settings) {
-            if (settings.type == 'POST' || settings.type == 'PUT'
-                || settings.type == 'DELETE') {
-                if (!(/^http:.*/.test(settings.url) || /^https:.*/
-                    .test(settings.url))) {
-                    // Only send the token to relative URLs i.e. locally.
-                    xhr.setRequestHeader("X-XSRF-TOKEN", Cookies
-                        .get('XSRF-TOKEN'));
-                }
-            }
-        }
-    });
-    $.get("/user", function (data) {
-        $("#user").html(data.name);
-        if (data.name == undefined) {
-            logout();
-        } else {
-            $(".unauthenticated").hide();
-            $(".authenticated").show();
-        }
-    });
-    var logout = function () {
-        $.post("/logout", function () {
-            $("#user").html('');
-            $(".unauthenticated").show();
-            $(".authenticated").hide();
-        })
-        return true;
-    }
-</script>
 
 </body>
 

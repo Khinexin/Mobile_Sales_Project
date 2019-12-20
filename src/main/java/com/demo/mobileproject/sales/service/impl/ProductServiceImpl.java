@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.demo.mobileproject.sales.entity.Product;
-import com.demo.mobileproject.sales.entity.ProductInstock;
 import com.demo.mobileproject.sales.repository.ProductInstockRepository;
 import com.demo.mobileproject.sales.repository.ProductRepository;
 import com.demo.mobileproject.sales.service.ProductService;

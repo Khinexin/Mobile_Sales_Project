@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.demo.mobileproject.exception.ResourceNotFoundException;
 import com.demo.mobileproject.sales.entity.Brand;
-import com.demo.mobileproject.sales.enums.BrandEnum;
 import com.demo.mobileproject.sales.service.BrandService;
 
 @Controller
