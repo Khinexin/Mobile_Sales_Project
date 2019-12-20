@@ -31,12 +31,12 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category findByIdCategory(String id) throws ResourceNotFoundException {
+    public Category findByIdCategory(int id) throws ResourceNotFoundException {
         return categoryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException());
     }
 
     @Override
-    public void deleteCategoryById(String id) {
+    public void deleteCategoryById(int id) {
         categoryRepository.deleteById(id);
     }
 
@@ -45,5 +45,11 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryRepository.count();
     }
 
+	@Override
+	public Category findByCategoryName(String name) {
+		return categoryRepository.findCategoryByName(name);
+	}
+
+    
 
 }

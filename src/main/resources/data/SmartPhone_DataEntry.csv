@@ -1,0 +1,61 @@
+No,Category,Brand,Item Name,Other Name,InstockId,Color,Memory,Price,Size ,Quantity
+1,iPad,Apple,Apple iPad Air (2019),Apple iPad Air 3,1,Silver,64GB,100,10x10,10
+,,,,,2,Gold,64GB,100,5x5,10
+,,,,,3,White,128GB,100,10x10,10
+,,,,,4,Black,128GB,100,5x5,10
+2,iPad,Apple,Apple iPad mini (2019),Apple iPad mini 5,5,Silver,64GB,100,10x10,10
+,,,,,6,Gold,64GB,100,5x5,10
+,,,,,7,White,128GB,100,10x10,10
+,,,,,8,Black,128GB,100,5x5,10
+3,iPad,Apple,Apple iPad Pro 12.9 (2018),,9,Silver,64GB,100,10x10,10
+,,,,,10,Gold,64GB,100,5x5,10
+,,,,,11,White,128GB,100,10x10,10
+,,,,,12,Black,128GB,100,5x5,10
+4,iPad,Apple,Apple iPad Pro 11,,13,Silver,64GB,100,10x10,10
+,,,,,14,Gold,64GB,100,5x5,10
+,,,,,15,White,128GB,100,10x10,10
+,,,,,16,Black,128GB,100,5x5,10
+5,Smartphone,Apple,Apple iPhone XS Max,,17,Silver,64GB,100,10x10,10
+,,,,,18,Gold,64GB,100,5x5,10
+,,,,,19,White,128GB,100,10x10,10
+,,,,,20,Black,128GB,100,5x5,10
+6,Smartphone,Apple,Apple iPhone XS,,21,Silver,64GB,100,10x10,10
+,,,,,22,Gold,64GB,100,5x5,10
+,,,,,23,White,128GB,100,10x10,10
+,,,,,24,Black,128GB,100,5x5,10
+7,Smartphone,Apple,Apple iPhone XR,,25,Silver,64GB,100,10x10,10
+,,,,,26,Gold,64GB,100,5x5,10
+,,,,,27,White,128GB,100,10x10,10
+,,,,,28,Black,128GB,100,5x5,10
+8,Accessory,Apple,Apple Watch Series 4,,29,Silver,64GB,100,10x10,10
+,,,,,30,Gold,64GB,100,5x5,10
+,,,,,31,White,128GB,100,10x10,10
+,,,,,32,Black,128GB,100,5x5,10
+9,Accessory,Apple,Apple Watch Series 4 Aluminum,,33,Silver,64GB,100,10x10,10
+,,,,,34,Gold,64GB,100,5x5,10
+,,,,,35,White,128GB,100,10x10,10
+,,,,,36,Black,128GB,100,5x5,10
+10,Smartphone,Apple,Apple iPad 9.7 (2018),,37,Silver,64GB,100,10x10,10
+,,,,,38,Gold,64GB,100,5x5,10
+,,,,,39,White,128GB,100,10x10,10
+,,,,,40,Black,128GB,100,5x5,10
+11,Smartphone,Apple,Apple iPhone X,,41,Silver,64GB,100,10x10,10
+,,,,,42,Gold,64GB,100,5x5,10
+,,,,,43,White,128GB,100,10x10,10
+,,,,,44,Black,128GB,100,5x5,10
+12,Smartphone,Apple,Apple iPhone 8 Plus,,45,Silver,64GB,100,10x10,10
+,,,,,46,Gold,64GB,100,5x5,10
+,,,,,47,White,128GB,100,10x10,10
+,,,,,48,Black,128GB,100,5x5,10
+13,Smartphone,Apple,Apple iPhone 8,,49,Silver,64GB,100,10x10,10
+,,,,,50,Gold,64GB,100,5x5,10
+,,,,,51,White,128GB,100,10x10,10
+,,,,,52,Black,128GB,100,5x5,10
+14,Accessory,Apple,Apple Watch Edition Series 3,,53,Silver,64GB,100,10x10,10
+,,,,,54,Gold,64GB,100,5x5,10
+,,,,,55,White,128GB,100,10x10,10
+,,,,,56,Black,128GB,100,5x5,10
+15,Accessory,Apple,Apple Watch Series 3,,57,Silver,64GB,100,10x10,10
+,,,,,58,Gold,64GB,100,5x5,10
+,,,,,59,White,128GB,100,10x10,10
+,,,,,60,Black,128GB,100,5x5,10

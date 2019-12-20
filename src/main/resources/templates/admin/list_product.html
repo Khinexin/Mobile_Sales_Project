@@ -1,50 +1,64 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="admin/layout/adminlayout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="admin/layout/adminlayout">
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Product List</title>
+<meta charset="ISO-8859-1">
+<title>Product List</title>
 </head>
 <body>
 
-<div layout:fragment="custom-content">
+	<div layout:fragment="admin-content">
 
-    <table class="table">
-        <thead>
-        <tr>
-            <!--<th>Id</th>-->
-            <th>Brand</th>
-            <th>AlsoCalled</th>
-            <th>Series</th>
-            <th>CategoryId</th>
-            <!--<th>Image1</th>
-            <th>Image2</th>
-            <th>Image3</th>-->
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="prod : ${products}">
-            <!--<td th:text="${prod.id}"></td>-->
-            <td th:text="${prod.category.id}"></td>
+		<h2>Product List</h2>
 
-            <td th:text="${prod.brand}"></td>
-            <td th:text="${prod.alsoCalled}"></td>
-            <td th:text="${prod.series}"></td>
+		<table id="myTable" class="table table-striped ">
+			<thead>
+				<tr>
+					<th>Category</th>
+					<th>Brand</th>
+					<th>ItemName</th>
+					<th>Color, Memory, Price, Size, Quantity</th>
 
-            <!--<td th:text="${prod.image1}"></td>
-            <td th:text="${prod.image2}"></td>
-            <td th:text="${prod.image3}"></td>-->
-            <td><a th:href="@{'/admin/editProduct/'+${prod.id}}" >Edit</a></td>
-            <td><a th:href="@{'/admin/deleteProduct/'+${prod.id}}" >Delete</a></td>
+					<th>Edit/Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="pd : ${products}">
 
-        </tr>
-        </tbody>
-    </table>
+					<td th:text="${pd.category.name}"></td>
+					<td th:text="${pd.brand.name}"></td>
+					<td>
+						<p th:text="${pd.itenName }"></p>
+						<p th:text="${pd.otherName }"></p>
+					</td>
 
-</div>
+					<td>
+
+						<ul class="list-inline-item"
+							th:each="pIn : ${pd.productInstockList}">
+							<li
+								th:text="${pIn.color +', '+	pIn.memeory	+', '+ pIn.price +', '+ pIn.size +', '+ pIn.quantity }"></li>
+						</ul>
+
+					</td>
+					<td><a th:href="@{'/admin/editProduct/'+${pd.id}}"> <span
+							class="glyphicon glyphicon-edit"></span></a> &emsp; <a
+						th:href="@{'/admin/deleteProduct/'+${pd.id}}"> <span
+							class="glyphicon glyphicon-trash"></span></a></td>
+
+
+				</tr>
+			</tbody>
+		</table>
+
+
+		<script>
+			$(document).ready(function() {
+				$('#myTable').DataTable();
+			});
+		</script>
+	</div>
 
 </body>
 </html>

@@ -13,10 +13,12 @@ public interface CategoryService {
 
     List<Category> findAllCategory();
 
-    Category findByIdCategory(String name) throws ResourceNotFoundException;
+    Category findByIdCategory(int id) throws ResourceNotFoundException;
 
-    void deleteCategoryById(String name);
+    void deleteCategoryById(int name);
 
     long countCategoryTable();
+    
+    Category findByCategoryName(String name);
 
 }

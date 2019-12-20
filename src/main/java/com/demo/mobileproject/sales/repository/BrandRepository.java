@@ -7,6 +7,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BrandRepository extends JpaRepository<Brand,String> {
+public interface BrandRepository extends JpaRepository<Brand,Integer> {
+	
+	@Query("select b from Brand b where b.name =:name")
+	Brand findBrandByName(@Param("name")String name);
 
 }

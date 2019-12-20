@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class ViewController {
 
-    @GetMapping(value = {"?lang=us","?lang=fr","?lang=mm","?lang=cn","?lang=jp" })
+    @GetMapping(value = {"?lang=us","?lang=mm" })
     public String makeUSUrl(HttpServletRequest request){
         return request.getServletPath()+"/"+request.getRequestURL();
     }

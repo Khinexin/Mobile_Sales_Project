@@ -1,185 +1,199 @@
 package com.demo.mobileproject.config;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.stereotype.Service;
+
+import com.demo.mobileproject.sales.dto.ExcelManyDto;
+import com.demo.mobileproject.sales.dto.ExcelOneDto;
 import com.demo.mobileproject.sales.entity.Brand;
 import com.demo.mobileproject.sales.entity.Category;
-import com.demo.mobileproject.sales.entity.ProductSmartphoneDetails;
+import com.demo.mobileproject.sales.entity.Product;
+import com.demo.mobileproject.sales.entity.ProductInstock;
 import com.demo.mobileproject.sales.enums.BrandEnum;
 import com.demo.mobileproject.sales.enums.CategoryNamesEnum;
 import com.demo.mobileproject.sales.service.BrandService;
 import com.demo.mobileproject.sales.service.CategoryService;
-import com.demo.mobileproject.sales.service.ProductSmartphoneDetailsService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.util.ResourceUtils;
-
-import javax.annotation.PostConstruct;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import com.demo.mobileproject.sales.service.ProductService;
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
 
 @Service
 public class InititalizeDbService {
 
-    private static final Logger LOGGER = LogManager.getLogger(InititalizeDbService.class);
+	private static final Logger LOGGER = LogManager.getLogger(InititalizeDbService.class);
 
+	@Autowired
+	private CategoryService categoryService;
+	@Autowired
+	private ProductService productService;
+	@Autowired
+	private BrandService brandService;
 
-    @Autowired
-    private CategoryService categoryService;
-    @Autowired
-    private ProductSmartphoneDetailsService productSmartphoneDetailsService;
-    @Autowired
-    private BrandService brandService;
+	@Autowired
+	ResourceLoader resourceLoader;
 
-    @PostConstruct
-    public void init() throws Exception {
+	@PostConstruct
+	public void init() throws Exception {
 
-        LOGGER.debug(" ---====================--- ");
-        LOGGER.debug(" |   Data Initialized!   | ");
-        LOGGER.debug(" ---====================--- ");
+		LOGGER.debug(" ---====================--- ");
+		LOGGER.debug(" |   Data Initialized!   | ");
+		LOGGER.debug(" ---====================--- ");
 
-        prepareCategory();
-        prepareBrand();
-        prepareProducts();
+		prepareCategory();
+		prepareBrand();
+		prepareProducts();
 
-    }
+	}
 
-    private void prepareCategory() {
-        if (categoryService.countCategoryTable() == 0) {
-            try {
-                LOGGER.debug(":: initialize ::  category ::");
+	private void prepareCategory() {
+		if (categoryService.countCategoryTable() == 0) {
+			try {
+				LOGGER.debug(":: initialize ::  category ::");
 
-                categoryService.createCategory(new Category(CategoryNamesEnum.SMARTPHONE.getName()));
-                categoryService.createCategory(new Category(CategoryNamesEnum.TABLET.getName()));
-                categoryService.createCategory(new Category(CategoryNamesEnum.LAPTOP.getName()));
-                categoryService.createCategory(new Category(CategoryNamesEnum.ACCESSORY.getName()));
-                categoryService.createCategory(new Category(CategoryNamesEnum.SPARES.getName()));
+				categoryService.createCategory(Category.builder().name(CategoryNamesEnum.ACCESSORY.getName()).build());
+				categoryService.createCategory(Category.builder().name(CategoryNamesEnum.LAPTOP.getName()).build());
+				categoryService.createCategory(Category.builder().name(CategoryNamesEnum.SPARES.getName()).build());
+				categoryService.createCategory(Category.builder().name(CategoryNamesEnum.SMARTPHONE.getName()).build());
+				categoryService.createCategory(Category.builder().name(CategoryNamesEnum.TABLET.getName()).build());
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
-    private void prepareBrand(){
-        if(brandService.countBrand() == 0){
-            LOGGER.debug(":: initialize ::  brand ::");
+	private void prepareBrand() {
+		if (brandService.countBrand() == 0) {
+			LOGGER.debug(":: initialize ::  brand ::");
 
-            brandService.saveBrand(new Brand(BrandEnum.APPLE.getName()));
-            brandService.saveBrand(new Brand(BrandEnum.SAMSUNG.getName()));
+			brandService.createBrand(Brand.builder().name(BrandEnum.APPLE.getName()).build());
+			brandService.createBrand(Brand.builder().name(BrandEnum.SAMSUNG.getName()).build());
 
-        }
-    }
+		}
+	}
 
+	public void prepareProducts() {
 
+		if (productService.countProduct() == 0) {
 
-    private void prepareProducts() {
-        if (productSmartphoneDetailsService.countProduct() == 0) {
-            try {
-                LOGGER.debug(":: initialize :: productDetails  -   smartphone  ::");
+			try {
+				LOGGER.debug(":: initialize :: productDetails  -   smartphone  ::");
 
-                List<List<String>> records = new ArrayList<>();
-//                try (Scanner scanner = new Scanner(new File("SmartPhone_DataEntry.csv"));) {
+				final Resource fileResource = resourceLoader.getResource("classpath:data/SmartPhone_DataEntry.csv");
 
-                File file = ResourceUtils.getFile("classpath:SmartPhone_DataEntry.csv");
-                try (Scanner scanner = new Scanner(file)) {
+				File file = fileResource.getFile();
 
-                    while (scanner.hasNextLine()) {
-                        records.add(getRecordFromLine(scanner.nextLine()));
-                    }
-                }
+				System.out.println("file.canRead()=" + file.canRead());
+				System.out.println("file.isFile()=" + file.isFile());
 
-                for (List<String> recordRow: records) {
+				if (file.canRead() == true && file.canRead() == true) {
+					readCSVFile(file.toPath());
+				}
 
-                    ProductSmartphoneDetails smartphoneDeatails = new ProductSmartphoneDetails();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
-                    Object[] tempRECORD = recordRow.toArray();
+	public void readCSVFile(Path filePath) {
 
-                    smartphoneDeatails.setCategory((String) tempRECORD[1]);
-                    smartphoneDeatails.setBrand((String) tempRECORD[2]);
+		try (Reader reader = Files.newBufferedReader(filePath)) {
 
-                    smartphoneDeatails.setPhoneSeries((String) tempRECORD[3]);
-                    smartphoneDeatails.setAlsoKnownAs((String) tempRECORD[4]);
+			CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
 
-                    smartphoneDeatails.setNetworkTechnology((String) tempRECORD[5]);
+			List<String[]> records = csvReader.readAll();
 
-                    smartphoneDeatails.setBodyDimensions((String) tempRECORD[6]);
-                    smartphoneDeatails.setBodyWeight((String) tempRECORD[7]);
+			List<ExcelOneDto> productListTemp = new ArrayList<>();
 
-                    smartphoneDeatails.setMiscPrice((String) tempRECORD[8]);
-                    smartphoneDeatails.setImageLocation((String)tempRECORD[9]);
+			System.out.println("..... start adding temp to DataObject \t record rows is..." + records.size());
 
-//                    smartphoneDeatails.setBodyBuild((String) tempRECORD[8]);
-//                    smartphoneDeatails.setBodySIM((String)tempRECORD[9]);
-//                    smartphoneDeatails.setBodyOther((String)tempRECORD[10]);
-//
-//                    smartphoneDeatails.setDisplayType((String)tempRECORD[11]);
-//                    smartphoneDeatails.setDisplaySize((String)tempRECORD[12]);
-//                    smartphoneDeatails.setDisplayResolution((String)tempRECORD[13]);
-//                    smartphoneDeatails.setDisplayProtection((String)tempRECORD[14]);
-//                    smartphoneDeatails.setDisplayOther((String)tempRECORD[15]);
-//
-//                    smartphoneDeatails.setLaunchAnnounced((String)tempRECORD[16]);
-//                    smartphoneDeatails.setLaunchStatus((String)tempRECORD[17]);
-//
-//                    smartphoneDeatails.setPlatformOS((String)tempRECORD[18]);
-//                    smartphoneDeatails.setPlatformChipset((String)tempRECORD[19]);
-//                    smartphoneDeatails.setPlatformCPU((String)tempRECORD[20]);
-//                    smartphoneDeatails.setPlatformGPU((String)tempRECORD[21]);
-//
-//                    smartphoneDeatails.setMemoryCardSlot((String)tempRECORD[22]);
-//                    smartphoneDeatails.setMemoryInternal((String)tempRECORD[23]);
-//
-//                    smartphoneDeatails.setMainCameraSingle((String)tempRECORD[24]);
-//                    smartphoneDeatails.setMainCameraDual((String)tempRECORD[25]);
-//                    smartphoneDeatails.setMainCameraFeature((String)tempRECORD[26]);
-//                    smartphoneDeatails.setMainCameraVideo((String)tempRECORD[27]);
-//
-//                    smartphoneDeatails.setSelfieCameraSingle((String)tempRECORD[28]);
-//                    smartphoneDeatails.setSelfieCameraFeatures((String)tempRECORD[29]);
-//                    smartphoneDeatails.setSelfieCameraVideo((String)tempRECORD[30]);
-//
-//                    smartphoneDeatails.setSoundLoudspeaker((String)tempRECORD[31]);
-//                    smartphoneDeatails.setSound3_5mmJack((String)tempRECORD[32]);
-//
-//                    smartphoneDeatails.setCommonsWLAN((String)tempRECORD[33]);
-//                    smartphoneDeatails.setCommonsBluetooth((String)tempRECORD[34]);
-//                    smartphoneDeatails.setCommonsGPS((String)tempRECORD[35]);
-//                    smartphoneDeatails.setCommonsNFC((String)tempRECORD[36]);
-//                    smartphoneDeatails.setCommonsRadio((String)tempRECORD[37]);
-//                    smartphoneDeatails.setCommonsUBS((String)tempRECORD[38]);
-//
-//                    smartphoneDeatails.setFeaturesSensors((String)tempRECORD[39]);
-//
-//                    smartphoneDeatails.setBatteryType((String)tempRECORD[40]);
-//                    smartphoneDeatails.setBatteryCharging((String)tempRECORD[41]);
-//                    smartphoneDeatails.setBatteryTalkTimeMusicPlay((String)tempRECORD[42]);
-//
-//                    smartphoneDeatails.setMiscColor((String)tempRECORD[43]);
-//                    smartphoneDeatails.setMiscPrice((String)tempRECORD[44]);
-//
-//                    smartphoneDeatails.setImageLocation((String) tempRECORD[45]);
+			for (int row = 0; row < records.size(); row += 4) {
 
-                    productSmartphoneDetailsService.createProduct(smartphoneDeatails);
+				List<ExcelManyDto> productInstockListTemp = new ArrayList<>();
 
-                }
+				String[] record1 = records.get(row);
+				String[] record2 = records.get(row + 1);
+				String[] record3 = records.get(row + 2);
+				String[] record4 = records.get(row + 3);
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-    private List<String> getRecordFromLine(String line) {
-        List<String> values = new ArrayList<String>();
-        try (Scanner rowScanner = new Scanner(line)) {
-            rowScanner.useDelimiter(",");
-            while (rowScanner.hasNext()) {
-                values.add(rowScanner.next());
-            }
-        }
-        return values;
-    }
+				productInstockListTemp.add(ExcelManyDto.builder().id(Integer.parseInt(record1[5])).color(record1[6])
+						.memory(record1[7]).price(Double.parseDouble(record1[8])).size(record1[9])
+						.quantity(Integer.parseInt(record1[10])).build());
+
+				productInstockListTemp.add(ExcelManyDto.builder().id(Integer.parseInt(record2[5])).color(record2[6])
+						.memory(record2[7]).price(Double.parseDouble(record2[8])).size(record2[9])
+						.quantity(Integer.parseInt(record2[10])).build());
+
+				productInstockListTemp.add(ExcelManyDto.builder().id(Integer.parseInt(record3[5])).color(record3[6])
+						.memory(record3[7]).price(Double.parseDouble(record3[8])).size(record3[9])
+						.quantity(Integer.parseInt(record3[10])).build());
+
+				productInstockListTemp.add(ExcelManyDto.builder().id(Integer.parseInt(record4[5])).color(record4[6])
+						.memory(record4[7]).price(Double.parseDouble(record4[8])).size(record4[9])
+						.quantity(Integer.parseInt(record4[10])).build());
+
+				productListTemp.add(ExcelOneDto.builder().id(Integer.parseInt(record1[0])).category(record1[1])
+						.brand(record1[2]).itemName(record1[3]).otherName(record1[4])
+						.excelManyDtoList(productInstockListTemp).build());
+
+			}
+
+			System.out.println("..... finish adding temp to DataObject");
+
+			for (ExcelOneDto excelOneDto : productListTemp) {
+
+				Product product = new Product();
+
+				Category category = categoryService.findByCategoryName(excelOneDto.getCategory());
+				if (null == category) {
+					category = categoryService
+							.createCategory(Category.builder().name(excelOneDto.getCategory()).build());
+				}
+				
+				Brand brand = brandService.findByBrandName(excelOneDto.getBrand());
+				if (null == brand) {
+					brand = brandService.createBrand(Brand.builder().name(excelOneDto.getBrand()).build());
+				}
+
+				List<ProductInstock> pInstockList = new ArrayList<>(); 
+				for (ExcelManyDto excelManyDto : excelOneDto.getExcelManyDtoList()) {
+					pInstockList.add(new ProductInstock(excelManyDto, product));
+				}
+
+				product.setCategory(category);
+				product.setBrand(brand);
+				product.setItenName(excelOneDto.getItemName());
+				product.setOtherName(excelOneDto.getOtherName());
+				product.setProductInstockList(pInstockList);
+				
+
+				productService.createProduct(product);
+				
+			}
+			
+			System.out.println(" finish creating product list.....");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

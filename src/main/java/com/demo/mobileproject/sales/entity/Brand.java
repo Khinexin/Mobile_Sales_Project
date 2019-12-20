@@ -1,17 +1,24 @@
 package com.demo.mobileproject.sales.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity @Data @NoArgsConstructor @AllArgsConstructor
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Brand {
 
-    @Id
-    @Column(name = "brand_name", unique = true)
-    private String name;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
+	@Column(name = "name", unique = true)
+	private String name;
 
 }

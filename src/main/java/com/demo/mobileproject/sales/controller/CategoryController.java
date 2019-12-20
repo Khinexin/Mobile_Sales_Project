@@ -1,16 +1,20 @@
 package com.demo.mobileproject.sales.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 import com.demo.mobileproject.sales.enums.CategoryNamesEnum;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,14 +29,14 @@ import com.demo.mobileproject.sales.service.CategoryService;
 @RequestMapping("/admin")
 public class CategoryController {
 
-    final Log LOG= LogFactory.getLog(this.getClass());
+    private static final Logger LOG = LogManager.getLogger(CategoryController.class);
 
     @Autowired CategoryService categoryService;
 
     // create
     @GetMapping("/createCategory")
     public String createCategory(ModelMap model) {
-        model.addAttribute("category", new Category());
+        model.addAttribute("category", Category.builder().id(-1).build());
         return "admin/create_category";
     }
 
@@ -40,15 +44,16 @@ public class CategoryController {
     public String createProcessCategory(ModelMap model, @ModelAttribute("category") @Valid Category category, BindingResult bindingResult) {
         if(!bindingResult.hasErrors()){
             try{
-//                if (category.getId() == -1) {
+                if (category.getId() == -1) {
                     categoryService.createCategory(category);
                     LOG.info("New Category has created");
-//                } else{
-//                    categoryService.updateCategory(category);
-//                    LOG.info("Updated Category where Id = "+category.getId());
-//                }
+                } else{
+                    categoryService.updateCategory(category);
+                    LOG.info("Updated Category where Id = "+category.getId());
+                }
             }catch (ConstraintViolationException e){
-                model.addAttribute("nameUniqueErr", "This name already exit!");
+            	  bindingResult.addError(new FieldError("category", "name", category.getName(), false, null, null,
+      					"* Same name already exit!"));
                 LOG.error("ConstraintViolationException : Error occur while saving Category!"+"\n"+e.getMessage());
             }catch (Exception e){
                 e.printStackTrace();
@@ -62,7 +67,7 @@ public class CategoryController {
 
     //update
     @GetMapping("/editCategory/{catId}")
-    public String editCategoryById(@PathVariable("catId") String id, ModelMap model) {
+    public String editCategoryById(@PathVariable("catId") int id, ModelMap model) {
         try {
             model.addAttribute("category", categoryService.findByIdCategory(id));
         } catch (ResourceNotFoundException e) {
@@ -75,20 +80,14 @@ public class CategoryController {
     @GetMapping("/categorylist")
     public String findAllCategoryList(Model model) {
         model.addAttribute("categoryList", categoryService.findAllCategory());
-
-        model.addAttribute("accessory", CategoryNamesEnum.ACCESSORY.getName());
-        model.addAttribute("laptop", CategoryNamesEnum.LAPTOP.getName());
-        model.addAttribute("smartphone", CategoryNamesEnum.SMARTPHONE.getName());
-        model.addAttribute("tablet", CategoryNamesEnum.TABLET.getName());
-        model.addAttribute("spares", CategoryNamesEnum.SPARES.getName());
-
         return "admin/list_category";
     }
 
     //delete
     @GetMapping("/deleteCategory/{catId}")
-    public String deleteCategoryById(@PathVariable("catId") String id) {
+    public String deleteCategoryById(@PathVariable("catId") int id) {
         categoryService.deleteCategoryById(id);
         return "redirect:/admin/categorylist";
     }
+    
 }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="admin/layout/adminlayout">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Brand List</title>
+</head>
+<body>
+
+	<div layout:fragment="admin-content">
+		<h2>Brand List</h2>
+
+		<div class="row">
+			<table id="myTable" class="table table-striped ">
+				<tr>
+					<th>Brand Name</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+				<tr th:each="br:${brandList}">
+					<td th:text="${br.name}"></td>
+					<td><span
+						th:if="${br.name == 'Apple' OR br.name == 'Samsung'}"> <a
+							class="avoid-clicks"><span class="glyphicon glyphicon-edit"></span></a>
+					</span> <span th:unless="${br.name == 'Apple' OR br.name == 'Samsung'}">
+							<a th:href="@{'/admin/editBrand/'+${br.id}}"><span
+								class="glyphicon glyphicon-edit"></span></a>
+					</span></td>
+					<td><span
+						th:if="${br.name == 'Apple' OR br.name == 'Samsung'}"> <a
+							class="avoid-clicks"><span class="glyphicon glyphicon-trash"></span></a>
+					</span> <span th:unless="${br.name == 'Apple' OR br.name == 'Samsung'}">
+							<a th:href="@{'/admin/deleteBrand/'+${br.id}}"><span
+								class="glyphicon glyphicon-trash"></span></a>
+					</span></td>
+				</tr>
+			</table>
+		</div>
+		<script>
+			$(document).ready(function() {
+				$('#myTable').DataTable();
+			});
+		</script>
+	</div>
+
+</body>
+</html>

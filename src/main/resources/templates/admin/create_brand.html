@@ -4,38 +4,36 @@
 	layout:decorate="admin/layout/adminlayout">
 <head>
 <!-- <meta charset="ISO-8859-1"/>-->
-<title
-	th:text="${category.id} == -1 ? 'Create Category' : 'Edit Category'"></title>
+<title th:text="${brand.id} == -1 ? 'Create Brand' : 'Edit Brand' "></title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
 	<div layout:fragment="admin-content">
-<h2>Category Form</h2>
+<h2>Brand Form</h2>
 		<div class="container">
-			<form th:object="${category}" th:action="@{/admin/saveCategory}"
-				method="post" >
+
+			<form th:object="${brand}" th:action="@{/admin/saveBrand}"
+				method="post">
 
 				<input th:field="*{id}" type="hidden" />
 
 				<div class="form-group">
-					<label>Category Name</label> <input class="form-control"
-						type="text" th:field="*{name}" /> <small
-						th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
-						class="error-message" role="alert"></small>
+					<label>Brand Name</label> <input class="form-control"
+						type="text" th:field="*{name}" />
+
+					<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+						class="error-message"></p>
 				</div>
 
 				<button class="btn btn-primary" type="submit"
-					th:text="${category.id} == -1 ? 'Create' : 'Update'"></button>
+					th:text="${brand.id} == -1 ? 'Create' : 'Update'"></button>
 				<a class="btn btn-primary" role="button"
-					th:href="@{/admin/categorylist}">Cancel</a>
+					th:href="@{/admin/brandlist}">Cancel</a>
 
 			</form>
-
 		</div>
-
-
 
 		<script>
 			$(document).ready(function() {
@@ -44,6 +42,7 @@
 				});
 			});
 		</script>
+
 	</div>
 
 

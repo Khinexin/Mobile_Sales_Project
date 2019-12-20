@@ -1,25 +1,46 @@
 package com.demo.mobileproject.sales.entity;
 
-import lombok.*;
-
-import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
-@Entity @Data @NoArgsConstructor @AllArgsConstructor
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.demo.mobileproject.sales.dto.ExcelOneDto;
+
+import lombok.*;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Product {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-    @ManyToOne(fetch = FetchType.EAGER ) @JoinColumn(name = "category_id")
-    private Category category;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "category_id")
+	private Category category;
 
-    @ManyToOne(fetch = FetchType.EAGER ) @JoinColumn(name = "brand_id")
-    private Brand brand;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "brand_id")
+	private Brand brand;
 
-    private String itemName;
+	private String itenName;
+	private String otherName;
 
-    @OneToMany (fetch = FetchType.EAGER , cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "product")
-    private List<ProductInstock> productInstockList = new ArrayList<>();
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "product")
+	private List<ProductInstock> productInstockList;
+	
+	
+	
 }

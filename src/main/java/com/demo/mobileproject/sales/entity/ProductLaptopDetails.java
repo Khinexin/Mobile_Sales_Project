@@ -1,4 +1,0 @@
-//package com.demo.mobileproject.sales.entity;
-//
-//public class ProductLaptopDetails {
-//}

@@ -1,8 +1,12 @@
 package com.demo.mobileproject.sales.service.impl;
 
+import com.demo.mobileproject.exception.ResourceNotFoundException;
 import com.demo.mobileproject.sales.entity.Brand;
 import com.demo.mobileproject.sales.repository.BrandRepository;
 import com.demo.mobileproject.sales.service.BrandService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +18,11 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     public Brand findByBrandName(String name) {
-        return brandRepository.getOne(name);
+        return brandRepository.findBrandByName(name);
     }
 
     @Override
-    public Brand saveBrand(Brand brand) {
+    public Brand createBrand(Brand brand) {
         return brandRepository.save(brand);
     }
 
@@ -28,12 +32,24 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public void deleteBrandByName(String name) {
-        brandRepository.deleteById(name);
+    public void deleteBrandById(int id) {
+        brandRepository.deleteById(id);
     }
 
     @Override
     public long countBrand() {
         return brandRepository.count();
     }
+
+	@Override
+	public List<Brand> findAllBrand() {
+		return brandRepository.findAll();
+	}
+
+	@Override
+	public Brand findByIdBrand(int id) throws ResourceNotFoundException{
+		return brandRepository.findById(id).orElseThrow(()->new ResourceNotFoundException());
+	}
+    
+    
 }

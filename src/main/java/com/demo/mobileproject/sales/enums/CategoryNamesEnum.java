@@ -12,7 +12,8 @@ public enum CategoryNamesEnum {
     TABLET(2,"Tablet"),
     LAPTOP(3,"Laptop"),
     ACCESSORY(4,"Accessory"),
-    SPARES(5,"Smartphone Spares");
+    SPARES(5,"Smartphone Spares"),
+    IPAD(6,"iPad");
 
     private final Integer id;
     private final String name;

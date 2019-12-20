@@ -1,87 +1,169 @@
 package com.demo.mobileproject.sales.controller;
 
-import com.demo.mobileproject.exception.ResourceNotFoundException;
-import com.demo.mobileproject.sales.entity.ProductSmartphoneDetails;
-import com.demo.mobileproject.sales.service.CategoryService;
-import com.demo.mobileproject.sales.service.ProductSmartphoneDetailsService;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.transaction.Transactional;
-import javax.validation.ConstraintViolationException;
-import javax.validation.Valid;
+import com.demo.mobileproject.sales.dto.ExcelManyDto;
+import com.demo.mobileproject.sales.dto.ExcelOneDto;
+import com.demo.mobileproject.sales.entity.Product;
+import com.demo.mobileproject.sales.entity.ProductInstock;
+import com.demo.mobileproject.sales.service.BrandService;
+import com.demo.mobileproject.sales.service.CategoryService;
+import com.demo.mobileproject.sales.service.ProductService;
 
 @Controller
 @RequestMapping("/admin")
 public class ProductController {
 
-    final Log LOG= LogFactory.getLog(this.getClass());
+	private static final Logger LOG = LogManager.getLogger(ProductController.class);
 
-    @Autowired
-    ProductSmartphoneDetailsService productService;
-    @Autowired CategoryService categoryService;
+	@Autowired
+	ProductService productService;
+	@Autowired
+	CategoryService categoryService;
+	@Autowired
+	BrandService brandService;
 
-    //findAll
-    @GetMapping("/proudctList")
-    public String findAllProducts(Model model) {
-        model.addAttribute("products", productService.findAllProduct());
-        return "admin/list_product";
-    }
+	@GetMapping("/proudctList")
+	public String findAllProducts(Model model) {
+		model.addAttribute("products", productService.findAllProducts());
+		return "admin/list_product";
+	}
 
-    @GetMapping("/createProduct")
-    public String createProduct(Model model){
-        model.addAttribute("categorys",categoryService.findAllCategory());
-        ProductSmartphoneDetails product = new ProductSmartphoneDetails(); product.setId(-1);
-        model.addAttribute("product", product);
-        return "admin/create_product";
-    }
+	@GetMapping("/createProduct")
+	public String createProduct(Model model) {
+		model.addAttribute("categorys", categoryService.findAllCategory());
+		model.addAttribute("brands", brandService.findAllBrand());
+		model.addAttribute("productDto", ExcelOneDto.builder().id(-1).build());
+		return "admin/create_product";
+	}
 
-    @PostMapping("/saveProduct") @Transactional
-    public String createProcessProduct(Model model,
-                                       @ModelAttribute("product") @Valid ProductSmartphoneDetails product, BindingResult bindingResult,
-                                       @RequestParam("imageFile1")MultipartFile image1,
-                                       @RequestParam("imageFile2")MultipartFile image2,
-                                       @RequestParam("imageFile3")MultipartFile image3){
-        if (!bindingResult.hasErrors()){
-            LOG.info("Saving Product...");
-            try {
-                if (product.getId() == -1) {
-                    productService.createProduct(product);
-                } else {
-                    productService.updateProduct(product);
-                }
-            } catch(ConstraintViolationException e){
-                LOG.error("ConstraintViolationException : Error occur while saving Product:"+e.getMessage());
-            }catch (Exception e){
-                e.printStackTrace();
-            }
+	@PostMapping("/saveProduct")
+	public String createProcessProduct(Model model, @Valid @ModelAttribute("productDto") ExcelOneDto productDto,
+			BindingResult bindingResult) {
+		if (!bindingResult.hasErrors()) {
+			LOG.info("Saving Product...");
+			try {
+				if (productDto.getId() == -1) {
+					Product product = prepareProductBeforeCreate(productDto);
+					productService.createProduct(product);
+				} else {
+					Product product = clearInstockBeforeUpdate(productDto);
+					prepareProductBeforeUpdate(productDto, product);
+					productService.updateProduct(product);
+				}
+			} catch (ConstraintViolationException e) {
+				LOG.error("ConstraintViolationException : Error occur while saving Product:" + e.getMessage());
 
-        }else{
-            LOG.error("binding result has error while saving product :: "+product.getId());
-            return "admin/create_product";
-        }
-        return "redirect:/admin/proudctList";
-    }
+				return "admin/create_product";
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "admin/create_product";
+			}
 
-    @GetMapping("/editProduct/{id}")
-    public String editProduct(Model model,@PathVariable("id") int productId){
-        try {
-            model.addAttribute("product", productService.findByIdProduct(productId));
-        } catch (ResourceNotFoundException e) {
-            e.printStackTrace();
-        }
-        return "admin/create_product";
-    }
+			return "redirect:/admin/proudctList";
 
-    @GetMapping("/deleteProduct/{productId}")
-    public String deleteProduct(@PathVariable("productId")int productId){
-        productService.deleteByIdProduct(productId);
-        return "redirect:/admin/proudctList";
-    }
+		} else {
+			LOG.error("binding result has error while saving product :: " + productDto.getId());
+			return "admin/create_product";
+		}
+
+	}
+
+	private Product prepareProductBeforeCreate(ExcelOneDto productDto) {
+		Product product = new Product();
+		List<ProductInstock> productInstockList = new ArrayList<ProductInstock>();
+
+		for (ExcelManyDto inDto : productDto.getExcelManyDtoList()) {
+			productInstockList.add(new ProductInstock(inDto, product));
+		}
+
+		product.setBrand(brandService.findByBrandName(productDto.getBrand()));
+		product.setCategory(categoryService.findByCategoryName(productDto.getCategory()));
+		product.setItenName(productDto.getItemName());
+		product.setOtherName(productDto.getOtherName());
+		product.setProductInstockList(productInstockList);
+		return product;
+	}
+
+	private void prepareProductBeforeUpdate(ExcelOneDto productDto, Product product) {
+		List<ProductInstock> productInstockList = new ArrayList<ProductInstock>();
+
+		for (ExcelManyDto inDto : productDto.getExcelManyDtoList()) {
+			productInstockList.add(new ProductInstock(inDto, product));
+		}
+
+		System.out.println("dto brand name "+productDto.getBrand());
+		System.out.println("dto category name "+productDto.getCategory());
+		
+		product.setBrand(brandService.findByBrandName(productDto.getBrand()));
+		product.setCategory(categoryService.findByCategoryName(productDto.getCategory()));
+		product.setItenName(productDto.getItemName());
+		product.setOtherName(productDto.getOtherName());
+		product.setProductInstockList(productInstockList);
+	}
+
+	private Product clearInstockBeforeUpdate(ExcelOneDto productDto) {
+		Product product = productService.findProduct(productDto.getId());
+		productService.deleteProductInstockByProductId(product.getId());
+		return product;
+	}
+
+	@GetMapping("/editProduct/{id}")
+	public String editProduct(Model model, @PathVariable("id") int productId) {
+		Product product = productService.findProduct(productId);
+
+		List<ExcelManyDto> manyDto = new ArrayList<ExcelManyDto>();
+
+		for (ProductInstock pIn : product.getProductInstockList()) {
+			ExcelManyDto pInDto = new ExcelManyDto();
+			pInDto.setId(pIn.getId());
+			pInDto.setMemory(pIn.getMemeory());
+			pInDto.setColor(pIn.getColor());
+			pInDto.setQuantity(pIn.getQuantity());
+			pInDto.setSize(pIn.getSize());
+			pInDto.setPrice(pIn.getPrice());
+			manyDto.add(pInDto);
+		}
+
+		ExcelOneDto excelOneDto = new ExcelOneDto();
+		excelOneDto.setId(product.getId());
+		excelOneDto.setBrand(product.getBrand().getName());
+		excelOneDto.setCategory(product.getCategory().getName());
+		excelOneDto.setItemName(product.getItenName());
+		excelOneDto.setOtherName(product.getOtherName());
+		excelOneDto.setExcelManyDtoList(manyDto);
+
+		model.addAttribute("productDto", excelOneDto);
+
+		System.out.println(manyDto.size());
+
+		model.addAttribute("listcount", manyDto.size() - 1);
+
+		model.addAttribute("categorys", categoryService.findAllCategory());
+		model.addAttribute("brands", brandService.findAllBrand());
+		return "admin/create_product";
+	}
+
+	@GetMapping("/deleteProduct/{productId}")
+	public String deleteProduct(@PathVariable("productId") int productId) {
+		productService.deleteProduct(productId);
+		return "redirect:/admin/proudctList";
+	}
+
 }

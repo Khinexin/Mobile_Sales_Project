@@ -1,52 +1,71 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="admin/layout/adminlayout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="admin/layout/adminlayout">
 <head>
-    <meta charset="ISO-8859-1"/>
-    <title>Category List</title>
+<meta charset="ISO-8859-1" />
+<title>Category List</title>
 </head>
 <body>
 
-<div layout:fragment="custom-content">
-    <form>
-        <div class="row">
-            <a name="create" id="" class="btn btn-primary" href="#"
-            role="button" th:href="@{/admin/createCategory}" >Add Category</a>
-        </div>
-        <div class="row">
-            <table>
-                <tr>
-                    <!--<th>Id</th>-->
-                    <th>Category Name</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <tr th:each="cat:${categoryList}">
-                    <!--<td th:text="${cat.id}"></td>-->
-                    <td th:text="${cat.name}"></td>
-                    <td>
-                        <span th:if="${cat.name == accessory or cat.name == laptop or cat.name == smartphone or cat.name == tablet or cat.name == spares}">
-                        </span>
+	<div layout:fragment="admin-content">
+		<h2>Category List</h2>
 
-                        <span th:unless="${cat.name == accessory or cat.name == laptop or cat.name == smartphone or cat.name == tablet or cat.name == spares}">
-                            <a th:href="@{'/admin/editCategory/'+${cat.id}}" >edit</a>
-                        </span>
-                    </td>
-                    <td>
-                        <span th:if="${cat.name == accessory or cat.name == laptop or cat.name == smartphone or cat.name == tablet or cat.name == spares}">
-                        </span>
-
-                        <span th:unless="${cat.name == accessory or cat.name == laptop or cat.name == smartphone or cat.name == tablet or cat.name == spares}">
-                            <a th:href="@{'/admin/deleteCategory/'+${cat.id}}" >delete</a>
-                        </span>
-
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </form>
-</div>
+			<div class="row">
+				<table id="myTable" class="table table-striped ">
+					<tr>
+						<th>Name</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+					<tr th:each="cat:${categoryList}">
+						<td th:text="${cat.name}"></td>
+						<td>
+						
+						<span
+							th:if="${cat.name == 'Smartphone' OR cat.name == 'Tablet' OR cat.name == 'Laptop' OR 
+							cat.name == 'Accessory' OR cat.name == 'iPad' OR cat.name == 'Smartphone Spares'}">
+								<a class="avoid-clicks" >
+								 <span class="glyphicon glyphicon-edit"></span></a>
+						</span>
+						
+						<span
+							th:unless="${cat.name == 'Smartphone' OR cat.name == 'Tablet' OR cat.name == 'Laptop' OR 
+							cat.name == 'Accessory' OR cat.name == 'iPad' OR cat.name == 'Smartphone Spares'}">
+								<a th:href="@{'/admin/editCategory/'+${cat.id}}"> <span
+								class="glyphicon glyphicon-edit"></span></a>
+					</span>
+						
+						</td>
+						<td>
+						
+						<span
+							th:if="${cat.name == 'Smartphone' OR cat.name == 'Tablet' OR cat.name == 'Laptop' OR 
+							cat.name == 'Accessory' OR cat.name == 'iPad' OR cat.name == 'Smartphone Spares'}">
+								<a class="avoid-clicks" >
+								 <span class="glyphicon glyphicon-trash"></span></a>
+						</span>
+						
+						<span
+							th:unless="${cat.name == 'Smartphone' OR cat.name == 'Tablet' OR cat.name == 'Laptop' OR 
+							cat.name == 'Accessory' OR cat.name == 'iPad' OR cat.name == 'Smartphone Spares'}">
+								<a  th:href="@{'/admin/deleteCategory/'+${cat.id}}"  >
+								 <span class="glyphicon glyphicon-trash"></span></a>
+						</span>
+						
+						</td>
+					</tr>
+				</table>
+			</div>
+		
+		
+		<script>
+		$(document).ready(function() {
+			$('#myTable').DataTable();
+		});
+	</script>
+	
+	</div>
 
 </body>
 </html>
