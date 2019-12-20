@@ -16,39 +16,39 @@ import com.demo.mobileproject.sales.service.ProductService;
 public class ProductServiceImpl implements ProductService {
 
 	@Autowired
-	ProductRepository ProductRepository;
+	ProductRepository productRepository;
 
 	@Autowired
 	ProductInstockRepository productInstockRepository;
 
 	@Override
 	public Product createProduct(Product productInstock) {
-		return ProductRepository.save(productInstock);
+		return productRepository.save(productInstock);
 	}
 
 	@Override
 	public Product updateProduct(Product productInstock) {
-		return ProductRepository.saveAndFlush(productInstock);
+		return productRepository.saveAndFlush(productInstock);
 	}
 
 	@Override
 	public Product findProduct(int id) {
-		return ProductRepository.getOne(id);
+		return productRepository.getOne(id);
 	}
 
 	@Override
 	public void deleteProduct(int id) {
-		ProductRepository.deleteById(id);
+		productRepository.deleteById(id);
 	}
 
 	@Override
 	public List<Product> findAllProducts() {
-		return ProductRepository.findAll();
+		return productRepository.findAll();
 	}
 
 	@Override
 	public long countProduct() {
-		return ProductRepository.count();
+		return productRepository.count();
 	}
 
 	@Override
@@ -62,16 +62,17 @@ public class ProductServiceImpl implements ProductService {
 		return productInstockRepository.countProductInsotckByProductId(productId);
 	}
 
-//	private List<ProductInstock> searchListAndSetProductNull(int productId) {
-//		List<ProductInstock> pIns = productInstockRepository.selectProductInsotckByProductId(productId);
-//		for (ProductInstock pin : pIns) {
-//			pin.setProduct(null);
-//			System.out.println(" to delete list");
-//			System.out.print(":: id \t"+pin.getId());
-//			
-//		}
-//		return pIns;
-//	}
+	@Override
+	public List<Product> findProductsByCategory(String categoryName) {
+		return productRepository.getProductByCategory(categoryName);
+	}
 
+	@Override
+	public List<Product> findProductsByBrand(String brandName) {
+		return productRepository.getProductByBrand(brandName);
+	}
+
+
+	
 	
 }

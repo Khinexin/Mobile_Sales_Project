@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/storelayout">
+<head>
+<meta charset="ISO-8859-1">
+<title>Products TEMP ..</title>
+</head>
+<body>
+
+<div layout:fragment="user-content">
+
+
+<table id="myTable" class="table table-striped ">
+			<thead>
+				<tr>
+					<th>Name</th>
+
+					<th>Edit/Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="pd : ${prods}">
+
+					<td th:text="${pd.itenName}"></td>
+
+					<td><!-- <a th:href="@{'/admin/editProduct/'+${pd.id}}"> <span
+							class="glyphicon glyphicon-edit"></span></a> &emsp; <a
+						th:href="@{'/admin/deleteProduct/'+${pd.id}}"> <span
+							class="glyphicon glyphicon-trash"></span></a> --></td>
+
+
+				</tr>
+			</tbody>
+		</table>
+		
+		
+		<script>
+			$(document).ready(function() {
+				$('#myTable').DataTable();
+			});
+		</script>
+
+
+</div>
+</body>
+</html>

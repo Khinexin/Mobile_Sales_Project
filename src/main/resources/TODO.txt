@@ -1,3 +1,17 @@
 TODO list
 
+
+fonoapi
+- api get latest product
+	compare with db 
+	if has then show those ... if not don't show	
+- api get one detatil product
+- register with social and login in with social
+- rating of our store -- only for member
+
+- shopping cart
+- payment
+ 
+
+
 - our profile page link -- in admin layout 

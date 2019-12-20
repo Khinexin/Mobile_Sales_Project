@@ -18,8 +18,6 @@ public interface ProductInstockRepository extends JpaRepository<ProductInstock, 
 //	@Query("SELECT pin FROM ProductInstock pin join pin.product pr where pr.id=:productId")
 //	List<ProductInstock> selectProductInsotckByProductId(@Param("productId") int id);
 	
-	
-	
 	@Query(value ="select COUNT(*) from product_instock where product_id = :productId", nativeQuery = true)
 	long countProductInsotckByProductId(@Param("productId") int id);
 

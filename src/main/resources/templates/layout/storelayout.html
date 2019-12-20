@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/static/vendor/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/static/vendor/datatables/css/jquery.dataTables.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/static/vendor/font-awesome/css/font-awesome.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/static/css/main.css}" />
+
+
+<script th:src="@{/static/vendor/datatables/js/jquery.js}"></script>
+<script th:src="@{/static/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/static/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<script
+	th:src="@{/static/vendor/datatables/js/jquery.dataTables.min.js}"></script>
+
+
+<style type="text/css">
+
+.toTop{
+  position:fixed;
+  bottom:20%;
+  right:20%;
+  width:20%;
+  background-color:yellow;
+  
+}
+
+</style>
+</head>
+<body>
+
+<div class="row">
+
+<a name="top"></a>
+
+    <!-- Menu Toogle -->
+    <div class="menu-toggle">
+        <a href="#">
+            <i class="fa fa-bars"></i>
+            <span>Menu</span>
+        </a>
+    </div>
+    <!-- /Menu Toogle -->
+
+    <!-- NAVIGATION -->
+    <nav class="sticky" id="navigation">
+        <!-- container -->
+        <div class="container">
+            <!-- responsive-nav -->
+            <div id="responsive-nav">
+                <!-- NAV -->
+                <ul class="main-nav nav navbar-nav">
+                    <li>
+                        <a class="logo" href="#">
+                            <h2>Mobile Shop</h2>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="#">
+                            <i class=" fa fa-home"></i>
+                            <span>Home</span></a>
+                    </li>
+                    <li><a href="#">
+                        <i class="fa fa-mobile"></i>
+                        <span>Phones</span></a>
+                    </li>
+                    <li><a href="#">
+                        <i class="fa fa-tablet"></i>
+                        <span>Tablets</span></a>
+                    </li>
+                    <li><a href="#">
+                        <i class="fa fa-mobile-phone"></i>
+                        <span>Accessories</span></a>
+                    </li>
+                    <li><a href="#">
+                        <i class="fa fa-delicious"></i>
+                        <span>Promotion</span>
+                    </a>
+                    </li>
+                    <li><a href="#">
+                        <i class="fa fa-info"></i>
+                        <span>About Us</span>
+                    </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-user-o"></i>
+                            <span>Sign in</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>Your Cart</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /NAV -->
+            </div>
+            <!-- /responsive-nav -->
+        </div>
+        <!-- /container -->
+    </nav>
+    <!-- /NAVIGATION -->
+</div>
+
+
+<div class="toTop">
+<a  href="#top">back to top</a>
+</div>
+
+
+			<div layout:fragment="user-content">
+
+
+
+			</div>
+
+
+
+
+
+	<footer class="sticky-footer">
+		<div class="container">
+			<p style="text-align: center">
+				Copyright &copy; Our-Website 2019 <a href="#ourprofile">
+					Students Project (^_^) </a>
+			</p>
+
+		</div>
+	</footer>
+
+
+
+
+</body>
+</html>

@@ -21,4 +21,9 @@ public interface ProductService {
 	void deleteProductInstockByProductId(int productId);
 	
 	long countProductInstockByProductId(int productId);
+	
+	
+	List<Product> findProductsByCategory(String categoryName);
+	
+	List<Product> findProductsByBrand(String brandName);
 }
