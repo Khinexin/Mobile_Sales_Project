@@ -14,10 +14,10 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
 	//@Query(value ="select COUNT(*) from product_instock where product_id = :productId", nativeQuery = true)
 	
-	@Query("SELECT p FROM Product p WHERE p.category.name  %:category%")
+	@Query("SELECT p FROM Product p WHERE p.category.name  =:category")
 	List<Product> getProductByCategory(@Param("category") String category);
 	
-	@Query("SELECT p FROM Product p WHERE p.brand.name  %:brand%")
+	@Query("SELECT p FROM Product p WHERE p.brand.name  =:brand")
 	List<Product> getProductByBrand(@Param("brand") String brand);
 	
 

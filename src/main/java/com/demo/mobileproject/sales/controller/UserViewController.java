@@ -24,8 +24,7 @@ public class UserViewController {
 	
 	
 	
-	
-	@GetMapping("/product")
+	@GetMapping("/product/category")
 	public String getProductByCategory(Model model, @RequestParam("category")String category) {
 		
 		model.addAttribute("prods",productService.findProductsByCategory(category));
@@ -33,7 +32,7 @@ public class UserViewController {
 		return "products";
 	}
 	
-	@GetMapping("/product")
+	@GetMapping("/product/brand")
 	public String getProductByBrand(Model model, @RequestParam("brand")String brand) {
 		
 		model.addAttribute("prods",productService.findProductsByBrand(brand));
