@@ -21,110 +21,84 @@
 	th:src="@{/static/vendor/datatables/js/jquery.dataTables.min.js}"></script>
 
 
-<style type="text/css">
-
-.toTop{
-  position:fixed;
-  bottom:20%;
-  right:20%;
-  width:20%;
-  background-color:yellow;
-  
-}
-
-</style>
 </head>
-<body>
+<body class="body-content">
 
-<div class="row">
-
-<a name="top"></a>
-
-    <!-- Menu Toogle -->
-    <div class="menu-toggle">
-        <a href="#">
-            <i class="fa fa-bars"></i>
-            <span>Menu</span>
-        </a>
-    </div>
-    <!-- /Menu Toogle -->
-
-    <!-- NAVIGATION -->
-    <nav class="sticky" id="navigation">
-        <!-- container -->
+ <div class="header-area top-container">
         <div class="container">
-            <!-- responsive-nav -->
-            <div id="responsive-nav">
-                <!-- NAV -->
-                <ul class="main-nav nav navbar-nav">
-                    <li>
-                        <a class="logo" href="#">
-                            <h2>Mobile Shop</h2>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="#" th:href="@{/}">
-                            <i class=" fa fa-home"></i>
-                            <span>Home</span></a>
-                    </li>
-                    <li><a href="#Smartphone" th:href="@{/product?category=Smartphone}">
-                        <i class="fa fa-mobile"></i>
-                        <span>Phones</span></a>
-                    </li>
-                    <li><a href="#Tablet" th:href="@{/product?category=Tablet}">
-                        <i class="fa fa-tablet"></i>
-                        <span>Tablets</span></a>
-                    </li>
-                    <li><a href="#Accessory" th:href="@{/product?category=Accessory}">
-                        <i class="fa fa-mobile-phone"></i>
-                        <span>Accessories</span></a>
-                    </li>
-                    <li><a href="#">
-                        <i class="fa fa-delicious"></i>
-                        <span>Promotion</span>
-                    </a>
-                    </li>
-                    <li><a href="#">
-                        <i class="fa fa-info"></i>
-                        <span>About Us</span>
-                    </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-user-o"></i>
-                            <span>Sign in</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-shopping-cart"></i>
-                            <span>Your Cart</span>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /NAV -->
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="user-menu">
+                        <ul>
+                            <li><a href="#my-account"><i class="fa fa-user"></i> My Account</a></li>
+                            <li><a href="#wishlist"><i class="fa fa-heart"></i> Wishlist</a></li>
+                            <li><a href="#cart"><i class="fa fa-user"></i> My Cart</a></li>
+                            <li><a href="#checkout"><i class="fa fa-user"></i> Checkout</a></li>
+                            <li><a href="#login"><i class="fa fa-user"></i> Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="header-right">
+                        <ul class="list-unstyled list-inline">
+                            <li class="dropdown dropdown-small">
+                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">currency :</span><span class="value">USD </span><b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">USD</a></li>
+                                    <li><a href="#">MMK</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown dropdown-small">
+                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">language :</span><span class="value">English </span><b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">English</a></li>
+                                    <li><a href="#">Myanmar</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <!-- /responsive-nav -->
         </div>
-        <!-- /container -->
-    </nav>
-    <!-- /NAVIGATION -->
-</div>
-
-
-<div class="toTop">
-<a  href="#top">back to top</a>
-</div>
-
-
-			<div layout:fragment="user-content">
-
-
-
-			</div>
-
-
-
+    </div> <!-- End header area -->
+    
+    
+     
+    <div  class="header" id="myHeader" ><div class="mainmenu-area"> 
+        <div class="container">
+            <div class="row">
+               <!--  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div> --> 
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#shop">Shop page</a></li>
+                        <li><a href="#single-product">Single product</a></li>
+                        <li><a href="#cart">Cart</a></li>
+                        <li><a href="#checkout">Checkout</a></li>
+                        <li><a href="#category">Category</a></li>
+                        <li><a href="#others">Others</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>  
+            </div>
+        </div>
+    </div></div> <!-- End mainmenu area -->
+  
+  <div class="content">
+   <div class="container">
+			<div layout:fragment="user-content"></div>
+		</div>
+  
+  </div>  
 
 
 	<footer class="sticky-footer">
@@ -138,7 +112,20 @@
 	</footer>
 
 
+<script>
+window.onscroll = function() {myFunction()};
 
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+</script>
 
 </body>
 </html>

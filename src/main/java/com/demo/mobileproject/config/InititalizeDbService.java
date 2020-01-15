@@ -19,21 +19,21 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.demo.mobileproject.sales.dto.ExcelManyDto;
-import com.demo.mobileproject.sales.dto.ExcelOneDto;
-import com.demo.mobileproject.sales.entity.Brand;
-import com.demo.mobileproject.sales.entity.Category;
-import com.demo.mobileproject.sales.entity.Product;
-import com.demo.mobileproject.sales.entity.ProductInstock;
-import com.demo.mobileproject.sales.enums.BrandEnum;
-import com.demo.mobileproject.sales.enums.CategoryNamesEnum;
-import com.demo.mobileproject.sales.service.BrandService;
-import com.demo.mobileproject.sales.service.CategoryService;
-import com.demo.mobileproject.sales.service.ProductService;
-import com.demo.mobileproject.security.entity.AppRole;
-import com.demo.mobileproject.security.entity.AppUser;
-import com.demo.mobileproject.security.service.AppRoleService;
-import com.demo.mobileproject.security.service.AppUserService;
+import com.demo.mobileproject.dto.ExcelManyDto;
+import com.demo.mobileproject.dto.ExcelOneDto;
+import com.demo.mobileproject.entity.AppRole;
+import com.demo.mobileproject.entity.AppUser;
+import com.demo.mobileproject.entity.Brand;
+import com.demo.mobileproject.entity.Category;
+import com.demo.mobileproject.entity.Product;
+import com.demo.mobileproject.entity.ProductInstock;
+import com.demo.mobileproject.enums.BrandEnum;
+import com.demo.mobileproject.enums.CategoryNamesEnum;
+import com.demo.mobileproject.service.AppRoleService;
+import com.demo.mobileproject.service.AppUserService;
+import com.demo.mobileproject.service.BrandService;
+import com.demo.mobileproject.service.CategoryService;
+import com.demo.mobileproject.service.ProductService;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 
@@ -216,7 +216,7 @@ public class InititalizeDbService {
 
 				product.setCategory(category);
 				product.setBrand(brand);
-				product.setItenName(excelOneDto.getItemName());
+				product.setItemName(excelOneDto.getItemName());
 				product.setOtherName(excelOneDto.getOtherName());
 				product.setProductInstockList(pInstockList);
 
